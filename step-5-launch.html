@@ -81,7 +81,7 @@ websocat ws://localhost:8070/ws/test-user-1</code></pre>
 
 <pre><code>{"text": "Привет"}</code></pre>
 
-      <p>Anna ответит за 2–4 секунды.</p>
+      <p>AI-продавец ответит за 2–4 секунды.</p>
 
       <div class="callout">
         <strong>Альтернатива без websocat</strong>
@@ -91,10 +91,10 @@ websocat ws://localhost:8070/ws/test-user-1</code></pre>
       <h3>Через Telegram</h3>
       <p>Если в <code>.env</code> заполнен <code>TELEGRAM_BOT_TOKEN</code> — найдите бота по username (тот, что выдал BotFather) и напишите <code>/start</code>.</p>
 
-      <p>Anna представится, начнёт диалог со стадии 1 (знакомство) и будет вести по воронке.</p>
+      <p>AI-продавец представится, начнёт диалог со стадии 1 (знакомство) и будет вести по воронке.</p>
 
       <h2>5. Загрузите тестовый каталог</h2>
-      <p>Чтобы Anna могла отвечать на вопросы про конкретные товары — нужно залить каталог в RAG. В репо есть демо-каталог:</p>
+      <p>Чтобы AI-продавец мог отвечать на вопросы про конкретные товары — нужно залить каталог в RAG. В репо есть демо-каталог:</p>
 
 <pre><code>poetry run python scripts/ingest_catalog.py scripts/demo_catalog.json</code></pre>
 
@@ -103,7 +103,7 @@ websocat ws://localhost:8070/ws/test-user-1</code></pre>
 <pre><code>Loaded 5 products from scripts/demo_catalog.json
 Ingested 5 products into pgvector ✓</code></pre>
 
-      <p>Теперь спросите у Anna "сколько стоит ваш товар" — она достанет из каталога и назовёт цену.</p>
+      <p>Теперь спросите "сколько стоит ваш товар" — она достанет из каталога и назовёт цену.</p>
 
       <h2>6. Прогоните воронку</h2>
       <p>Чтобы убедиться, что все 7 стадий работают, проведите тестовый диалог:</p>
