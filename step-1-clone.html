@@ -107,20 +107,23 @@ cd AI_sales_write</code></pre>
         </tbody>
       </table>
 
-      <h2>Откройте проект в редакторе</h2>
-      <p>Если у вас Cursor или VS Code — откройте папку проекта прямо из терминала:</p>
+      <h2>Откройте проект в VS Code</h2>
+      <p>VS Code (бесплатный редактор от Microsoft) мы установим в шаге 2. После установки откроете проект так:</p>
+      <ol>
+        <li>Запустите VS Code</li>
+        <li>Меню <strong>File → Open Folder</strong> (на Mac: <strong>File → Open</strong>)</li>
+        <li>Выберите папку <code>AI_sales_write</code> → <strong>Open</strong></li>
+      </ol>
+      <p>В левой панели появится дерево файлов проекта. Это и есть наш AI-продавец.</p>
 
-<pre><code># Cursor
-cursor .
-
-# VS Code
-code .</code></pre>
-
-      <p>Если команда не работает — откройте редактор вручную и выберите папку <code>AI_sales_write</code> через File → Open Folder.</p>
+      <div class="callout">
+        <strong>Лайфхак</strong>
+        <p>Чтобы открывать проект из терминала командой <code>code .</code> — после установки VS Code нажмите внутри него <span class="kbd">Cmd</span>/<span class="kbd">Ctrl</span>+<span class="kbd">Shift</span>+<span class="kbd">P</span>, наберите <em>Shell Command: Install 'code' command in PATH</em> и выполните. После этого в терминале команда <code>code .</code> в любой папке откроет её в VS Code.</p>
+      </div>
 
       <div class="callout success">
         <strong>Проверка</strong>
-        <p>Вы должны видеть структуру проекта в боковой панели редактора и быть в папке <code>AI_sales_write</code> в терминале.</p>
+        <p>Файлы клонированы в папку <code>AI_sales_write</code>. В терминале команда <code>ls</code> внутри этой папки должна показать <code>app/</code>, <code>scripts/</code>, <code>docker/</code>, <code>README.md</code> и другие.</p>
       </div>
 
       <h2>Если возникли проблемы</h2>

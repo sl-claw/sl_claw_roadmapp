@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Шаг 2 · Подготовьте окружение — SL_CLAW</title>
+  <title>Шаг 2 · Подготовьте компьютер — SL_CLAW</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -24,115 +24,181 @@
         <div class="progress-bar"><div class="progress-bar-fill" style="width: 28%"></div></div>
       </div>
 
-      <h1>Шаг 2. Подготовьте окружение</h1>
+      <h1>Шаг 2. Подготовьте компьютер</h1>
       <p class="lead">
-        Установите 4 инструмента: Python, Docker, Poetry и редактор. Это база, на которой
-        работает всё остальное. Если что-то уже стоит — пропускайте.
+        Установим 4 бесплатные программы. Если вы никогда раньше не работали с кодом — не страшно,
+        каждый шаг расписан под новичка. Всё бесплатно, ставится за 20 минут.
       </p>
 
-      <h2>1. Python 3.12</h2>
-      <p>Проект работает на Python 3.12. Проверьте текущую версию:</p>
-
-<pre><code>python3 --version</code></pre>
-
-      <p>Если версия ниже 3.12 — установите её. Самый чистый способ — через <strong>pyenv</strong>:</p>
-
-<pre><code># macOS
-brew install pyenv
-
-# Ubuntu/Debian
-curl https://pyenv.run | bash
-
-# После установки
-pyenv install 3.12.7
-pyenv global 3.12.7</code></pre>
-
       <div class="callout">
-        <strong>Альтернатива</strong>
-        <p>Если не хотите возиться с pyenv — скачайте установщик с <a href="https://www.python.org/downloads/" target="_blank" rel="noopener">python.org</a>.</p>
+        <strong>Что мы ставим и зачем</strong>
+        <p>1. <strong>Терминал</strong> — окно для команд (на Mac уже есть, на Windows ставим).<br>
+        2. <strong>Python</strong> — язык, на котором написан AI-продавец.<br>
+        3. <strong>Docker</strong> — для запуска базы данных в одну команду.<br>
+        4. <strong>VS Code</strong> — бесплатный редактор для просмотра/правки файлов.</p>
       </div>
 
-      <h2>2. Docker Desktop</h2>
-      <p>Docker нужен для запуска Postgres и Redis в контейнерах. Это база данных и кэш — без них агент не запустится.</p>
+      <h2>1. Терминал — окно для команд</h2>
 
-      <ul>
-        <li>Скачайте Docker Desktop: <a href="https://www.docker.com/products/docker-desktop/" target="_blank" rel="noopener">docker.com/products/docker-desktop</a></li>
-        <li>Установите и запустите</li>
-        <li>Проверьте: <code>docker --version</code> и <code>docker compose version</code></li>
-      </ul>
+      <h3>На Mac</h3>
+      <p>Терминал уже встроен. Откройте Spotlight (<span class="kbd">Cmd</span>+<span class="kbd">Space</span>), наберите <code>Terminal</code>, нажмите Enter. Появится чёрное окно — это и есть терминал.</p>
+
+      <h3>На Windows</h3>
+      <p>Установите <strong>Windows Terminal</strong> — современный бесплатный терминал от Microsoft:</p>
+      <ol>
+        <li>Откройте <a href="https://aka.ms/terminal" target="_blank" rel="noopener">aka.ms/terminal</a></li>
+        <li>Установите через Microsoft Store (одна кнопка)</li>
+        <li>Откройте — внутри будет PowerShell</li>
+      </ol>
+
+      <p>Дополнительно для Windows нужен <strong>WSL2</strong> (Linux внутри Windows — Docker без него не работает). Откройте PowerShell как администратор и выполните:</p>
+<pre><code>wsl --install</code></pre>
+      <p>После установки <strong>перезагрузите компьютер</strong>. WSL поднимется автоматически с Ubuntu внутри.</p>
+
+      <h3>На Linux (Ubuntu/Debian)</h3>
+      <p>Терминал уже встроен. Открывается через <span class="kbd">Ctrl</span>+<span class="kbd">Alt</span>+<span class="kbd">T</span>.</p>
+
+      <div class="callout success">
+        <strong>Проверка</strong>
+        <p>В терминале наберите <code>pwd</code> и нажмите Enter. Должен показаться путь к вашей домашней папке (например, <code>/Users/ivan</code> на Mac или <code>/home/ivan</code> на Linux). Значит терминал работает.</p>
+      </div>
+
+      <h2>2. Python 3.12</h2>
+      <p>Python — язык, на котором написан AI-продавец. Бесплатный, открытый.</p>
+
+      <h3>На Mac</h3>
+      <p>Сначала установим менеджер пакетов <strong>Homebrew</strong> — это «магазин программ для терминала», бесплатный. Скопируйте в терминал:</p>
+<pre><code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></pre>
+      <p>Установка займёт 5–10 минут. После — установите Python:</p>
+<pre><code>brew install python@3.12</code></pre>
+
+      <h3>На Windows (внутри WSL2)</h3>
+      <p>Откройте Ubuntu из WSL и выполните:</p>
+<pre><code>sudo apt update
+sudo apt install python3.12 python3.12-venv python3-pip -y</code></pre>
+
+      <h3>На Linux (Ubuntu/Debian)</h3>
+<pre><code>sudo apt update
+sudo apt install python3.12 python3.12-venv python3-pip -y</code></pre>
+
+      <div class="callout success">
+        <strong>Проверка</strong>
+        <p>В терминале:</p>
+<pre><code>python3 --version</code></pre>
+        <p>Должно показать <code>Python 3.12.x</code>.</p>
+      </div>
+
+      <h2>3. Docker</h2>
+      <p>Docker — программа, которая запускает базу данных и Redis в «контейнерах», без сложной установки. Бесплатно для личного использования и малого бизнеса (до 250 сотрудников).</p>
+
+      <ol>
+        <li>Откройте <a href="https://www.docker.com/products/docker-desktop/" target="_blank" rel="noopener">docker.com/products/docker-desktop</a></li>
+        <li>Скачайте <strong>Docker Desktop</strong> для вашей ОС (Mac / Windows / Linux)</li>
+        <li>Установите как обычное приложение (двойной клик по скачанному файлу)</li>
+        <li>Запустите Docker Desktop — в трее (правый верхний угол на Mac, нижний правый на Windows) появится значок кита 🐳</li>
+        <li>Подождите 1–2 минуты, пока статус не станет <strong>«Running»</strong> (зелёный)</li>
+      </ol>
 
       <div class="callout warning">
         <strong>Важно</strong>
-        <p>Docker Desktop должен быть запущен (значок в системном трее). Без него команды <code>docker compose</code> не сработают.</p>
+        <p>Docker Desktop должен быть запущен (значок кита в трее). Если он закрыт — все команды <code>docker</code> не работают.</p>
       </div>
 
-      <h2>3. Poetry</h2>
-      <p>Poetry — менеджер зависимостей для Python. Установка одной командой:</p>
+      <div class="callout success">
+        <strong>Проверка</strong>
+        <p>В терминале:</p>
+<pre><code>docker --version
+docker compose version</code></pre>
+        <p>Должны показаться версии. Если ошибка <code>command not found</code> — закройте и снова откройте терминал.</p>
+      </div>
+
+      <h2>4. VS Code — редактор кода</h2>
+      <p><strong>VS Code</strong> — бесплатный редактор от Microsoft. Самый распространённый среди программистов. Никакого триала, никакой подписки — навсегда бесплатно.</p>
+
+      <ol>
+        <li>Откройте <a href="https://code.visualstudio.com" target="_blank" rel="noopener">code.visualstudio.com</a></li>
+        <li>Нажмите большую синюю кнопку <strong>Download</strong></li>
+        <li>Установите как обычное приложение</li>
+        <li>Запустите — откроется приветственный экран, его можно закрыть</li>
+      </ol>
+
+      <p>Установите 2 бесплатных расширения внутри VS Code (нужны для удобства):</p>
+      <ol>
+        <li>Слева в боковой панели — иконка с квадратиками (Extensions) или нажмите <span class="kbd">Cmd</span>/<span class="kbd">Ctrl</span>+<span class="kbd">Shift</span>+<span class="kbd">X</span></li>
+        <li>В поиске наберите <code>Python</code> → установите расширение от Microsoft (синяя галочка)</li>
+        <li>В поиске наберите <code>Docker</code> → установите расширение от Microsoft</li>
+      </ol>
+
+      <h2>5. Установите Poetry — менеджер библиотек Python</h2>
+      <p>Poetry — программа, которая ставит библиотеки Python для проекта. Одна команда:</p>
 
 <pre><code>curl -sSL https://install.python-poetry.org | python3 -</code></pre>
 
-      <p>После установки добавьте Poetry в PATH (если установщик не сделал это сам):</p>
+      <p>После установки добавьте Poetry в системные пути (это позволит запускать <code>poetry</code> из любой папки):</p>
 
-<pre><code># macOS / Linux — добавьте в ~/.zshrc или ~/.bashrc
-export PATH="$HOME/.local/bin:$PATH"</code></pre>
+      <h3>На Mac (zsh — по умолчанию)</h3>
+<pre><code>echo 'export PATH="$HOME/.local/bin:$PATH"' &gt;&gt; ~/.zshrc
+source ~/.zshrc</code></pre>
 
-      <p>Проверка:</p>
+      <h3>На Linux / WSL (bash — по умолчанию)</h3>
+<pre><code>echo 'export PATH="$HOME/.local/bin:$PATH"' &gt;&gt; ~/.bashrc
+source ~/.bashrc</code></pre>
 
+      <div class="callout success">
+        <strong>Проверка</strong>
+        <p>В терминале:</p>
 <pre><code>poetry --version</code></pre>
-
-      <h2>4. Редактор кода</h2>
-      <p>Рекомендуем <strong>Cursor</strong> — это VS Code со встроенным AI. Можно работать с проектом, спрашивать у Claude/GPT прямо в редакторе, генерить код по описанию.</p>
-
-      <ul>
-        <li><a href="https://cursor.sh" target="_blank" rel="noopener">cursor.sh</a> — Cursor (рекомендуем)</li>
-        <li><a href="https://code.visualstudio.com/" target="_blank" rel="noopener">code.visualstudio.com</a> — VS Code (бесплатная альтернатива)</li>
-      </ul>
-
-      <h2>5. Установите зависимости проекта</h2>
-      <p>Из папки <code>AI_sales_write</code> выполните:</p>
-
-<pre><code>poetry install</code></pre>
-
-      <p>Poetry прочитает <code>pyproject.toml</code> и установит все библиотеки: LangGraph, FastAPI, SQLAlchemy, mem0, Anthropic SDK и десятки других. Установка занимает 2–5 минут.</p>
-
-      <p>Если планируете использовать <strong>голосовой канал</strong> (Pipecat + Deepgram + ElevenLabs) — добавьте флаг:</p>
-
-<pre><code>poetry install --with voice</code></pre>
-
-      <div class="callout warning">
-        <strong>Если установка падает на пакете <code>psycopg</code></strong>
-        <p>Установите системные зависимости:</p>
-        <p><strong>macOS:</strong> <code>brew install libpq</code></p>
-        <p><strong>Ubuntu/Debian:</strong> <code>sudo apt install libpq-dev build-essential</code></p>
+        <p>Должно показать <code>Poetry (version 1.x.x)</code>.</p>
       </div>
 
-      <h2>6. Запустите Postgres и Redis</h2>
-      <p>Это сервисы из <code>docker-compose.yml</code>. Один раз выполните:</p>
+      <h2>6. Установите зависимости проекта</h2>
+      <p>Перейдите в папку с проектом (которую клонировали в шаге 1):</p>
+<pre><code>cd AI_sales_write
+poetry install</code></pre>
+
+      <p>Poetry прочитает файл <code>pyproject.toml</code> и поставит все библиотеки: LangGraph, FastAPI, SQLAlchemy и десятки других. Это займёт 2–5 минут — на экране пробежит много текста, это нормально.</p>
+
+      <h2>7. Запустите Postgres и Redis</h2>
+      <p>Это база данных и кэш — без них AI-продавец не запустится. Ставим одной командой через Docker:</p>
 
 <pre><code>docker compose up -d postgres redis</code></pre>
 
-      <p>Проверить, что они работают:</p>
+      <p>Флаг <code>-d</code> = «запустить в фоне». Через 30 секунд проверьте, что они работают:</p>
 
 <pre><code>docker compose ps</code></pre>
 
-      <p>Должны увидеть две строки со статусом <code>Up (healthy)</code>.</p>
+      <p>Должны увидеть две строки со статусом <code>Up (healthy)</code> или <code>running</code>.</p>
 
       <div class="callout success">
-        <strong>Чек-пойнт</strong>
+        <strong>Чек-пойнт — что должно быть готово</strong>
         <ul class="checklist" style="margin-top: 12px;">
-          <li>Python 3.12 установлен</li>
-          <li>Docker Desktop запущен</li>
-          <li>Poetry установлен и <code>poetry install</code> прошёл успешно</li>
-          <li>Postgres и Redis работают в Docker (<code>docker compose ps</code> показывает healthy)</li>
+          <li>Терминал открывается и реагирует на команды</li>
+          <li><code>python3 --version</code> показывает 3.12.x</li>
+          <li>Docker Desktop запущен (кит 🐳 в трее зелёный)</li>
+          <li>VS Code установлен с расширениями Python и Docker</li>
+          <li><code>poetry --version</code> показывает версию</li>
+          <li><code>poetry install</code> прошёл без ошибок</li>
+          <li><code>docker compose ps</code> показывает Postgres и Redis как <code>healthy</code></li>
         </ul>
       </div>
 
+      <h2>Сколько это стоит</h2>
+      <p><strong>$0.</strong> Все программы — бесплатные навсегда:</p>
+      <ul>
+        <li>Терминал — встроен или бесплатный</li>
+        <li>Python — open source, бесплатный</li>
+        <li>Docker Desktop — бесплатный для личного использования и малого бизнеса</li>
+        <li>VS Code — бесплатный от Microsoft, без подписки</li>
+        <li>Poetry — open source, бесплатный</li>
+      </ul>
+
       <h2>Если что-то не так</h2>
       <ul>
-        <li><strong>Docker daemon не отвечает</strong> — проверьте, что Docker Desktop запущен. На Linux может потребоваться <code>sudo systemctl start docker</code></li>
-        <li><strong><code>poetry: command not found</code></strong> — добавьте <code>$HOME/.local/bin</code> в PATH и перезапустите терминал</li>
-        <li><strong>Конфликт версий Python</strong> — выполните <code>poetry env use python3.12</code> в папке проекта</li>
-        <li><strong>Postgres не стартует</strong> — посмотрите логи: <code>docker compose logs postgres</code></li>
+        <li><strong>Docker не запускается / «daemon not running»</strong> — Docker Desktop не открыт. Найдите приложение «Docker» и запустите его. Подождите 1–2 минуты</li>
+        <li><strong><code>poetry: command not found</code> после установки</strong> — закройте терминал и откройте заново. Если не помогло — проверьте, что выполнили команды <code>echo ... &gt;&gt; ~/.zshrc &amp;&amp; source ~/.zshrc</code> выше</li>
+        <li><strong><code>poetry install</code> ругается на <code>psycopg</code></strong> — на Mac выполните <code>brew install libpq</code>, на Linux/WSL <code>sudo apt install libpq-dev build-essential</code>, потом снова <code>poetry install</code></li>
+        <li><strong>Python ставится 3.13 или выше</strong> — нам нужна именно 3.12. На Mac: <code>brew install python@3.12</code>, затем <code>poetry env use python3.12</code> в папке проекта</li>
+        <li><strong>WSL не ставится на Windows</strong> — нужна Windows 10 build 19041+ или Windows 11. На старой Windows можно использовать Linux в виртуальной машине через бесплатный VirtualBox</li>
       </ul>
 
       <div class="pager">
@@ -142,14 +208,14 @@ export PATH="$HOME/.local/bin:$PATH"</code></pre>
         </a>
         <a href="step-3-keys.html" class="next">
           <small>Шаг 3 →</small>
-          Получите ключи API
+          Получить ключи API
         </a>
       </div>
 
     </main>
 
     <footer>
-      SL_CLAW • <a href="index.html">Главная</a> • <a href="https://github.com/vimana-tcg/AI_sales_write">GitHub</a>
+      SL_CLAW • <a href="index.html">Главная</a> • <a href="https://github.com/sl-claw/sl_claw_roadmapp">GitHub</a>
     </footer>
 
   </div>
