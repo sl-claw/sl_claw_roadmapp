@@ -4,8 +4,10 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: unless-stopped
-    expose:
-      - "80"
+    ports:
+      # Публикуем на 8084 хоста — системный nginx проксирует к этому порту.
+      # AI-агент (sl-claw) занимает 8071, Coolify сам — 8070, 8080-8083 заняты.
+      - "127.0.0.1:8084:80"
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost/"]
       interval: 30s
