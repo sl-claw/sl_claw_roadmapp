@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шаг 5 · Первый запуск — Sclaw</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="logo"><a href="index.html">S<span class="accent">claw</span></a></div>
+      <nav>
+        <a href="index.html">Старт</a>
+        <a href="step-1-clone.html" class="active">Шаги</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <div class="progress">
+        <span>Шаг 5 из 7</span>
+        <div class="progress-bar"><div class="progress-bar-fill" style="width: 71%"></div></div>
+      </div>
+
+      <h1>Шаг 5. Первый запуск</h1>
+      <p class="lead">
+        Запустим всё локально. После этого шага у вас на машине будет работающий
+        AI-продавец, с которым можно поговорить через WebSocket или Telegram.
+      </p>
+
+      <h2>1. Проверьте, что Docker-сервисы поднялись</h2>
+
+<pre><code>docker compose ps</code></pre>
+
+      <p>Должны быть две строки <code>healthy</code> — Postgres и Redis. Если нет — поднимите:</p>
+
+<pre><code>docker compose up -d postgres redis</code></pre>
+
+      <h2>2. Запустите сервер</h2>
+      <p>Из корня проекта:</p>
+
+<pre><code>poetry run uvicorn app.api.main:app --reload --port 8070</code></pre>
+
+      <p>В логах вы увидите примерно это:</p>
+
+<pre><code>INFO  Initializing database...
+INFO  Loading niches and chat mappings from DB...
+INFO  Static MD bulk-load: wrote _core=42, etl-ua=8
+INFO  Building sales agent...
+INFO  Enabled channels: web (/ws/{user_id}), telegram (/webhook/telegram)
+INFO  Heartbeat loop scheduled
+INFO  Digest loop scheduled
+INFO  Application startup complete.
+INFO  Uvicorn running on http://0.0.0.0:8070</code></pre>
+
+      <p>Если видите этот вывод — агент работает.</p>
+
+      <h2>3. Проверьте healthcheck</h2>
+      <p>В новом терминале (старый не закрывайте):</p>
+
+<pre><code>curl http://localhost:8070/health</code></pre>
+
+      <p>Ответ:</p>
+
+<pre><code>{"status":"ok"}</code></pre>
+
+      <h2>4. Поговорите с агентом</h2>
+
+      <h3>Через WebSocket (web-канал)</h3>
+      <p>Самый быстрый способ — через утилиту <code>websocat</code>:</p>
+
+<pre><code># macOS
+brew install websocat
+
+# Подключение
+websocat ws://localhost:8070/ws/test-user-1</code></pre>
+
+      <p>После подключения отправьте:</p>
+
+<pre><code>{"text": "Привет"}</code></pre>
+
+      <p>Anna ответит за 2–4 секунды.</p>
+
+      <div class="callout">
+        <strong>Альтернатива без websocat</strong>
+        <p>Можно использовать <a href="https://www.piesocket.com/websocket-tester" target="_blank" rel="noopener">piesocket.com/websocket-tester</a> — браузерный WS-клиент. URL: <code>ws://localhost:8070/ws/test-user-1</code>.</p>
+      </div>
+
+      <h3>Через Telegram</h3>
+      <p>Если в <code>.env</code> заполнен <code>TELEGRAM_BOT_TOKEN</code> — найдите бота по username (тот, что выдал BotFather) и напишите <code>/start</code>.</p>
+
+      <p>Anna представится, начнёт диалог со стадии 1 (знакомство) и будет вести по воронке.</p>
+
+      <h2>5. Загрузите тестовый каталог</h2>
+      <p>Чтобы Anna могла отвечать на вопросы про конкретные товары — нужно залить каталог в RAG. В репо есть демо-каталог:</p>
+
+<pre><code>poetry run python scripts/ingest_catalog.py scripts/demo_catalog.json</code></pre>
+
+      <p>Должен вывести:</p>
+
+<pre><code>Loaded 5 products from scripts/demo_catalog.json
+Ingested 5 products into pgvector ✓</code></pre>
+
+      <p>Теперь спросите у Anna "сколько стоит ваш товар" — она достанет из каталога и назовёт цену.</p>
+
+      <h2>6. Прогоните воронку</h2>
+      <p>Чтобы убедиться, что все 7 стадий работают, проведите тестовый диалог:</p>
+
+      <ol>
+        <li><strong>"Привет"</strong> → стадия 1, знакомство</li>
+        <li><strong>"Я ищу решение для бизнеса"</strong> → стадия 2, квалификация</li>
+        <li><strong>"А что вы предлагаете?"</strong> → стадия 3, ценностное предложение</li>
+        <li><strong>"А под мою задачу подойдёт?"</strong> → стадия 4, выявление потребностей</li>
+        <li><strong>"Сколько стоит?"</strong> → стадия 5, презентация (вызов RAG)</li>
+        <li><strong>"Дорого"</strong> → стадия 6, работа с возражениями</li>
+        <li><strong>"Хорошо, беру"</strong> → стадия 7, закрытие</li>
+      </ol>
+
+      <p>В логах сервера видно переключение стадий:</p>
+
+<pre><code>INFO  Stage analyzer -> 5 (solution_presentation)
+INFO  Stage analyzer -> 6 (objection_handling)
+INFO  Stage analyzer -> 7 (close)</code></pre>
+
+      <h2>7. Посмотрите данные в БД</h2>
+      <p>Подключитесь к Postgres и посмотрите, что записалось:</p>
+
+<pre><code>docker compose exec postgres psql -U sales -d sales_agent -c "SELECT id, current_stage, name, phone FROM leads ORDER BY id DESC LIMIT 5;"</code></pre>
+
+      <p>А также:</p>
+
+<pre><code># Все сообщения
+docker compose exec postgres psql -U sales -d sales_agent -c "SELECT direction, channel, LEFT(text, 60) FROM message_log ORDER BY id DESC LIMIT 10;"
+
+# История переходов стадий
+docker compose exec postgres psql -U sales -d sales_agent -c "SELECT from_stage, to_stage, timestamp FROM lead_stage_events ORDER BY id DESC LIMIT 10;"</code></pre>
+
+      <div class="callout success">
+        <strong>Поздравляем</strong>
+        <p>Если вы дочитали досюда и всё работает — у вас на машине крутится production-grade AI-продавец. Дальше — обучаем его под вашу нишу.</p>
+      </div>
+
+      <h2>Если что-то не так</h2>
+      <ul>
+        <li><strong>Ошибка <code>OperationalError: connection refused</code></strong> — Postgres не поднят. Сделайте <code>docker compose up -d postgres redis</code></li>
+        <li><strong><code>InvalidToken</code> от Anthropic</strong> — проверьте, что в <code>.env</code> правильный <code>ANTHROPIC_API_KEY</code> и баланс не нулевой</li>
+        <li><strong>Telegram бот молчит</strong> — нужно настроить webhook, в локальной разработке это требует <code>ngrok</code> или туннель Cloudflare. Для теста используйте polling-режим (см. <code>app/channels/telegram.py</code>) или сразу деплойте на VPS — это шаг 7</li>
+        <li><strong><code>module 'numpy' has no attribute</code></strong> — устаревшая версия numpy, выполните <code>poetry update numpy</code></li>
+        <li><strong>RAG возвращает пустоту</strong> — каталог не залит. Сделайте <code>poetry run python scripts/ingest_catalog.py scripts/demo_catalog.json</code></li>
+      </ul>
+
+      <div class="pager">
+        <a href="step-4-config.html">
+          <small>← Шаг 4</small>
+          Заполнить .env
+        </a>
+        <a href="step-6-niche.html" class="next">
+          <small>Шаг 6 →</small>
+          Настроить нишу
+        </a>
+      </div>
+
+    </main>
+
+    <footer>
+      Sclaw • <a href="index.html">Главная</a> • <a href="https://github.com/vimana-tcg/AI_sales_write">GitHub</a>
+    </footer>
+
+  </div>
+</body>
+</html>

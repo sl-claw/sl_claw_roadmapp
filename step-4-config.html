@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шаг 4 · Заполните .env — Sclaw</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="logo"><a href="index.html">S<span class="accent">claw</span></a></div>
+      <nav>
+        <a href="index.html">Старт</a>
+        <a href="step-1-clone.html" class="active">Шаги</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <div class="progress">
+        <span>Шаг 4 из 7</span>
+        <div class="progress-bar"><div class="progress-bar-fill" style="width: 56%"></div></div>
+      </div>
+
+      <h1>Шаг 4. Заполните <code>.env</code></h1>
+      <p class="lead">
+        <code>.env</code> — единая точка конфигурации. Сюда вставляете ключи и описание персоны.
+        Что не нужно — оставляете пустым: канал просто не активируется.
+      </p>
+
+      <h2>Создайте файл</h2>
+      <p>Из корня проекта:</p>
+
+<pre><code>cp .env.example .env</code></pre>
+
+      <p>Откройте <code>.env</code> в редакторе.</p>
+
+      <h2>Минимум для запуска</h2>
+      <p>Заполните только эти поля — этого хватит для первого диалога:</p>
+
+<pre><code># LLM
+OPENAI_API_KEY=sk-proj-...
+ANTHROPIC_API_KEY=sk-ant-...
+LLM_MODEL=claude-sonnet-4-6
+STAGE_ANALYZER_MODEL=claude-haiku-4-5-20251001
+EMBEDDING_MODEL=text-embedding-3-small
+TEMPERATURE=0.4
+
+# База данных (оставьте как есть для локального запуска)
+POSTGRES_URL=postgresql+psycopg://sales:sales@localhost:5432/sales_agent
+REDIS_URL=redis://localhost:6379/0
+
+# Память
+MEM0_SELF_HOSTED=true
+
+# Telegram (опционально, но рекомендуем для теста)
+TELEGRAM_BOT_TOKEN=123456:ABC-DEF...
+
+# Persona
+SALESPERSON_NAME=Анна
+COMPANY_NAME=Ваш бренд
+COMPANY_BUSINESS=Чем занимается ваш бизнес
+COMPANY_VALUES=Прозрачность, забота о результате, экспертность
+CONVERSATION_PURPOSE=Подобрать решение клиенту и закрыть сделку
+DEFAULT_LANGUAGE=ru</code></pre>
+
+      <div class="callout warning">
+        <strong>Не пушьте .env в Git</strong>
+        <p>Файл <code>.env</code> уже в <code>.gitignore</code>. Никогда не коммитьте ключи — это публичный риск.</p>
+      </div>
+
+      <h2>Persona — самая важная часть</h2>
+      <p>Это лицо вашего бизнеса в чате. Anna будет говорить от имени этой компании. Заполните осмысленно.</p>
+
+      <h3>SALESPERSON_NAME</h3>
+      <p>Имя AI-продавца. По умолчанию <code>Анна</code>. Можете заменить на <code>Олена</code>, <code>Mark</code>, <code>Sofia</code>, <code>Ivan</code> — что лучше подходит вашему бренду.</p>
+
+      <h3>COMPANY_NAME</h3>
+      <p>Название вашей компании. Это будет видно клиенту: "Здравствуйте, я Анна из <strong>{COMPANY_NAME}</strong>".</p>
+
+      <h3>COMPANY_BUSINESS</h3>
+      <p>2–4 предложения, которыми Anna описывает что вы продаёте. Чем конкретнее — тем лучше.</p>
+
+      <p><strong>Плохо:</strong></p>
+      <pre><code>COMPANY_BUSINESS=Мы продаем оборудование</code></pre>
+
+      <p><strong>Хорошо:</strong></p>
+      <pre><code>COMPANY_BUSINESS=Производство и установка модульных каркасных домов «под ключ» в Крыму. Полный цикл: от подбора участка до готового дома с отделкой за 35 дней. Линейка от 1.4 до 4.5 млн ₽. Симферополь.</code></pre>
+
+      <h3>COMPANY_VALUES</h3>
+      <p>Ценности, которые проявляются в диалоге: прозрачность, забота, экспертность, скорость, гарантии.</p>
+
+      <h3>CONVERSATION_PURPOSE</h3>
+      <p>Главная цель каждого разговора. Будьте конкретны — это влияет на то, как Anna закрывает сделки.</p>
+
+      <pre><code>CONVERSATION_PURPOSE=Закрыть клиента на покупку модульного дома или хотя бы на бесплатный выезд/онлайн-консультацию. Каждое сообщение должно заканчиваться одним конкретным CTA.</code></pre>
+
+      <h2>Платежи и CRM (если решили подключить сразу)</h2>
+
+      <h3>LiqPay (Украина)</h3>
+<pre><code>PAYMENT_PROVIDER=liqpay
+LIQPAY_PUBLIC_KEY=i...
+LIQPAY_PRIVATE_KEY=...
+PAYMENT_CURRENCY=UAH</code></pre>
+
+      <h3>Fondy / Flitt</h3>
+<pre><code>PAYMENT_PROVIDER=fondy
+FONDY_MERCHANT_ID=...
+FONDY_SECRET_KEY=...
+PAYMENT_CURRENCY=UAH</code></pre>
+
+      <h3>Счёт по реквизитам</h3>
+<pre><code>PAYMENT_PROVIDER=invoice
+INVOICE_COMPANY_NAME=ФОП Іваненко І.І.
+INVOICE_EDRPOU=1234567890
+INVOICE_IBAN=UA213996220000026004500000000
+INVOICE_BANK=АТ КБ «ПРИВАТБАНК»
+INVOICE_MFO=305299
+INVOICE_ADDRESS=м. Київ, вул. Хрещатик, 1</code></pre>
+
+      <h3>PayPal (международные)</h3>
+<pre><code>PAYMENT_PROVIDER=paypal
+PAYPAL_CLIENT_ID=...
+PAYPAL_CLIENT_SECRET=...
+PAYMENT_CURRENCY=USD</code></pre>
+
+      <h3>CRM</h3>
+<pre><code># Выбираем один:
+CRM_PROVIDER=keycrm   # или: nethunt | creatio | hubspot | pipedrive | salesforce | zoho | none
+
+KEYCRM_API_KEY=...
+# или:
+NETHUNT_API_KEY=...
+# или:
+HUBSPOT_TOKEN=...
+PIPEDRIVE_TOKEN=...
+PIPEDRIVE_DOMAIN=your-company</code></pre>
+
+      <h2>Админ Telegram</h2>
+      <p>Чтобы получить доступ к админ-командам в Telegram (<code>/settings</code>, <code>/train</code>, <code>/setdemo</code>), укажите свой Telegram user ID:</p>
+
+<pre><code>ADMIN_TELEGRAM_USER_IDS=123456789,987654321</code></pre>
+
+      <p>Узнать свой ID: напишите <a href="https://t.me/userinfobot" target="_blank" rel="noopener">@userinfobot</a> — он пришлёт.</p>
+
+      <div class="callout success">
+        <strong>Чек-пойнт</strong>
+        <ul class="checklist" style="margin-top: 12px;">
+          <li><code>.env</code> создан в корне проекта</li>
+          <li><code>OPENAI_API_KEY</code> и <code>ANTHROPIC_API_KEY</code> заполнены</li>
+          <li>Persona описана осмысленно</li>
+          <li>Хотя бы один канал активен (хотя бы Web по умолчанию работает всегда)</li>
+        </ul>
+      </div>
+
+      <div class="pager">
+        <a href="step-3-keys.html">
+          <small>← Шаг 3</small>
+          Получить ключи
+        </a>
+        <a href="step-5-launch.html" class="next">
+          <small>Шаг 5 →</small>
+          Первый запуск
+        </a>
+      </div>
+
+    </main>
+
+    <footer>
+      Sclaw • <a href="index.html">Главная</a> • <a href="https://github.com/vimana-tcg/AI_sales_write">GitHub</a>
+    </footer>
+
+  </div>
+</body>
+</html>

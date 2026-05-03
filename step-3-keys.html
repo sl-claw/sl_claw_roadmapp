@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шаг 3 · Получите ключи API — Sclaw</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="logo"><a href="index.html">S<span class="accent">claw</span></a></div>
+      <nav>
+        <a href="index.html">Старт</a>
+        <a href="step-1-clone.html" class="active">Шаги</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <div class="progress">
+        <span>Шаг 3 из 7</span>
+        <div class="progress-bar"><div class="progress-bar-fill" style="width: 42%"></div></div>
+      </div>
+
+      <h1>Шаг 3. Получите ключи API</h1>
+      <p class="lead">
+        Соберите ключи в одном месте — на следующем шаге вставите их в <code>.env</code>.
+        Обязательны два: OpenAI и Anthropic. Остальные — по нужде.
+      </p>
+
+      <h2>Обязательные ключи</h2>
+
+      <h3>1. OpenAI API</h3>
+      <p>Используется для embeddings (векторизация текста для RAG-поиска). Бесплатных $5 хватит на ~2 месяца тестов.</p>
+
+      <ol>
+        <li>Откройте <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener">platform.openai.com/api-keys</a></li>
+        <li>Зарегистрируйтесь / войдите</li>
+        <li>Нажмите <strong>Create new secret key</strong></li>
+        <li>Скопируйте ключ (<code>sk-proj-...</code>) — он показывается один раз</li>
+        <li>В разделе Billing привяжите карту и пополните на $5–10</li>
+      </ol>
+
+      <h3>2. Anthropic API (Claude)</h3>
+      <p>Основная LLM для диалога с клиентом. Claude лучше держит длинный контекст и стиль продавца на русском/украинском.</p>
+
+      <ol>
+        <li>Откройте <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">console.anthropic.com/settings/keys</a></li>
+        <li>Создайте API key</li>
+        <li>Скопируйте ключ (<code>sk-ant-...</code>)</li>
+        <li>Пополните баланс ($5 для теста, потом по мере)</li>
+      </ol>
+
+      <div class="callout">
+        <strong>Сколько стоит один диалог?</strong>
+        <p>Средний 20-сообщенческий диалог на Claude Sonnet 4.6 = $0.03–0.05. На 1000 диалогов — $30–50. У GPT-4o-mini в 5 раз дешевле, но качество хуже.</p>
+      </div>
+
+      <h2>Каналы коммуникации</h2>
+      <p>Включаете только нужные. Пустые поля в <code>.env</code> = канал автоматически отключен.</p>
+
+      <h3>Telegram (рекомендуем для старта)</h3>
+      <ol>
+        <li>Откройте <a href="https://t.me/BotFather" target="_blank" rel="noopener">@BotFather</a> в Telegram</li>
+        <li>Введите <code>/newbot</code></li>
+        <li>Дайте боту имя и username (должен заканчиваться на <code>bot</code>)</li>
+        <li>Скопируйте токен (выглядит как <code>123456:ABC-DEF...</code>)</li>
+      </ol>
+
+      <h3>WhatsApp Cloud API</h3>
+      <ol>
+        <li>Откройте <a href="https://developers.facebook.com" target="_blank" rel="noopener">developers.facebook.com</a></li>
+        <li>Создайте новое приложение → WhatsApp Business → Cloud API</li>
+        <li>Получите <strong>Phone Number ID</strong>, <strong>Permanent Access Token</strong> и <strong>App Secret</strong></li>
+        <li>Verify Token придумайте сами (любая случайная строка)</li>
+      </ol>
+
+      <h3>Instagram Direct</h3>
+      <ol>
+        <li>В том же Meta Developer-приложении добавьте Instagram Messaging</li>
+        <li>Подключите бизнес-аккаунт Instagram (через Facebook Page)</li>
+        <li>Получите <strong>Page Access Token</strong></li>
+        <li>Verify Token — любая случайная строка</li>
+      </ol>
+
+      <h3>Голос (опционально)</h3>
+      <p>Для голосового канала нужны 3 сервиса:</p>
+      <ul>
+        <li><a href="https://deepgram.com" target="_blank" rel="noopener">Deepgram</a> — speech-to-text ($200 free credit)</li>
+        <li><a href="https://elevenlabs.io" target="_blank" rel="noopener">ElevenLabs</a> — text-to-speech (10к символов бесплатно)</li>
+        <li><a href="https://daily.co" target="_blank" rel="noopener">Daily.co</a> — WebRTC транспорт (10к минут бесплатно)</li>
+      </ul>
+
+      <h2>Платежи</h2>
+      <p>Выберите провайдера под свою страну. Можно подключить несколько одновременно.</p>
+
+      <h3>Для Украины (рекомендуем)</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Провайдер</th>
+            <th>Где получить ключи</th>
+            <th>Кому подходит</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>LiqPay</strong></td>
+            <td><a href="https://liqpay.ua/uk/api" target="_blank" rel="noopener">liqpay.ua</a></td>
+            <td>Универсал, ФОП и ТОВ</td>
+          </tr>
+          <tr>
+            <td><strong>Fondy / Flitt</strong></td>
+            <td><a href="https://flitt.com" target="_blank" rel="noopener">flitt.com</a></td>
+            <td>Мультивалютный, recurring</td>
+          </tr>
+          <tr>
+            <td><strong>WayForPay</strong></td>
+            <td><a href="https://wayforpay.com" target="_blank" rel="noopener">wayforpay.com</a></td>
+            <td>Apple/Google Pay в одной ссылке</td>
+          </tr>
+          <tr>
+            <td><strong>Monobank Acquiring</strong></td>
+            <td>Через ФОП-кабинет Mono</td>
+            <td>Самый низкий процент для ФОП</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Для глобальных клиентов</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Провайдер</th>
+            <th>Где получить ключи</th>
+            <th>Кому подходит</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>PayPal</strong></td>
+            <td><a href="https://developer.paypal.com" target="_blank" rel="noopener">developer.paypal.com</a></td>
+            <td>Универсал, привычно для Запада</td>
+          </tr>
+          <tr>
+            <td><strong>Wise Business</strong></td>
+            <td><a href="https://wise.com/business" target="_blank" rel="noopener">wise.com/business</a></td>
+            <td>Multi-currency invoices</td>
+          </tr>
+          <tr>
+            <td><strong>Lemon Squeezy</strong></td>
+            <td><a href="https://lemonsqueezy.com" target="_blank" rel="noopener">lemonsqueezy.com</a></td>
+            <td>Цифровые продукты, берёт VAT на себя</td>
+          </tr>
+          <tr>
+            <td><strong>Stripe</strong></td>
+            <td><a href="https://dashboard.stripe.com" target="_blank" rel="noopener">dashboard.stripe.com</a></td>
+            <td>Если есть юр. лицо в US/EU/UK</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Счёт по реквизитам (без процессинга)</h3>
+      <p>Для B2B-клиентов и тех, кто платит безналом. Anna генерирует PDF-счёт с вашими реквизитами, клиент оплачивает через банк-клиент.</p>
+      <p>Никаких ключей не нужно — просто подготовьте:</p>
+      <ul>
+        <li>Назву ФОП/ТОВ та ЄДРПОУ</li>
+        <li>IBAN рахунку</li>
+        <li>Назву банку та МФО</li>
+        <li>Адресу та контакти</li>
+      </ul>
+
+      <h2>CRM</h2>
+      <p>Опционально. Если выбираете — берите тот, в котором уже работаете. Anna умеет:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>CRM</th>
+            <th>Регион</th>
+            <th>Где взять ключ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>KeyCRM</strong></td>
+            <td>UA</td>
+            <td>Кабинет → Інтеграції → API</td>
+          </tr>
+          <tr>
+            <td><strong>NetHunt CRM</strong></td>
+            <td>UA</td>
+            <td>Settings → Integrations → API</td>
+          </tr>
+          <tr>
+            <td><strong>Creatio</strong></td>
+            <td>UA/Global</td>
+            <td>Установка системы → API key</td>
+          </tr>
+          <tr>
+            <td><strong>Perfectum / OneBox / LP-CRM</strong></td>
+            <td>UA</td>
+            <td>Кабинет → API</td>
+          </tr>
+          <tr>
+            <td><strong>HubSpot</strong></td>
+            <td>Global</td>
+            <td>Settings → Private Apps</td>
+          </tr>
+          <tr>
+            <td><strong>Pipedrive</strong></td>
+            <td>Global</td>
+            <td>Settings → Personal → API</td>
+          </tr>
+          <tr>
+            <td><strong>Salesforce / Zoho / Close / Freshsales / Monday</strong></td>
+            <td>Global</td>
+            <td>Developer console каждого</td>
+          </tr>
+          <tr>
+            <td><strong>Bitrix24 / Kommo</strong></td>
+            <td>СНГ</td>
+            <td>Application → Webhook</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout success">
+        <strong>Минимум для старта</strong>
+        <p>Достаточно собрать <strong>OpenAI</strong> + <strong>Anthropic</strong> + <strong>Telegram BotFather</strong>. Этого хватит для первого запуска и первых тестовых диалогов. Платежи и CRM подключите потом.</p>
+      </div>
+
+      <div class="pager">
+        <a href="step-2-environment.html">
+          <small>← Шаг 2</small>
+          Окружение
+        </a>
+        <a href="step-4-config.html" class="next">
+          <small>Шаг 4 →</small>
+          Заполнить .env
+        </a>
+      </div>
+
+    </main>
+
+    <footer>
+      Sclaw • <a href="index.html">Главная</a> • <a href="https://github.com/vimana-tcg/AI_sales_write">GitHub</a>
+    </footer>
+
+  </div>
+</body>
+</html>

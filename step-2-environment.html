@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шаг 2 · Подготовьте окружение — Sclaw</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="logo"><a href="index.html">S<span class="accent">claw</span></a></div>
+      <nav>
+        <a href="index.html">Старт</a>
+        <a href="step-1-clone.html" class="active">Шаги</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <div class="progress">
+        <span>Шаг 2 из 7</span>
+        <div class="progress-bar"><div class="progress-bar-fill" style="width: 28%"></div></div>
+      </div>
+
+      <h1>Шаг 2. Подготовьте окружение</h1>
+      <p class="lead">
+        Установите 4 инструмента: Python, Docker, Poetry и редактор. Это база, на которой
+        работает всё остальное. Если что-то уже стоит — пропускайте.
+      </p>
+
+      <h2>1. Python 3.12</h2>
+      <p>Проект работает на Python 3.12. Проверьте текущую версию:</p>
+
+<pre><code>python3 --version</code></pre>
+
+      <p>Если версия ниже 3.12 — установите её. Самый чистый способ — через <strong>pyenv</strong>:</p>
+
+<pre><code># macOS
+brew install pyenv
+
+# Ubuntu/Debian
+curl https://pyenv.run | bash
+
+# После установки
+pyenv install 3.12.7
+pyenv global 3.12.7</code></pre>
+
+      <div class="callout">
+        <strong>Альтернатива</strong>
+        <p>Если не хотите возиться с pyenv — скачайте установщик с <a href="https://www.python.org/downloads/" target="_blank" rel="noopener">python.org</a>.</p>
+      </div>
+
+      <h2>2. Docker Desktop</h2>
+      <p>Docker нужен для запуска Postgres и Redis в контейнерах. Это база данных и кэш — без них агент не запустится.</p>
+
+      <ul>
+        <li>Скачайте Docker Desktop: <a href="https://www.docker.com/products/docker-desktop/" target="_blank" rel="noopener">docker.com/products/docker-desktop</a></li>
+        <li>Установите и запустите</li>
+        <li>Проверьте: <code>docker --version</code> и <code>docker compose version</code></li>
+      </ul>
+
+      <div class="callout warning">
+        <strong>Важно</strong>
+        <p>Docker Desktop должен быть запущен (значок в системном трее). Без него команды <code>docker compose</code> не сработают.</p>
+      </div>
+
+      <h2>3. Poetry</h2>
+      <p>Poetry — менеджер зависимостей для Python. Установка одной командой:</p>
+
+<pre><code>curl -sSL https://install.python-poetry.org | python3 -</code></pre>
+
+      <p>После установки добавьте Poetry в PATH (если установщик не сделал это сам):</p>
+
+<pre><code># macOS / Linux — добавьте в ~/.zshrc или ~/.bashrc
+export PATH="$HOME/.local/bin:$PATH"</code></pre>
+
+      <p>Проверка:</p>
+
+<pre><code>poetry --version</code></pre>
+
+      <h2>4. Редактор кода</h2>
+      <p>Рекомендуем <strong>Cursor</strong> — это VS Code со встроенным AI. Можно работать с проектом, спрашивать у Claude/GPT прямо в редакторе, генерить код по описанию.</p>
+
+      <ul>
+        <li><a href="https://cursor.sh" target="_blank" rel="noopener">cursor.sh</a> — Cursor (рекомендуем)</li>
+        <li><a href="https://code.visualstudio.com/" target="_blank" rel="noopener">code.visualstudio.com</a> — VS Code (бесплатная альтернатива)</li>
+      </ul>
+
+      <h2>5. Установите зависимости проекта</h2>
+      <p>Из папки <code>AI_sales_write</code> выполните:</p>
+
+<pre><code>poetry install</code></pre>
+
+      <p>Poetry прочитает <code>pyproject.toml</code> и установит все библиотеки: LangGraph, FastAPI, SQLAlchemy, mem0, Anthropic SDK и десятки других. Установка занимает 2–5 минут.</p>
+
+      <p>Если планируете использовать <strong>голосовой канал</strong> (Pipecat + Deepgram + ElevenLabs) — добавьте флаг:</p>
+
+<pre><code>poetry install --with voice</code></pre>
+
+      <div class="callout warning">
+        <strong>Если установка падает на пакете <code>psycopg</code></strong>
+        <p>Установите системные зависимости:</p>
+        <p><strong>macOS:</strong> <code>brew install libpq</code></p>
+        <p><strong>Ubuntu/Debian:</strong> <code>sudo apt install libpq-dev build-essential</code></p>
+      </div>
+
+      <h2>6. Запустите Postgres и Redis</h2>
+      <p>Это сервисы из <code>docker-compose.yml</code>. Один раз выполните:</p>
+
+<pre><code>docker compose up -d postgres redis</code></pre>
+
+      <p>Проверить, что они работают:</p>
+
+<pre><code>docker compose ps</code></pre>
+
+      <p>Должны увидеть две строки со статусом <code>Up (healthy)</code>.</p>
+
+      <div class="callout success">
+        <strong>Чек-пойнт</strong>
+        <ul class="checklist" style="margin-top: 12px;">
+          <li>Python 3.12 установлен</li>
+          <li>Docker Desktop запущен</li>
+          <li>Poetry установлен и <code>poetry install</code> прошёл успешно</li>
+          <li>Postgres и Redis работают в Docker (<code>docker compose ps</code> показывает healthy)</li>
+        </ul>
+      </div>
+
+      <h2>Если что-то не так</h2>
+      <ul>
+        <li><strong>Docker daemon не отвечает</strong> — проверьте, что Docker Desktop запущен. На Linux может потребоваться <code>sudo systemctl start docker</code></li>
+        <li><strong><code>poetry: command not found</code></strong> — добавьте <code>$HOME/.local/bin</code> в PATH и перезапустите терминал</li>
+        <li><strong>Конфликт версий Python</strong> — выполните <code>poetry env use python3.12</code> в папке проекта</li>
+        <li><strong>Postgres не стартует</strong> — посмотрите логи: <code>docker compose logs postgres</code></li>
+      </ul>
+
+      <div class="pager">
+        <a href="step-1-clone.html">
+          <small>← Шаг 1</small>
+          Клонировать репозиторий
+        </a>
+        <a href="step-3-keys.html" class="next">
+          <small>Шаг 3 →</small>
+          Получите ключи API
+        </a>
+      </div>
+
+    </main>
+
+    <footer>
+      Sclaw • <a href="index.html">Главная</a> • <a href="https://github.com/vimana-tcg/AI_sales_write">GitHub</a>
+    </footer>
+
+  </div>
+</body>
+</html>

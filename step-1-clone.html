@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шаг 1 · Клонируйте репозиторий — Sclaw</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="logo"><a href="index.html">S<span class="accent">claw</span></a></div>
+      <nav>
+        <a href="index.html">Старт</a>
+        <a href="step-1-clone.html" class="active">Шаги</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <div class="progress">
+        <span>Шаг 1 из 7</span>
+        <div class="progress-bar"><div class="progress-bar-fill" style="width: 14%"></div></div>
+      </div>
+
+      <h1>Шаг 1. Получите ядро репозитория</h1>
+      <p class="lead">
+        Клонируйте проект с GitHub одной командой. Это полное production-ready ядро —
+        тот же код, который работает в проде на <code>sl-sclaw.coreviaflow.space</code>.
+      </p>
+
+      <h2>Что вам потребуется</h2>
+      <ul>
+        <li><strong>Git</strong> установленный в системе (проверка: <code>git --version</code>)</li>
+        <li>Любой терминал (Terminal, iTerm, Warp на Mac; PowerShell или WSL на Windows)</li>
+      </ul>
+
+      <div class="callout">
+        <strong>Если Git ещё не установлен</strong>
+        <p>На macOS — выполните в терминале <code>xcode-select --install</code>. На Ubuntu/Debian — <code>sudo apt install git</code>. На Windows — скачайте с <a href="https://git-scm.com/downloads" target="_blank" rel="noopener">git-scm.com</a>.</p>
+      </div>
+
+      <h2>Клонирование</h2>
+      <p>Откройте терминал, перейдите в папку, где будете хранить проекты, и выполните:</p>
+
+<pre><code>git clone https://github.com/vimana-tcg/AI_sales_write.git
+cd AI_sales_write</code></pre>
+
+      <p>Если вам выдадут SSH-команду — используйте её только если у вас настроен SSH-ключ для GitHub. Иначе HTTPS-вариант выше работает у всех.</p>
+
+      <h2>Что внутри</h2>
+      <p>После клонирования вы увидите такую структуру:</p>
+
+<pre><code>AI_sales_write/
+├── app/
+│   ├── api/         # FastAPI — единая точка входа всех каналов
+│   ├── core/        # LangGraph агент, стадии воронки, промпты
+│   ├── channels/    # Web, Telegram, WhatsApp, Instagram, Voice
+│   ├── tools/       # RAG, оплата, CRM, Calendar, Handoff
+│   ├── memory/      # mem0 — долговременная память клиента
+│   └── db/          # SQLAlchemy модели
+├── scripts/         # Загрузка каталога и обучение
+├── docker/          # Dockerfile + Postgres init
+├── Ниши/            # Knowledge-база (.md файлы)
+├── docker-compose.yml
+├── pyproject.toml   # Зависимости (Poetry)
+├── .env.example     # Шаблон конфигурации
+└── README.md</code></pre>
+
+      <h2>Главные файлы, которые мы будем трогать</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Файл</th>
+            <th>Что в нём</th>
+            <th>Когда правим</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.env</code></td>
+            <td>Все ключи и настройки</td>
+            <td>Шаги 3–4</td>
+          </tr>
+          <tr>
+            <td><code>app/core/tenants.py</code></td>
+            <td>Persona вашей ниши</td>
+            <td>Шаг 6</td>
+          </tr>
+          <tr>
+            <td><code>app/core/prompts.py</code></td>
+            <td>Системный промпт продавца</td>
+            <td>Когда захотите кастомизировать стиль</td>
+          </tr>
+          <tr>
+            <td><code>app/core/stages.py</code></td>
+            <td>7 стадий воронки</td>
+            <td>Если хотите сменить методологию</td>
+          </tr>
+          <tr>
+            <td><code>scripts/ingest_catalog.py</code></td>
+            <td>Загрузка вашего каталога в RAG</td>
+            <td>Шаг 6</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Откройте проект в редакторе</h2>
+      <p>Если у вас Cursor или VS Code — откройте папку проекта прямо из терминала:</p>
+
+<pre><code># Cursor
+cursor .
+
+# VS Code
+code .</code></pre>
+
+      <p>Если команда не работает — откройте редактор вручную и выберите папку <code>AI_sales_write</code> через File → Open Folder.</p>
+
+      <div class="callout success">
+        <strong>Проверка</strong>
+        <p>Вы должны видеть структуру проекта в боковой панели редактора и быть в папке <code>AI_sales_write</code> в терминале.</p>
+      </div>
+
+      <h2>Если возникли проблемы</h2>
+      <ul>
+        <li><strong><code>git: command not found</code></strong> — Git не установлен. См. блок выше.</li>
+        <li><strong><code>Permission denied (publickey)</code></strong> — вы используете SSH-вариант без настроенного ключа. Используйте HTTPS: <code>git clone https://github.com/...</code></li>
+        <li><strong><code>fatal: repository not found</code></strong> — проверьте URL, проверьте что вы залогинены если репо приватный</li>
+        <li><strong>Нужен доступ к репо</strong> — напишите нам на <a href="mailto:hello@coreviaflow.space">hello@coreviaflow.space</a></li>
+      </ul>
+
+      <div class="pager">
+        <a href="index.html">
+          <small>← Назад</small>
+          Главная
+        </a>
+        <a href="step-2-environment.html" class="next">
+          <small>Шаг 2 →</small>
+          Подготовьте окружение
+        </a>
+      </div>
+
+    </main>
+
+    <footer>
+      Sclaw • <a href="index.html">Главная</a> • <a href="https://github.com/vimana-tcg/AI_sales_write">GitHub</a>
+    </footer>
+
+  </div>
+</body>
+</html>

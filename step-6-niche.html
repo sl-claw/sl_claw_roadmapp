@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шаг 6 · Настройте свою нишу — Sclaw</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="logo"><a href="index.html">S<span class="accent">claw</span></a></div>
+      <nav>
+        <a href="index.html">Старт</a>
+        <a href="step-1-clone.html" class="active">Шаги</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <div class="progress">
+        <span>Шаг 6 из 7</span>
+        <div class="progress-bar"><div class="progress-bar-fill" style="width: 85%"></div></div>
+      </div>
+
+      <h1>Шаг 6. Настройте свою нишу</h1>
+      <p class="lead">
+        Нужно дать Anna три вещи: <strong>persona</strong> (кто она и от чьего имени говорит),
+        <strong>каталог</strong> (что продаёт) и <strong>скрипты</strong> (как закрывает возражения).
+      </p>
+
+      <h2>Что такое «ниша»</h2>
+      <p>
+        Ниша — это изолированная конфигурация продавца под конкретный бизнес. На одном
+        сервере можно держать десятки ниш одновременно — каждая со своей persona, своим
+        каталогом и своей памятью клиентов. Именно это позволяет агентству продавать
+        «AI-продавцов под ключ» сразу нескольким клиентам.
+      </p>
+
+      <h2>Способ 1. Авто-онбординг по сайту (магия)</h2>
+      <p>
+        Самый быстрый способ. Anna сама прочитает сайт клиента, разберёт PDF-прайсы,
+        извлечёт стиль и сгенерирует persona. Подходит, когда у клиента есть нормальный сайт.
+      </p>
+
+      <p>В Telegram (от админа) напишите боту:</p>
+
+<pre><code>/setdemo https://client-website.com</code></pre>
+
+      <p>За 1–3 минуты Anna:</p>
+      <ol>
+        <li>Скраулит сайт через trafilatura</li>
+        <li>Извлечёт PDF-файлы (прайсы, спецификации)</li>
+        <li>Прогонит изображения через Claude Vision</li>
+        <li>Сгенерирует <code>TenantPersona</code> через Haiku</li>
+        <li>Загрузит чанки в pgvector</li>
+        <li>Привяжет текущий чат к новой нише</li>
+      </ol>
+
+      <p>Готово. Дальше можно сразу диалог: "Привет" — она представится от имени бренда клиента.</p>
+
+      <h2>Способ 2. Вручную через <code>tenants.py</code></h2>
+      <p>Если хотите полный контроль над persona — отредактируйте <code>app/core/tenants.py</code>:</p>
+
+<pre><code>TENANTS["my-niche"] = TenantPersona(
+    slug="my-niche",
+    salesperson_name="Олена",
+    company_name="Ваша Компанія",
+    company_business=(
+        "Описание бизнеса в 2-4 предложениях. Что производите/продаёте, "
+        "география, ключевые продукты, цены диапазон."
+    ),
+    company_values=(
+        "Прозрачность, забота о результате, экспертность."
+    ),
+    conversation_purpose=(
+        "Закрыть на покупку или хотя бы на бесплатную консультацию. "
+        "Каждое сообщение — один CTA."
+    ),
+    default_language="uk",
+    site_url="https://your-site.com",
+    tone_notes=(
+        "Дружелюбно, на 'ти'. Без эмодзи. Короткие сообщения. "
+        "Используй живые сравнения и кейсы."
+    ),
+)</code></pre>
+
+      <p>Чтобы привязать конкретный Telegram-чат к нише, добавьте в <code>CHAT_TENANT_MAP</code>:</p>
+
+<pre><code>CHAT_TENANT_MAP["123456789"] = "my-niche"</code></pre>
+
+      <p>Перезапустите сервер — изменения подхватятся.</p>
+
+      <h2>Способ 3. Через базу данных (production)</h2>
+      <p>В проде ниши хранятся в таблице <code>niches</code> — переживают рестарты контейнера.</p>
+
+<pre><code>docker compose exec postgres psql -U sales -d sales_agent</code></pre>
+
+<pre><code>INSERT INTO niches (
+  slug, salesperson_name, company_name, company_business,
+  company_values, conversation_purpose, default_language,
+  tone_notes
+) VALUES (
+  'my-niche',
+  'Олена',
+  'Ваша Компанія',
+  'Описание бизнеса...',
+  'Ценности...',
+  'Цель разговора...',
+  'uk',
+  'Стиль...'
+);
+
+INSERT INTO chat_niche_map (chat_id, slug)
+VALUES ('123456789', 'my-niche');</code></pre>
+
+      <h2>Каталог товаров</h2>
+      <p>Anna ищет товары через RAG. Подготовьте каталог в JSON или CSV.</p>
+
+      <h3>Формат JSON</h3>
+
+<pre><code>[
+  {
+    "id": "SKU-001",
+    "name": "Модульний дім «Лофт-1»",
+    "category": "Модульні будинки",
+    "price": 1400000,
+    "currency": "UAH",
+    "description": "Каркасний модульний дім 18м² з повною оздобою. Готовність 35 днів.",
+    "specs": {
+      "area_m2": 18,
+      "rooms": 1,
+      "delivery_days": 35,
+      "includes": ["вікна", "двері", "кондиціонер", "меблі"]
+    }
+  },
+  {
+    "id": "SKU-002",
+    "name": "Сауна-Барн",
+    "category": "Модульні будинки",
+    "price": 1900000,
+    "currency": "UAH",
+    "description": "...",
+    "specs": {...}
+  }
+]</code></pre>
+
+      <h3>Загрузка</h3>
+
+<pre><code>poetry run python scripts/ingest_catalog.py path/to/your-catalog.json</code></pre>
+
+      <p>Каталог автоматически разбивается на чанки, векторизуется через OpenAI и сохраняется в pgvector с привязкой к нише.</p>
+
+      <h2>Скрипты продаж и возражения</h2>
+      <p>Anna знает методологии SPIN и MEDDPICC из коробки — они уже залиты в <code>Ниши/_core/</code>. Но под вашу нишу полезно добавить:</p>
+
+      <ul>
+        <li><strong>Объекции</strong> — типовые «дорого», «подумаю», «а гарантии?» с готовыми контраргументами</li>
+        <li><strong>Кейсы</strong> — реальные примеры успешных закрытий: имя клиента, задача, решение, результат</li>
+        <li><strong>УТП</strong> — почему вы лучше конкурентов в трёх предложениях</li>
+        <li><strong>Технические факты</strong> — детали продукта, частые вопросы, гарантии</li>
+      </ul>
+
+      <p>Сложите всё в Markdown-файл — каждый смысловой блок отделяйте строкой <code>---</code>:</p>
+
+<pre><code># Возражение: "Дорого"
+
+Признать: "Понимаю, цена важна — давай разберёмся, из чего она."
+
+Декомпозировать стоимость:
+- Производство: X
+- Доставка: Y
+- Установка: Z
+- Гарантия 5 лет
+
+Сравнить: "Аналог у конкурентов 1.5 млн без гарантии. У нас 1.4 млн с гарантией и доставкой."
+
+CTA: "Если бюджет — главный вопрос, есть рассрочка от Mono на 12 мес. Подключим?"
+
+---
+
+# Возражение: "Подумаю"
+
+Признать: "Конечно, такое решение не на минуту."
+
+Узнать причину: "Что именно хочешь обдумать — конфигурацию, бюджет или что-то третье?"
+
+[...]
+
+---
+
+# Кейс: Клиент Андрей, Киев
+
+Задача: дача 80м² за 2 месяца...
+Решение: Барн-365...
+Результат: дом сдан за 35 дней, клиент привёл 2 знакомых...
+</code></pre>
+
+      <p>Загрузка:</p>
+
+<pre><code>poetry run python scripts/bulk_train.py my-niche path/to/objections.md</code></pre>
+
+      <p>Параметр <code>my-niche</code> — slug вашей ниши. Можно использовать <code>_core</code> чтобы залить факты во все ниши сразу.</p>
+
+      <h2>Crawl сайта</h2>
+      <p>Альтернативно — пусть Anna прочитает весь ваш сайт сама:</p>
+
+<pre><code>poetry run python scripts/ingest_site.py my-niche https://your-site.com</code></pre>
+
+      <p>Скрипт пройдётся по всем внутренним ссылкам, извлечёт текст через trafilatura, разберёт PDF-файлы и зальёт в RAG.</p>
+
+      <h2>Обучение «вживую» в Telegram</h2>
+      <p>В чате с ботом, привязанном к вашей нише, админ может отдать команду:</p>
+
+<pre><code>/train</code></pre>
+
+      <p>После этого каждое сообщение, которое вы отправите, превратится в факт в RAG. Удобно для быстрого добавления знаний — пишете «у нас гарантия 5 лет, при поломке заменяем бесплатно» и это сохраняется как обучающий чанк.</p>
+
+      <p>Закончили — отправьте <code>/endtrain</code>.</p>
+
+      <h2>Незакрытые вопросы</h2>
+      <p>Когда клиент спрашивает что-то, чего нет в базе, Anna выкручивается мягкой фразой и сохраняет вопрос в таблицу <code>unknown_questions</code>. Раз в сутки админу приходит сводка.</p>
+
+      <p>Чтобы научить Anna правильному ответу:</p>
+
+<pre><code>/answer 42 Гарантія 5 років, поломку відремонтуємо безкоштовно або замінимо на новий.</code></pre>
+
+      <p>Где <code>42</code> — id вопроса. Ответ улетает в RAG как факт с весом «manual» (1.5×) — Anna будет его использовать с приоритетом.</p>
+
+      <div class="callout success">
+        <strong>Чек-пойнт</strong>
+        <ul class="checklist" style="margin-top: 12px;">
+          <li>Создана ниша (через <code>/setdemo</code>, <code>tenants.py</code> или БД)</li>
+          <li>Каталог загружен через <code>ingest_catalog.py</code></li>
+          <li>Скрипты продаж и возражения залиты через <code>bulk_train.py</code></li>
+          <li>В тестовом диалоге Anna представляется от имени вашего бренда и достаёт реальные товары</li>
+        </ul>
+      </div>
+
+      <div class="pager">
+        <a href="step-5-launch.html">
+          <small>← Шаг 5</small>
+          Первый запуск
+        </a>
+        <a href="step-7-deploy.html" class="next">
+          <small>Шаг 7 →</small>
+          Деплой в прод
+        </a>
+      </div>
+
+    </main>
+
+    <footer>
+      Sclaw • <a href="index.html">Главная</a> • <a href="https://github.com/vimana-tcg/AI_sales_write">GitHub</a>
+    </footer>
+
+  </div>
+</body>
+</html>

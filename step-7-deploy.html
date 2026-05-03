@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шаг 7 · Деплой в прод — Sclaw</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="logo"><a href="index.html">S<span class="accent">claw</span></a></div>
+      <nav>
+        <a href="index.html">Старт</a>
+        <a href="step-1-clone.html" class="active">Шаги</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <div class="progress">
+        <span>Шаг 7 из 7</span>
+        <div class="progress-bar"><div class="progress-bar-fill" style="width: 100%"></div></div>
+      </div>
+
+      <h1>Шаг 7. Запустите в проде</h1>
+      <p class="lead">
+        Локальная сборка работает — теперь поднимем её на VPS, чтобы Anna была доступна 24/7
+        и могла принимать webhooks от Telegram, WhatsApp и Instagram. Деплоим через Coolify —
+        бесплатный self-hosted Heroku.
+      </p>
+
+      <h2>1. Купите VPS</h2>
+      <p>Минимум 2 GB RAM. На 4 GB будет комфортнее, особенно если планируете voice.</p>
+
+      <table>
+        <thead>
+          <tr><th>Провайдер</th><th>План</th><th>Цена</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><a href="https://www.hetzner.com/cloud" target="_blank" rel="noopener">Hetzner</a></td><td>CPX21 (3 vCPU, 4 GB)</td><td>~€7/мес</td></tr>
+          <tr><td><a href="https://www.digitalocean.com" target="_blank" rel="noopener">DigitalOcean</a></td><td>Basic (2 vCPU, 4 GB)</td><td>~$24/мес</td></tr>
+          <tr><td><a href="https://www.vultr.com" target="_blank" rel="noopener">Vultr</a></td><td>Cloud Compute (2 vCPU, 4 GB)</td><td>~$24/мес</td></tr>
+          <tr><td><a href="https://www.scaleway.com" target="_blank" rel="noopener">Scaleway</a></td><td>DEV1-M (3 vCPU, 4 GB)</td><td>~€10/мес</td></tr>
+        </tbody>
+      </table>
+
+      <p>Образ — <strong>Ubuntu 22.04 LTS</strong> или <strong>24.04 LTS</strong>.</p>
+
+      <h2>2. Установите Coolify</h2>
+      <p>Coolify — это open-source аналог Heroku/Vercel, который вы ставите себе на VPS. Один сервер — десятки приложений с Docker, Compose, статикой, базами.</p>
+
+      <p>Подключитесь к VPS по SSH и выполните:</p>
+
+<pre><code>curl -fsSL https://cdn.coollabs.io/coolify/install.sh | sudo bash</code></pre>
+
+      <p>Через 3–5 минут Coolify будет доступен по адресу <code>http://your-server-ip:8000</code>. Откройте, зарегистрируйтесь, попадёте в админ-панель.</p>
+
+      <h2>3. Настройте домен и DNS</h2>
+      <p>Купите домен (или используйте поддомен <code>your-app.coreviaflow.space</code>). В DNS-провайдере добавьте A-запись:</p>
+
+<pre><code>your-app.your-domain.com  →  IP вашего VPS</code></pre>
+
+      <p>Подождите 5–10 минут пока DNS обновится. Проверка:</p>
+
+<pre><code>dig your-app.your-domain.com +short</code></pre>
+
+      <h2>4. Задеплойте проект через Coolify</h2>
+
+      <ol>
+        <li>В Coolify нажмите <strong>+ New → Resource → Docker Compose</strong></li>
+        <li>Source: Public/Private repository, URL: <code>https://github.com/your-org/AI_sales_write</code></li>
+        <li>Branch: <code>main</code></li>
+        <li>Compose path: <code>docker-compose.yml</code></li>
+        <li>В <strong>Environment Variables</strong> добавьте все переменные из вашего локального <code>.env</code> (скопируйте через текстовый импорт)</li>
+        <li>Domains → Add → <code>https://your-app.your-domain.com</code> → Port <code>8070</code></li>
+        <li>Нажмите <strong>Deploy</strong></li>
+      </ol>
+
+      <p>Coolify клонирует репо, соберёт Dockerfile, поднимет Postgres + Redis + app, прокинет домен через Traefik с автоматическим Let's Encrypt сертификатом.</p>
+
+      <p>Через ~2 минуты статус станет <strong>Running</strong>, healthcheck позеленеет.</p>
+
+      <h2>5. Проверьте прод</h2>
+
+<pre><code>curl https://your-app.your-domain.com/health</code></pre>
+
+      <p>Должно вернуть <code>{"status":"ok"}</code>.</p>
+
+      <h2>6. Настройте webhooks каналов</h2>
+
+      <h3>Telegram</h3>
+
+<pre><code>curl -F "url=https://your-app.your-domain.com/webhook/telegram" \
+  https://api.telegram.org/bot&lt;TELEGRAM_BOT_TOKEN&gt;/setWebhook</code></pre>
+
+      <p>Проверка:</p>
+
+<pre><code>curl https://api.telegram.org/bot&lt;TELEGRAM_BOT_TOKEN&gt;/getWebhookInfo</code></pre>
+
+      <h3>WhatsApp Cloud API</h3>
+      <p>В Meta Developer Console:</p>
+      <ul>
+        <li>Callback URL: <code>https://your-app.your-domain.com/webhook/whatsapp</code></li>
+        <li>Verify Token: то, что в <code>WHATSAPP_VERIFY_TOKEN</code></li>
+        <li>Subscribe to: <code>messages</code></li>
+      </ul>
+
+      <h3>Instagram Direct</h3>
+      <p>В Meta Developer Console (Instagram Messaging):</p>
+      <ul>
+        <li>Callback URL: <code>https://your-app.your-domain.com/webhook/instagram</code></li>
+        <li>Verify Token: то, что в <code>INSTAGRAM_VERIFY_TOKEN</code></li>
+        <li>Subscribe to: <code>messages</code></li>
+      </ul>
+
+      <h2>7. Залейте каталог в прод</h2>
+      <p>Из Coolify → ваш сервис → <strong>Terminal</strong>:</p>
+
+<pre><code>python scripts/ingest_catalog.py path/to/catalog.json
+python scripts/bulk_train.py my-niche path/to/objections.md</code></pre>
+
+      <p>Либо подключитесь к серверу по SSH и сделайте то же.</p>
+
+      <h2>8. Backup БД</h2>
+      <p>В Coolify → Postgres сервис → <strong>Backups</strong> → включите ежедневные snapshots в S3/локальный диск. На случай если что-то пойдёт не так.</p>
+
+      <h2>9. Включите наблюдаемость (опц.)</h2>
+      <p>В <code>.env</code> добавьте <code>LANGSMITH_API_KEY</code> — все вызовы LangGraph будут видны в облаке LangSmith. Удобно отлаживать сложные диалоги.</p>
+
+      <p>На уровне сервера — установите <a href="https://uptimekuma.app/" target="_blank" rel="noopener">Uptime Kuma</a> (бесплатный аналог Pingdom) и мониторьте <code>/health</code> каждую минуту.</p>
+
+      <div class="callout success">
+        <strong>Финальный чек-лист</strong>
+        <ul class="checklist" style="margin-top: 12px;">
+          <li>VPS куплен, Coolify установлен</li>
+          <li>Домен куплен, A-запись настроена</li>
+          <li>Проект задеплоен через Coolify, healthcheck зелёный</li>
+          <li>TLS-сертификат выпущен (HTTPS работает)</li>
+          <li>Webhook Telegram установлен</li>
+          <li>Webhooks WhatsApp/Instagram настроены (если используются)</li>
+          <li>Каталог и скрипты залиты в прод-БД</li>
+          <li>Backup БД настроен</li>
+          <li>Уведомления админу в Telegram приходят</li>
+        </ul>
+      </div>
+
+      <h2>Готово 🎯</h2>
+      <p>
+        У вас в проде работает AI-продавец, который ловит лиды 24/7 во всех каналах
+        вашего бизнеса. Дальше — наблюдайте за диалогами, дообучайте через
+        <code>/train</code> и <code>/answer</code>, тюньте промпт под ваш стиль.
+      </p>
+
+      <p>
+        Если делаете под клиента — передайте ему доступ к Telegram-боту, проведите
+        обучение команды (1 час), договоритесь о SLA и сопровождении. Внедрение под
+        ключ — наш тариф $2000.
+      </p>
+
+      <a href="index.html" class="btn">Вернуться на главную</a>
+      <a href="https://github.com/vimana-tcg/AI_sales_write" class="btn secondary" target="_blank" rel="noopener">Открыть GitHub</a>
+
+      <div class="pager">
+        <a href="step-6-niche.html">
+          <small>← Шаг 6</small>
+          Настроить нишу
+        </a>
+        <a href="index.html" class="next">
+          <small>Старт →</small>
+          На главную
+        </a>
+      </div>
+
+    </main>
+
+    <footer>
+      Sclaw • <a href="index.html">Главная</a> • <a href="https://github.com/vimana-tcg/AI_sales_write">GitHub</a>
+    </footer>
+
+  </div>
+</body>
+</html>
