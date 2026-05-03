@@ -26,12 +26,12 @@
 
       <h1>Шаг 4. Заполните <code>.env</code></h1>
       <p class="lead">
-        <code>.env</code> — единая точка конфигурации. Сюда вставляете ключи и описание персоны.
-        Что не нужно — оставляете пустым: канал просто не активируется.
+        <code>.env</code> — единая точка конфигурации. Сюда вставляете lux-token, описание персоны
+        и (опц.) Telegram. Что не нужно — оставляете пустым: канал автоматически отключится.
       </p>
 
       <h2>Создайте файл</h2>
-      <p>Из корня проекта:</p>
+      <p>В терминале, находясь в папке проекта <code>AI_sales_write</code>, выполните:</p>
 
 <pre><code>cp .env.example .env</code></pre>
 
@@ -40,45 +40,57 @@
       <h2>Минимум для запуска</h2>
       <p>Заполните только эти поля — этого хватит для первого диалога:</p>
 
-<pre><code># LLM
-OPENAI_API_KEY=sk-proj-...
-ANTHROPIC_API_KEY=sk-ant-...
+<pre><code># ===== LUX TOKEN =====
+# Один токен ко всем AI (Claude, OpenAI, Gemini, Kimi, DeepSeek, Groq,
+# Mistral, ElevenLabs, Deepgram). Получили в шаге 3.
+LUX_TOKEN=lux-...
+LUX_BASE_URL=https://api.lux-promo.com/v1
+
+# Какие модели использовать (можно оставить дефолты):
 LLM_MODEL=claude-sonnet-4-6
-STAGE_ANALYZER_MODEL=claude-haiku-4-5-20251001
+STAGE_ANALYZER_MODEL=deepseek-v3
 EMBEDDING_MODEL=text-embedding-3-small
 TEMPERATURE=0.4
 
-# База данных (оставьте как есть для локального запуска)
+# ===== БАЗА ДАННЫХ (оставьте как есть для локального запуска) =====
 POSTGRES_URL=postgresql+psycopg://sales:sales@localhost:5432/sales_agent
 REDIS_URL=redis://localhost:6379/0
-
-# Память
 MEM0_SELF_HOSTED=true
 
-# Telegram (опционально, но рекомендуем для теста)
+# ===== TELEGRAM (опционально, но рекомендуем для теста) =====
 TELEGRAM_BOT_TOKEN=123456:ABC-DEF...
 
-# Persona
+# ===== ВАШ AI-ПРОДАВЕЦ =====
 SALESPERSON_NAME=Анна
 COMPANY_NAME=Ваш бренд
-COMPANY_BUSINESS=Чем занимается ваш бизнес
+COMPANY_BUSINESS=Чем занимается ваш бизнес — 2-3 предложения
 COMPANY_VALUES=Прозрачность, забота о результате, экспертность
 CONVERSATION_PURPOSE=Подобрать решение клиенту и закрыть сделку
 DEFAULT_LANGUAGE=ru</code></pre>
 
       <div class="callout warning">
         <strong>Не пушьте .env в Git</strong>
-        <p>Файл <code>.env</code> уже в <code>.gitignore</code>. Никогда не коммитьте ключи — это публичный риск.</p>
+        <p>Файл <code>.env</code> уже в <code>.gitignore</code>. Никогда не коммитьте токены — это публичный риск.</p>
       </div>
 
-      <h2>Persona — самая важная часть</h2>
-      <p>Это лицо вашего бизнеса в чате. Anna будет говорить от имени этой компании. Заполните осмысленно.</p>
+      <h2>Как работает lux-token «под капотом»</h2>
+      <p>Под одним токеном — 9 провайдеров. SL-CLAW сам выбирает нужного:</p>
+      <ul>
+        <li><code>LLM_MODEL=claude-sonnet-4-6</code> → запросы идут в Anthropic через lux-gateway</li>
+        <li><code>STAGE_ANALYZER_MODEL=deepseek-v3</code> → для классификации стадий используется DeepSeek (в 10× дешевле)</li>
+        <li><code>EMBEDDING_MODEL=text-embedding-3-small</code> → векторизация для RAG через OpenAI</li>
+        <li>Когда подключите голос — TTS пойдёт через ElevenLabs, STT через Deepgram</li>
+      </ul>
+      <p>Все запросы идут на <code>LUX_BASE_URL</code>, оттуда роутятся к нужному провайдеру. Один баланс расходуется по факту использования.</p>
+
+      <h2>Описание AI-продавца — самая важная часть</h2>
+      <p>Anna будет говорить от имени вашей компании. Заполните осмысленно — это влияет на качество диалогов.</p>
 
       <h3>SALESPERSON_NAME</h3>
       <p>Имя AI-продавца. По умолчанию <code>Анна</code>. Можете заменить на <code>Олена</code>, <code>Mark</code>, <code>Sofia</code>, <code>Ivan</code> — что лучше подходит вашему бренду.</p>
 
       <h3>COMPANY_NAME</h3>
-      <p>Название вашей компании. Это будет видно клиенту: "Здравствуйте, я Анна из <strong>{COMPANY_NAME}</strong>".</p>
+      <p>Название вашей компании. Это будет видно клиенту: «Здравствуйте, я Анна из <strong>{COMPANY_NAME}</strong>».</p>
 
       <h3>COMPANY_BUSINESS</h3>
       <p>2–4 предложения, которыми Anna описывает что вы продаёте. Чем конкретнее — тем лучше.</p>
@@ -97,68 +109,69 @@ DEFAULT_LANGUAGE=ru</code></pre>
 
       <pre><code>CONVERSATION_PURPOSE=Закрыть клиента на покупку модульного дома или хотя бы на бесплатный выезд/онлайн-консультацию. Каждое сообщение должно заканчиваться одним конкретным CTA.</code></pre>
 
-      <h2>Платежи и CRM (если решили подключить сразу)</h2>
+      <h2>Админ Telegram</h2>
+      <p>Чтобы получить доступ к админ-командам в Telegram (<code>/settings</code>, <code>/train</code>, <code>/setdemo</code>), укажите свой Telegram user ID:</p>
 
-      <h3>LiqPay (Украина)</h3>
+<pre><code>ADMIN_TELEGRAM_USER_IDS=123456789</code></pre>
+
+      <p>Узнать свой ID: напишите <a href="https://t.me/userinfobot" target="_blank" rel="noopener">@userinfobot</a> — он пришлёт.</p>
+
+      <h2>Платежи и CRM (если решили подключить сразу)</h2>
+      <p>Если на шаге 3 получили ключи платежки или CRM — добавляете сюда. На первом запуске можно пропустить.</p>
+
+      <details>
+        <summary style="cursor: pointer; padding: 12px 0; font-weight: 600;">▸ Показать опциональные настройки</summary>
+
+        <h3>LiqPay (Украина)</h3>
 <pre><code>PAYMENT_PROVIDER=liqpay
 LIQPAY_PUBLIC_KEY=i...
 LIQPAY_PRIVATE_KEY=...
 PAYMENT_CURRENCY=UAH</code></pre>
 
-      <h3>Fondy / Flitt</h3>
+        <h3>Fondy / Flitt</h3>
 <pre><code>PAYMENT_PROVIDER=fondy
 FONDY_MERCHANT_ID=...
 FONDY_SECRET_KEY=...
 PAYMENT_CURRENCY=UAH</code></pre>
 
-      <h3>Счёт по реквизитам</h3>
+        <h3>Счёт по реквизитам (без процессинга)</h3>
 <pre><code>PAYMENT_PROVIDER=invoice
 INVOICE_COMPANY_NAME=ФОП Іваненко І.І.
 INVOICE_EDRPOU=1234567890
 INVOICE_IBAN=UA213996220000026004500000000
 INVOICE_BANK=АТ КБ «ПРИВАТБАНК»
-INVOICE_MFO=305299
-INVOICE_ADDRESS=м. Київ, вул. Хрещатик, 1</code></pre>
+INVOICE_MFO=305299</code></pre>
 
-      <h3>PayPal (международные)</h3>
+        <h3>PayPal (международные)</h3>
 <pre><code>PAYMENT_PROVIDER=paypal
 PAYPAL_CLIENT_ID=...
 PAYPAL_CLIENT_SECRET=...
 PAYMENT_CURRENCY=USD</code></pre>
 
-      <h3>CRM</h3>
-<pre><code># Выбираем один:
-CRM_PROVIDER=keycrm   # или: nethunt | creatio | hubspot | pipedrive | salesforce | zoho | none
+        <h3>CRM (один из)</h3>
+<pre><code>CRM_PROVIDER=keycrm   # или: nethunt | creatio | hubspot | pipedrive | none
 
 KEYCRM_API_KEY=...
-# или:
-NETHUNT_API_KEY=...
 # или:
 HUBSPOT_TOKEN=...
 PIPEDRIVE_TOKEN=...
 PIPEDRIVE_DOMAIN=your-company</code></pre>
-
-      <h2>Админ Telegram</h2>
-      <p>Чтобы получить доступ к админ-командам в Telegram (<code>/settings</code>, <code>/train</code>, <code>/setdemo</code>), укажите свой Telegram user ID:</p>
-
-<pre><code>ADMIN_TELEGRAM_USER_IDS=123456789,987654321</code></pre>
-
-      <p>Узнать свой ID: напишите <a href="https://t.me/userinfobot" target="_blank" rel="noopener">@userinfobot</a> — он пришлёт.</p>
+      </details>
 
       <div class="callout success">
         <strong>Чек-пойнт</strong>
         <ul class="checklist" style="margin-top: 12px;">
           <li><code>.env</code> создан в корне проекта</li>
-          <li><code>OPENAI_API_KEY</code> и <code>ANTHROPIC_API_KEY</code> заполнены</li>
-          <li>Persona описана осмысленно</li>
-          <li>Хотя бы один канал активен (хотя бы Web по умолчанию работает всегда)</li>
+          <li><code>LUX_TOKEN</code> вставлен (формат <code>lux-...</code>)</li>
+          <li>Persona (компания, цель, ценности) описана осмысленно</li>
+          <li>Файл сохранён (Cmd/Ctrl+S)</li>
         </ul>
       </div>
 
       <div class="pager">
         <a href="step-3-keys.html">
           <small>← Шаг 3</small>
-          Получить ключи
+          Получить lux-token
         </a>
         <a href="step-5-launch.html" class="next">
           <small>Шаг 5 →</small>
@@ -169,7 +182,7 @@ PIPEDRIVE_DOMAIN=your-company</code></pre>
     </main>
 
     <footer>
-      SL_CLAW • <a href="index.html">Главная</a> • <a href="https://github.com/vimana-tcg/AI_sales_write">GitHub</a>
+      SL_CLAW • <a href="index.html">Главная</a> • <a href="https://github.com/sl-claw/sl_claw_roadmapp">GitHub</a>
     </footer>
 
   </div>

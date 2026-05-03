@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Шаг 3 · Получите ключи API — SL_CLAW</title>
+  <title>Шаг 3 · Получите lux-token — SL_CLAW</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -24,220 +24,164 @@
         <div class="progress-bar"><div class="progress-bar-fill" style="width: 42%"></div></div>
       </div>
 
-      <h1>Шаг 3. Получите ключи API</h1>
+      <h1>Шаг 3. Получите lux-token — один ключ ко всем AI</h1>
       <p class="lead">
-        Соберите ключи в одном месте — на следующем шаге вставите их в <code>.env</code>.
-        Обязательны два: OpenAI и Anthropic. Остальные — по нужде.
+        Вместо 9 регистраций в разных компаниях — <strong>один токен</strong> на платформе
+        <a href="https://token.lux-promo.com" target="_blank" rel="noopener">token.lux-promo.com</a>.
+        Один баланс, одна карта, доступ ко всем нужным AI-моделям сразу.
       </p>
 
-      <h2>Обязательные ключи</h2>
+      <div class="callout">
+        <strong>Почему это удобно для новичка</strong>
+        <p>OpenAI хочет регистрацию + карту, Anthropic — отдельную, Google — отдельную, Moonshot — китайский номер телефона, ElevenLabs — отдельную, Deepgram — отдельную. Это часы возни и 6 разных счетов в долларах. <strong>lux-token закрывает это одной регистрацией.</strong></p>
+      </div>
 
-      <h3>1. OpenAI API</h3>
-      <p>Используется для embeddings (векторизация текста для RAG-поиска). Бесплатных $5 хватит на ~2 месяца тестов.</p>
+      <h2>Что входит в один lux-token</h2>
+      <p>Один ключ — доступ к 9 провайдерам. AI-продавец сам выбирает нужного под задачу:</p>
 
+      <div class="grid-3">
+        <div class="feature">
+          <strong>Claude (Anthropic)</strong>
+          <span>Sonnet 4.6, Haiku 4.5 — основной диалог с клиентом</span>
+        </div>
+        <div class="feature">
+          <strong>OpenAI</strong>
+          <span>GPT-4o, GPT-4o-mini, embeddings — fallback + векторизация для RAG</span>
+        </div>
+        <div class="feature">
+          <strong>Gemini (Google)</strong>
+          <span>2.5 Pro, 2.0 Flash — разбор фото от клиентов</span>
+        </div>
+        <div class="feature">
+          <strong>Kimi (Moonshot)</strong>
+          <span>K2, 200k контекст — для большого каталога в RAG</span>
+        </div>
+        <div class="feature">
+          <strong>DeepSeek</strong>
+          <span>V3, R1 — в 10× дешевле для фоновых задач (классификация стадий)</span>
+        </div>
+        <div class="feature">
+          <strong>Groq</strong>
+          <span>Llama 3.3 70B на 1500 ток/сек — мгновенная отдача для голоса</span>
+        </div>
+        <div class="feature">
+          <strong>Mistral</strong>
+          <span>Large, Small — privacy-friendly для европейских клиентов (GDPR)</span>
+        </div>
+        <div class="feature">
+          <strong>ElevenLabs</strong>
+          <span>TTS — голос Anna в голосовом канале</span>
+        </div>
+        <div class="feature">
+          <strong>Deepgram</strong>
+          <span>STT Nova-3 — распознавание речи клиента в голосовом канале</span>
+        </div>
+      </div>
+
+      <h2>Получите токен — 4 шага</h2>
+
+      <h3>1. Откройте платформу</h3>
+      <p>Перейдите на <a href="https://token.lux-promo.com" target="_blank" rel="noopener"><strong>token.lux-promo.com</strong></a>.</p>
+
+      <h3>2. Зарегистрируйтесь</h3>
       <ol>
-        <li>Откройте <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener">platform.openai.com/api-keys</a></li>
-        <li>Зарегистрируйтесь / войдите</li>
-        <li>Нажмите <strong>Create new secret key</strong></li>
-        <li>Скопируйте ключ (<code>sk-proj-...</code>) — он показывается один раз</li>
-        <li>В разделе Billing привяжите карту и пополните на $5–10</li>
+        <li>Нажмите <strong>«Создать аккаунт»</strong></li>
+        <li>Введите email и пароль (либо через Google/GitHub OAuth — кнопка ниже)</li>
+        <li>Подтвердите email — пришлют письмо со ссылкой</li>
       </ol>
 
-      <h3>2. Anthropic API (Claude)</h3>
-      <p>Основная LLM для диалога с клиентом. Claude лучше держит длинный контекст и стиль продавца на русском/украинском.</p>
-
-      <ol>
-        <li>Откройте <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">console.anthropic.com/settings/keys</a></li>
-        <li>Создайте API key</li>
-        <li>Скопируйте ключ (<code>sk-ant-...</code>)</li>
-        <li>Пополните баланс ($5 для теста, потом по мере)</li>
-      </ol>
+      <h3>3. Положите деньги на баланс</h3>
+      <p>Кабинет → раздел <strong>«Баланс»</strong> → <strong>«Пополнить»</strong>. Минимум $5, оплачивается одной картой:</p>
+      <ul>
+        <li><strong>Карта Visa/Mastercard</strong> (любая страна) — мгновенно</li>
+        <li><strong>LiqPay/Fondy</strong> (UAH) — для украинских пользователей</li>
+        <li><strong>Криптовалюта</strong> (USDT/BTC) — анонимно, без KYC до $1000</li>
+      </ul>
 
       <div class="callout">
-        <strong>Сколько стоит один диалог?</strong>
-        <p>Средний 20-сообщенческий диалог на Claude Sonnet 4.6 = $0.03–0.05. На 1000 диалогов — $30–50. У GPT-4o-mini в 5 раз дешевле, но качество хуже.</p>
+        <strong>Сколько хватает</strong>
+        <p>$5 = около <strong>2000 диалогов</strong> с клиентами через Claude Sonnet (~$0.0025 за диалог в среднем). Для тестирования и первых 50–100 реальных клиентов хватит надолго.</p>
       </div>
 
-      <h2>Каналы коммуникации</h2>
-      <p>Включаете только нужные. Пустые поля в <code>.env</code> = канал автоматически отключен.</p>
-
-      <h3>Telegram (рекомендуем для старта)</h3>
+      <h3>4. Создайте токен</h3>
       <ol>
-        <li>Откройте <a href="https://t.me/BotFather" target="_blank" rel="noopener">@BotFather</a> в Telegram</li>
+        <li>В кабинете перейдите в раздел <strong>«API Keys»</strong> или <strong>«Tokens»</strong></li>
+        <li>Нажмите <strong>«Create new token»</strong></li>
+        <li>Дайте имя — например, <code>sl-claw-dev</code> (чтобы потом понимать какой токен где используется)</li>
+        <li>(Опционально) Установите лимит расхода — например, $10/день — на случай утечки токена</li>
+        <li>Скопируйте токен — формат <code>lux-...</code> (показывается один раз, сохраните в заметках)</li>
+      </ol>
+
+      <div class="callout warning">
+        <strong>Безопасность токена</strong>
+        <p>Токен — это ваши деньги. Никогда не публикуйте его в открытых репозиториях, скриншотах, чатах. Если случайно засветили — сразу зайдите в кабинет и нажмите <strong>«Revoke»</strong>, потом создайте новый.</p>
+      </div>
+
+      <h2>Каналы коммуникации (опционально, можно потом)</h2>
+      <p>Эти регистрации <strong>не нужны</strong> для первого запуска — Anna будет говорить с вами через web-чат. Подключите когда захотите вывести бота к реальным клиентам.</p>
+
+      <h3>Telegram (бесплатно, 1 минута)</h3>
+      <ol>
+        <li>В Telegram найдите <a href="https://t.me/BotFather" target="_blank" rel="noopener">@BotFather</a></li>
         <li>Введите <code>/newbot</code></li>
-        <li>Дайте боту имя и username (должен заканчиваться на <code>bot</code>)</li>
-        <li>Скопируйте токен (выглядит как <code>123456:ABC-DEF...</code>)</li>
+        <li>Дайте боту имя и username (заканчивается на <code>bot</code>)</li>
+        <li>Скопируйте токен — формат <code>123456:ABC-DEF...</code></li>
       </ol>
 
-      <h3>WhatsApp Cloud API</h3>
-      <ol>
-        <li>Откройте <a href="https://developers.facebook.com" target="_blank" rel="noopener">developers.facebook.com</a></li>
-        <li>Создайте новое приложение → WhatsApp Business → Cloud API</li>
-        <li>Получите <strong>Phone Number ID</strong>, <strong>Permanent Access Token</strong> и <strong>App Secret</strong></li>
-        <li>Verify Token придумайте сами (любая случайная строка)</li>
-      </ol>
+      <h3>WhatsApp / Instagram</h3>
+      <p>Подключаются через Meta Developer Console. Это сложнее — займёт час и потребует бизнес-аккаунта Facebook. Делать на этом шаге <strong>не нужно</strong> — если будет интересно, инструкция есть в шаге 8 (бонусном).</p>
 
-      <h3>Instagram Direct</h3>
-      <ol>
-        <li>В том же Meta Developer-приложении добавьте Instagram Messaging</li>
-        <li>Подключите бизнес-аккаунт Instagram (через Facebook Page)</li>
-        <li>Получите <strong>Page Access Token</strong></li>
-        <li>Verify Token — любая случайная строка</li>
-      </ol>
-
-      <h3>Голос (опционально)</h3>
-      <p>Для голосового канала нужны 3 сервиса:</p>
-      <ul>
-        <li><a href="https://deepgram.com" target="_blank" rel="noopener">Deepgram</a> — speech-to-text ($200 free credit)</li>
-        <li><a href="https://elevenlabs.io" target="_blank" rel="noopener">ElevenLabs</a> — text-to-speech (10к символов бесплатно)</li>
-        <li><a href="https://daily.co" target="_blank" rel="noopener">Daily.co</a> — WebRTC транспорт (10к минут бесплатно)</li>
-      </ul>
-
-      <h2>Платежи</h2>
-      <p>Выберите провайдера под свою страну. Можно подключить несколько одновременно.</p>
-
-      <h3>Для Украины (рекомендуем)</h3>
+      <h2>Платежи в чате (опционально)</h2>
+      <p>Anna может выставлять счета прямо в диалоге. Подключайте платёжку, когда дойдёт до реальных продаж. Для теста — просто пропустите.</p>
 
       <table>
         <thead>
           <tr>
             <th>Провайдер</th>
-            <th>Где получить ключи</th>
-            <th>Кому подходит</th>
+            <th>Кому</th>
+            <th>Где взять ключи</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td><strong>LiqPay</strong></td>
-            <td><a href="https://liqpay.ua/uk/api" target="_blank" rel="noopener">liqpay.ua</a></td>
-            <td>Универсал, ФОП и ТОВ</td>
-          </tr>
-          <tr>
-            <td><strong>Fondy / Flitt</strong></td>
-            <td><a href="https://flitt.com" target="_blank" rel="noopener">flitt.com</a></td>
-            <td>Мультивалютный, recurring</td>
-          </tr>
-          <tr>
-            <td><strong>WayForPay</strong></td>
-            <td><a href="https://wayforpay.com" target="_blank" rel="noopener">wayforpay.com</a></td>
-            <td>Apple/Google Pay в одной ссылке</td>
-          </tr>
-          <tr>
-            <td><strong>Monobank Acquiring</strong></td>
-            <td>Через ФОП-кабинет Mono</td>
-            <td>Самый низкий процент для ФОП</td>
-          </tr>
+          <tr><td><strong>LiqPay</strong></td><td>Украина</td><td><a href="https://liqpay.ua/uk/api" target="_blank" rel="noopener">liqpay.ua</a> → ФОП-кабинет</td></tr>
+          <tr><td><strong>Fondy / Flitt</strong></td><td>Украина + EU</td><td><a href="https://flitt.com" target="_blank" rel="noopener">flitt.com</a></td></tr>
+          <tr><td><strong>WayForPay</strong></td><td>Украина (Apple/Google Pay)</td><td><a href="https://wayforpay.com" target="_blank" rel="noopener">wayforpay.com</a></td></tr>
+          <tr><td><strong>Monobank</strong></td><td>Украина (ФОП)</td><td>Кабинет Mono Acquiring</td></tr>
+          <tr><td><strong>Счёт по реквизитам</strong></td><td>B2B (ФОП/ТОВ)</td><td>Никаких ключей — просто реквизиты</td></tr>
+          <tr><td><strong>PayPal</strong></td><td>Глобальные клиенты</td><td><a href="https://developer.paypal.com" target="_blank" rel="noopener">developer.paypal.com</a></td></tr>
         </tbody>
       </table>
 
-      <h3>Для глобальных клиентов</h3>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Провайдер</th>
-            <th>Где получить ключи</th>
-            <th>Кому подходит</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>PayPal</strong></td>
-            <td><a href="https://developer.paypal.com" target="_blank" rel="noopener">developer.paypal.com</a></td>
-            <td>Универсал, привычно для Запада</td>
-          </tr>
-          <tr>
-            <td><strong>Wise Business</strong></td>
-            <td><a href="https://wise.com/business" target="_blank" rel="noopener">wise.com/business</a></td>
-            <td>Multi-currency invoices</td>
-          </tr>
-          <tr>
-            <td><strong>Lemon Squeezy</strong></td>
-            <td><a href="https://lemonsqueezy.com" target="_blank" rel="noopener">lemonsqueezy.com</a></td>
-            <td>Цифровые продукты, берёт VAT на себя</td>
-          </tr>
-          <tr>
-            <td><strong>Stripe</strong></td>
-            <td><a href="https://dashboard.stripe.com" target="_blank" rel="noopener">dashboard.stripe.com</a></td>
-            <td>Если есть юр. лицо в US/EU/UK</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h3>Счёт по реквизитам (без процессинга)</h3>
-      <p>Для B2B-клиентов и тех, кто платит безналом. Anna генерирует PDF-счёт с вашими реквизитами, клиент оплачивает через банк-клиент.</p>
-      <p>Никаких ключей не нужно — просто подготовьте:</p>
+      <h2>CRM-интеграция (опционально, для тарифа $600+)</h2>
+      <p>Anna умеет передавать лидов в любую из 12 CRM. На первом запуске — лиды просто пишутся в локальную БД. Когда захотите подключить — инструкция в шаге 6.</p>
       <ul>
-        <li>Назву ФОП/ТОВ та ЄДРПОУ</li>
-        <li>IBAN рахунку</li>
-        <li>Назву банку та МФО</li>
-        <li>Адресу та контакти</li>
+        <li><strong>Украинские:</strong> KeyCRM, NetHunt, Creatio, Perfectum, OneBox, LP-CRM</li>
+        <li><strong>Глобальные:</strong> HubSpot, Pipedrive, Salesforce, Zoho, Close, Freshsales</li>
       </ul>
-
-      <h2>CRM</h2>
-      <p>Опционально. Если выбираете — берите тот, в котором уже работаете. Anna умеет:</p>
-
-      <table>
-        <thead>
-          <tr>
-            <th>CRM</th>
-            <th>Регион</th>
-            <th>Где взять ключ</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>KeyCRM</strong></td>
-            <td>UA</td>
-            <td>Кабинет → Інтеграції → API</td>
-          </tr>
-          <tr>
-            <td><strong>NetHunt CRM</strong></td>
-            <td>UA</td>
-            <td>Settings → Integrations → API</td>
-          </tr>
-          <tr>
-            <td><strong>Creatio</strong></td>
-            <td>UA/Global</td>
-            <td>Установка системы → API key</td>
-          </tr>
-          <tr>
-            <td><strong>Perfectum / OneBox / LP-CRM</strong></td>
-            <td>UA</td>
-            <td>Кабинет → API</td>
-          </tr>
-          <tr>
-            <td><strong>HubSpot</strong></td>
-            <td>Global</td>
-            <td>Settings → Private Apps</td>
-          </tr>
-          <tr>
-            <td><strong>Pipedrive</strong></td>
-            <td>Global</td>
-            <td>Settings → Personal → API</td>
-          </tr>
-          <tr>
-            <td><strong>Salesforce / Zoho / Close / Freshsales / Monday</strong></td>
-            <td>Global</td>
-            <td>Developer console каждого</td>
-          </tr>
-          <tr>
-            <td><strong>Bitrix24 / Kommo</strong></td>
-            <td>СНГ</td>
-            <td>Application → Webhook</td>
-          </tr>
-        </tbody>
-      </table>
 
       <div class="callout success">
-        <strong>Минимум для старта</strong>
-        <p>Достаточно собрать <strong>OpenAI</strong> + <strong>Anthropic</strong> + <strong>Telegram BotFather</strong>. Этого хватит для первого запуска и первых тестовых диалогов. Платежи и CRM подключите потом.</p>
+        <strong>Чек-пойнт — что должно быть на руках</strong>
+        <ul class="checklist" style="margin-top: 12px;">
+          <li><strong>lux-token</strong> в формате <code>lux-...</code> сохранён в заметках</li>
+          <li>Баланс на token.lux-promo.com пополнен (минимум $5)</li>
+          <li>(Опц.) Telegram-токен от BotFather в формате <code>123456:ABC-DEF...</code></li>
+        </ul>
+        <p>Это всё, что нужно для запуска. Остальное (WhatsApp, IG, платежи, CRM) — позже.</p>
       </div>
+
+      <h2>Сколько это стоит</h2>
+      <ul>
+        <li><strong>Регистрация</strong> на token.lux-promo.com — $0</li>
+        <li><strong>Минимальное пополнение</strong> — $5</li>
+        <li><strong>Реальный расход</strong> на тесты первой недели — около $1–2</li>
+        <li><strong>Telegram-бот</strong> — $0</li>
+        <li><strong>Итого на старт</strong> — <strong>$5</strong></li>
+      </ul>
 
       <div class="pager">
         <a href="step-2-environment.html">
           <small>← Шаг 2</small>
-          Окружение
+          Подготовить компьютер
         </a>
         <a href="step-4-config.html" class="next">
           <small>Шаг 4 →</small>
@@ -248,7 +192,7 @@
     </main>
 
     <footer>
-      SL_CLAW • <a href="index.html">Главная</a> • <a href="https://github.com/vimana-tcg/AI_sales_write">GitHub</a>
+      SL_CLAW • <a href="index.html">Главная</a> • <a href="https://github.com/sl-claw/sl_claw_roadmapp">GitHub</a>
     </footer>
 
   </div>
