@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tier PRO ($600) + Niche Marketplace — Roadmap SL_CLAW</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="logo"><a href="index.html">SL_<span class="accent">CLAW</span></a></div>
+      <nav>
+        <a href="index.html">Roadmap</a>
+        <a href="tier-mini.html">MINI</a>
+        <a href="tier-core.html">CORE</a>
+        <a href="tier-pro.html" class="active">PRO</a>
+        <a href="tier-impl.html">IMPL</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <div class="tier-banner pro">
+        <div class="tier-banner-info">
+          <div class="tier-price">$600</div>
+          <div class="tier-name">PRO · Под бизнес / для агентств + Niche Marketplace</div>
+          <div class="tier-desc">Студент превращается в продавца AI-продавцов. Закрывает первого клиента на $1500–3000. ETA: 2026-07-06</div>
+        </div>
+        <div class="tier-banner-stats">
+          <div class="stat"><div class="stat-value">9</div><div class="stat-label">модулей</div></div>
+          <div class="stat"><div class="stat-value">~30</div><div class="stat-label">уроков</div></div>
+          <div class="stat"><div class="stat-value">~7 ч</div><div class="stat-label">хроно</div></div>
+          <div class="stat"><div class="stat-value">5+</div><div class="stat-label">готовых ниш</div></div>
+        </div>
+      </div>
+
+      <div class="tier-jump-nav">
+        <strong>Перейти к секции</strong>
+        <a href="#niche-marketplace">🆕 Niche Marketplace</a>
+        <a href="#p1">P1 Multi-tenant</a>
+        <a href="#p2">P2 Heartbeat</a>
+        <a href="#p3">P3 Auto-onboarding</a>
+        <a href="#p4">P4 Аналитика</a>
+        <a href="#p5">P5 CRM</a>
+        <a href="#p6">P6 Готовые ниши</a>
+        <a href="#p7">P7 Продавать</a>
+        <a href="#p8">P8 Шаблоны</a>
+        <a href="#p9">P9 → IMPL</a>
+      </div>
+
+      <h1>📍 Тариф PRO ($600) — НАЧАЛО</h1>
+      <p class="lead">
+        Цель: студент <strong>закрывает первого платного клиента</strong> на $1500–3000.
+        Ему открыт Niche Marketplace, он умеет загружать/выгружать ниши.
+      </p>
+
+      <h2 id="niche-marketplace">🆕 Главная новая фича PRO — Niche Marketplace</h2>
+      <p>После оплаты PRO в личном кабинете на <a href="https://token.lux-promo.com" target="_blank" rel="noopener">token.lux-promo.com/cabinet/niches</a> открывается <strong>витрина готовых ниш</strong>. Каждая = упакованный набор (persona + каталог + объекции + интеграции). Одной кнопкой импортируется в инстанс студента.</p>
+
+      <h3>Что внутри одного `.niche` файла</h3>
+      <pre><code>niche-realestate.niche/
+├── meta.yaml              ← версия, автор, лицензия, deps
+├── persona.py             ← TenantPersona
+├── catalog.json           ← структурированный каталог
+├── objections.md          ← 30+ возражений
+├── spin_questions.md      ← SPIN под нишу
+├── meddpicc.md            ← B2B квалификация
+├── cases.md               ← реальные кейсы
+├── tone.md                ← стилевые особенности
+├── cta_phrases.md         ← готовые CTA
+├── integrations/          ← нишевые API (например, Bitrix для риэлторов)
+├── prompts/               ← кастомные промпт-фрагменты
+└── media/                 ← фото товаров, видео-кейсы</code></pre>
+
+      <h3>3 способа установки в инстанс</h3>
+      <ul>
+        <li><strong>Через Telegram-бота:</strong> команда <code>/install niche-realestate</code> — за 1 минуту установлено и активно</li>
+        <li><strong>Через CLI:</strong> <code>sl-claw niche install ~/Downloads/niche-realestate-v1.2.3.niche</code></li>
+        <li><strong>Через Coolify:</strong> переменная <code>INSTALL_NICHES=realestate,construction</code> в env — при деплое подгружается автоматически</li>
+      </ul>
+
+      <h3>Выгрузка собственной настроенной ниши</h3>
+      <pre><code>sl-claw niche export my-tuned-realestate
+# → my-tuned-realestate-v1.0.0.niche</code></pre>
+
+      <p>Что даёт:</p>
+      <ul>
+        <li>Передать <code>.niche</code> своему клиенту (он установит у себя)</li>
+        <li>Сохранить копию для другого клиента в той же нише</li>
+        <li>(Q4 2026) Опубликовать в Marketplace и продавать (70%/30% split)</li>
+      </ul>
+
+      <h3>Витрина в личном кабинете</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Ниша</th>
+            <th>Цена</th>
+            <th>Статус</th>
+            <th>Действия</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>🏘 Real Estate</td><td>включена в PRO</td><td>✅ доступна</td><td>Скачать / Установить</td></tr>
+          <tr><td>🚧 Construction</td><td>включена в PRO</td><td>✅ доступна</td><td>Скачать / Установить</td></tr>
+          <tr><td>🛒 E-commerce</td><td>включена в PRO</td><td>✅ доступна</td><td>Скачать / Установить</td></tr>
+          <tr><td>🛠 Services</td><td>включена в PRO</td><td>✅ доступна</td><td>Скачать / Установить</td></tr>
+          <tr><td>📚 Education</td><td>включена в PRO</td><td>✅ доступна</td><td>Скачать / Установить</td></tr>
+          <tr><td>🏥 Clinics</td><td>$99 — отдельно</td><td>⚪ купить</td><td>Купить за $99</td></tr>
+          <tr><td>🍽 Restaurants</td><td>$79 — отдельно</td><td>⚪ купить</td><td>Купить за $79</td></tr>
+          <tr><td>💼 SaaS</td><td>$129 — отдельно</td><td>⚪ купить</td><td>Купить за $129</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Roadmap разработки Niche Marketplace</h3>
+      <ol>
+        <li><strong>2026-06-01:</strong> спецификация формата <code>.niche</code> (meta.yaml + структура)</li>
+        <li><strong>2026-06-08:</strong> CLI <code>sl-claw niche install/export</code></li>
+        <li><strong>2026-06-15:</strong> 5 базовых ниш упакованы в <code>.niche</code></li>
+        <li><strong>2026-06-22:</strong> Backend <code>marketplace-service</code> (FastAPI + S3)</li>
+        <li><strong>2026-06-29:</strong> Веб-кабинет с витриной и Install-кнопкой</li>
+        <li><strong>2026-07-06:</strong> 🚀 Запуск PRO с включённым Niche Marketplace</li>
+        <li><strong>2026-09-01:</strong> Phase 2 — UGC: PRO-юзеры публикуют свои ниши, 70%/30% split</li>
+      </ol>
+
+      <h2>Что разрабатываем</h2>
+      <ul>
+        <li>30 уроков (~7 часов) поверх 83 из CORE</li>
+        <li>Private repos: <code>sl-claw/pro</code> + 5× <code>sl-claw/niche-*</code></li>
+        <li>5 готовых <code>.niche</code> файлов в Niche Marketplace</li>
+        <li>Backend marketplace-service (FastAPI + S3 для хранения .niche)</li>
+        <li>CLI <code>sl-claw niche</code> с командами install/export/list/update/publish</li>
+        <li>Веб-кабинет на token.lux-promo.com/cabinet/niches</li>
+        <li>Шаблоны продажи: КП, договор, презентация (PPTX), скрипт звонка</li>
+        <li>2 групповых разбора в месяц с sales-coach (Zoom, 60 мин)</li>
+        <li>Видео-курс «Как продавать AI-агентов» (10 уроков по 15 мин)</li>
+        <li>Discord-каналы #pro-students + закрытый чат для топ-10</li>
+      </ul>
+
+      <h2>Что открывается студенту при покупке</h2>
+      <ul>
+        <li>🔓 Всё из CORE и MINI</li>
+        <li>🔓 Доступ к <code>sl-claw/pro</code> + всем <code>sl-claw/niche-*</code> репо</li>
+        <li>🔓 <strong>Niche Marketplace</strong> с 5 готовыми нишами + возможность купить отдельные</li>
+        <li>🔓 CLI <code>sl-claw niche</code> для импорта/экспорта</li>
+        <li>🔓 Vimeo playlist «Как продавать AI» (10 видео)</li>
+        <li>🔓 Папка с шаблонами договоров, КП, презентаций</li>
+        <li>🔓 Discord role <code>@pro-student</code> + <code>#pro-students</code> + закрытый чат</li>
+        <li>🔓 Приглашение на 2 групповых разбора в месяц</li>
+        <li>🔓 Реферальная программа: 20% с каждого клиента которого направил в IMPL</li>
+        <li>🔓 Купон <code>UPGRADE-IMPL</code> на $2000 (-$300, действует 30 дней)</li>
+      </ul>
+
+      <h2 id="p1">Модуль P1 — Multi-tenant архитектура <small>(4 урока, 50 мин)</small></h2>
+      <div class="module-block">
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P1.1</span><span class="lesson-title">Tenant registry: tenants.py + БД</span><span class="lesson-time">15 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Один сервер на 50 клиентов. TenantPersona + таблица niches. Code walk-through.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P1.2</span><span class="lesson-title">Изоляция памяти и каталога</span><span class="lesson-time">12 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">mem0 tenant-префикс + pgvector filter. Тест: 2 клиента не видят друг друга.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P1.3</span><span class="lesson-title">Per-chat overrides</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">chat_llm_map / chat_prompt_profile / chat_proactive_map.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P1.4</span><span class="lesson-title">Масштабирование на 50 клиентов</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Расчёт ресурсов. Hetzner CPX31. Когда шардировать.</div></article>
+      </div>
+
+      <h2 id="p2">Модуль P2 — Проактивные циклы <small>(3 урока, 35 мин)</small></h2>
+      <div class="module-block">
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P2.1 ★</span><span class="lesson-title">Heartbeat: AI пишет первой</span><span class="lesson-time">12 мин</span><span class="lesson-status featured">🌟 ключевой</span></header><div class="lesson-meta">+15% конверсии. Code walk-through heartbeat.py + A/B-тест.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P2.2</span><span class="lesson-title">Group nudge для групповых чатов</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Реплика при тишине. Профиль sell_at_all_costs.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P2.3</span><span class="lesson-title">Daily digest unknown questions</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Сводка топ-10 unknown в 9:00. /answer ID.</div></article>
+      </div>
+
+      <h2 id="p3">Модуль P3 — Auto-onboarding <small>(3 урока, 45 мин)</small></h2>
+      <div class="module-block">
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P3.1 ★</span><span class="lesson-title">/setdemo URL — wow-фича</span><span class="lesson-time">15 мин</span><span class="lesson-status featured">🌟 ключевой</span></header><div class="lesson-meta">Закрытие клиента на пресейле через live `/setdemo`. Видео реального звонка.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P3.2</span><span class="lesson-title">Crawler: trafilatura + PDF + Vision</span><span class="lesson-time">15 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Полный crawl с PDF и фото-распознаванием.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P3.3</span><span class="lesson-title">Persona generator через LLM</span><span class="lesson-time">12 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Автогенерация TenantPersona из crawl-данных через Sonnet.</div></article>
+      </div>
+
+      <h2 id="p4">Модуль P4 — Аналитика воронки <small>(4 урока, 50 мин)</small></h2>
+      <div class="module-block">
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P4.1</span><span class="lesson-title">Streamlit-дашборд</span><span class="lesson-time">15 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Локальный + прикручиваем к Coolify. Сегменты по каналу/нише/времени.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P4.2</span><span class="lesson-title">SQL-запросы по конверсиям</span><span class="lesson-time">12 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">5 готовых запросов. Conversion 1→7. Drop-off по стадиям.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P4.3</span><span class="lesson-title">Lead scoring 0–100</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Алгоритм: стадия × факторы. Сохранение в Lead.score.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P4.4</span><span class="lesson-title">Уведомления на горячих переходах</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Push админу на стадиях 6/7. Slack/Telegram.</div></article>
+      </div>
+
+      <h2 id="p5">Модуль P5 — Все CRM <small>(4 урока, 50 мин)</small></h2>
+      <div class="module-block">
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P5.1</span><span class="lesson-title">NetHunt / Creatio</span><span class="lesson-time">15 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Украинские CRM. Mapping полей.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P5.2</span><span class="lesson-title">Salesforce / Zoho</span><span class="lesson-time">15 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Глобальные CRM. OAuth для Salesforce.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P5.3</span><span class="lesson-title">Custom CRM через webhook</span><span class="lesson-time">12 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Generic JSON webhook + HMAC + retry.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P5.4</span><span class="lesson-title">Двусторонняя синхронизация</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Polling статусов из CRM в нашу БД.</div></article>
+      </div>
+
+      <h2 id="p6">Модуль P6 — Готовые ниши через Niche Marketplace 🆕 <small>(5 уроков, 90 мин)</small></h2>
+      <div class="module-block">
+        <p style="margin: 0 0 14px 0; font-size: 0.95rem; color: var(--text-muted);">Здесь студент <strong>впервые видит Niche Marketplace в действии</strong>. Каждый урок = разбор одной готовой ниши + установка через <code>/install</code>.</p>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P6.1</span><span class="lesson-title">niche-realestate</span><span class="lesson-time">15 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">/install niche-realestate → за 1 мин установлено. 80 объектов, 30 объекций «налоги», «ипотека». Bitrix24 интеграция.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P6.2</span><span class="lesson-title">niche-construction</span><span class="lesson-time">20 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Расчёт сметы в чате. Vision на PDF-проектах. 50+ объекций про сроки и гарантии.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P6.3</span><span class="lesson-title">niche-ecommerce</span><span class="lesson-time">20 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">WooCommerce/Shopify webhook (товары пуллятся). Abandoned cart recovery. Recommendation engine.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P6.4</span><span class="lesson-title">niche-services</span><span class="lesson-time">15 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Booking-логика. Расчёт стоимости проекта. Calendly интеграция.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P6.5</span><span class="lesson-title">niche-edu</span><span class="lesson-time">15 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Warmup-последовательность для холодных. Drip-campaign на 7 писем. GetCourse/Tilda.</div></article>
+      </div>
+
+      <h2 id="p7">Модуль P7 — Как продавать AI-агентов ★ главная ценность PRO <small>(4 урока, 80 мин)</small></h2>
+      <div class="module-block">
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P7.1</span><span class="lesson-title">Кому продавать: карта ниш</span><span class="lesson-time">20 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Карта ниш. Критерии хорошего клиента. Где искать (LinkedIn, OLX, FB-группы). 20 имён + 5 cold-сообщений.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P7.2</span><span class="lesson-title">Аудит бизнеса: 15 вопросов</span><span class="lesson-time">20 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">5 блоков: продукт/клиент/каналы/команда/цели. Notion-template + скрипт ведения звонка.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P7.3 ★</span><span class="lesson-title">Демо за 1 час: live /setdemo</span><span class="lesson-time">20 мин</span><span class="lesson-status featured">🌟 ключевой</span></header><div class="lesson-meta">Структура звонка: intro / аудит / live-демо / closing. Реальная запись звонка.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P7.4</span><span class="lesson-title">Закрытие сделки и onboarding</span><span class="lesson-time">20 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Договор. 50% предоплата. SOPs IMPL preview. Когда передавать в IMPL.</div></article>
+      </div>
+
+      <h2 id="p8">Модуль P8 — Шаблоны KP, договоров, презентаций <small>(3 урока, 45 мин)</small></h2>
+      <div class="module-block">
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P8.1</span><span class="lesson-title">Коммерческое предложение</span><span class="lesson-time">15 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Структура: проблема → решение → план → цена → условия. Готовый PDF-шаблон в Notion.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P8.2</span><span class="lesson-title">Договор на внедрение</span><span class="lesson-time">15 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">ФОП vs ТОВ. NDA. DOCX в кабинете.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P8.3</span><span class="lesson-title">Презентация для пресейла (PPTX)</span><span class="lesson-time">15 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">12 слайдов: проблема → решение → демо → цены → кейсы → next steps.</div></article>
+      </div>
+
+      <h2 id="p9">Модуль P9 — 🎯 Лимиты PRO → путь к IMPL ($2 000) <small>(4 урока, 40 мин)</small></h2>
+      <div class="module-block">
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P9.1</span><span class="lesson-title">Когда стоит идти на implementation</span><span class="lesson-time">8 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Self vs SL-CLAW под ключ. Кому имеет смысл рекомендовать IMPL.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P9.2</span><span class="lesson-title">ЦА IMPL + реферальная программа</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Профиль идеального клиента IMPL. Реферал PRO → IMPL = 20% = $400 с одной сделки.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P9.3</span><span class="lesson-title">Что входит в $2 000</span><span class="lesson-time">12 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">8 SOP-процессов. 1-2 недели. Что делает SL-CLAW vs клиент.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">P9.4 🎯</span><span class="lesson-title">Офер UPGRADE-IMPL -$300</span><span class="lesson-time">10 мин</span><span class="lesson-status featured">🎯 апсейл</span></header><div class="lesson-meta">$2000 → $1700, рассрочка 50/50, Q&A.</div></article>
+      </div>
+
+      <p>📍 <strong>Тариф PRO — КОНЕЦ. Апсейл в IMPL ↓</strong></p>
+
+      <div class="pager">
+        <a href="tier-core.html">
+          <small>← CORE</small>
+          $300
+        </a>
+        <a href="tier-impl.html" class="next">
+          <small>IMPL →</small>
+          $2 000
+        </a>
+      </div>
+
+      <p style="margin-top: 32px; color: var(--text-muted); font-size: 0.9rem;">
+        📄 Подробные сценарии + полная спецификация Niche Marketplace: <a href="https://github.com/sl-claw/sl_claw_roadmapp/blob/main/DEV_PLAN_PRO.md" target="_blank" rel="noopener">DEV_PLAN_PRO.md</a> в репо.
+      </p>
+
+    </main>
+
+    <footer>
+      SL_CLAW • <a href="index.html">Главная</a> • <a href="https://github.com/sl-claw/sl_claw_roadmapp">GitHub</a>
+    </footer>
+
+  </div>
+</body>
+</html>

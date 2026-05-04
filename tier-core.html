@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tier CORE ($300) — Roadmap разработки SL_CLAW</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="logo"><a href="index.html">SL_<span class="accent">CLAW</span></a></div>
+      <nav>
+        <a href="index.html">Roadmap</a>
+        <a href="tier-mini.html">MINI</a>
+        <a href="tier-core.html" class="active">CORE</a>
+        <a href="tier-pro.html">PRO</a>
+        <a href="tier-impl.html">IMPL</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <div class="tier-banner core">
+        <div class="tier-banner-info">
+          <div class="tier-price">$300</div>
+          <div class="tier-name">CORE · Соберите сами (хит)</div>
+          <div class="tier-desc">Студент сам собирает рабочего AI-продавца под свой бизнес и запускает в проде. ETA: 2026-06-15</div>
+        </div>
+        <div class="tier-banner-stats">
+          <div class="stat"><div class="stat-value">14</div><div class="stat-label">модулей</div></div>
+          <div class="stat"><div class="stat-value">~83</div><div class="stat-label">урока</div></div>
+          <div class="stat"><div class="stat-value">~12 ч</div><div class="stat-label">хроно</div></div>
+          <div class="stat"><div class="stat-value">⚪</div><div class="stat-label">в плане</div></div>
+        </div>
+      </div>
+
+      <div class="tier-jump-nav">
+        <strong>Перейти к модулю</strong>
+        <a href="#c1">C1 Категория</a>
+        <a href="#c2">C2 Окружение</a>
+        <a href="#c3">C3 Установка</a>
+        <a href="#c4">C4 Архитектура</a>
+        <a href="#c5">C5 LLM</a>
+        <a href="#c6">C6 Промпт</a>
+        <a href="#c7">C7 Ниша</a>
+        <a href="#c8">C8 Каналы</a>
+        <a href="#c9">C9 Скрипты</a>
+        <a href="#c10">C10 Тесты</a>
+        <a href="#c11">C11 Деплой</a>
+        <a href="#c12">C12 Передача</a>
+        <a href="#c13">C13 CRM</a>
+        <a href="#c14">C14 → PRO</a>
+      </div>
+
+      <h1>📍 Тариф CORE ($300) — НАЧАЛО</h1>
+      <p class="lead">
+        Цель тарифа: студент сам собирает рабочего AI-продавца под свой бизнес и запускает в проде на Telegram + сайте.
+        После — у него работающий бот, реально приносящий лидов. Конверсия в PRO — 22% от прошедших.
+      </p>
+
+      <h2>Что разрабатываем</h2>
+      <ul>
+        <li>14 модулей × ~83 урока (~12 часов хронометража)</li>
+        <li>Полные раскадровки уроков с тайм-кодами</li>
+        <li>Шаблоны промптов AI-продавца на ru/uk/en</li>
+        <li>База возражений и контр-аргументов (50+ типовых)</li>
+        <li>Скрипты SPIN/MEDDPICC + кейсы успешных закрытий</li>
+        <li>Подробная инструкция деплоя на VPS</li>
+        <li>Чеклист тестирования: 30 тест-кейсов</li>
+        <li>Создание <code>sl-claw/starter</code> private repo с modules/</li>
+        <li>installer/install.sh + лицензия</li>
+        <li>Лендинг /buy/core + Discord-канал #core-students</li>
+        <li>Ежемесячные апдейты курса (6 месяцев включено)</li>
+      </ul>
+
+      <h2>Что открывается студенту при покупке</h2>
+      <ul>
+        <li>🔓 Всё из MINI</li>
+        <li>🔓 Доступ к private-репо <code>sl-claw/starter</code> через GitHub Team</li>
+        <li>🔓 Vimeo playlist 14 модулей + раскадровки</li>
+        <li>🔓 Папка с шаблонами промптов и скриптов</li>
+        <li>🔓 Discord role <code>@core-student</code> + канал <code>#core-students</code></li>
+        <li>🔓 Купон <code>UPGRADE-PRO</code> на тариф $600 (действует 14 дней)</li>
+      </ul>
+
+      <h2 id="c1">Модуль C1 — Что такое AI-продавец и зачем он бизнесу <small>(4 урока, 60 мин)</small></h2>
+      <div class="module-block">
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C1.1</span><span class="lesson-title">Категория продукта и юнит-экономика</span><span class="lesson-time">15 мин</span><span class="lesson-status planned">⚪ план</span></header>
+          <div class="lesson-meta"><strong>Цель:</strong> понять категорию + финансовый смысл. <strong>Сценарий:</strong> $1500/мес vs $30/мес → 24×7 vs 8 ч/сут → ROI 5×, карта окупаемости. <strong>Студент:</strong> расчёт под свою нишу.</div>
+        </article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C1.2</span><span class="lesson-title">AI-продавец vs ChatGPT vs менеджер</span><span class="lesson-time">12 мин</span><span class="lesson-status planned">⚪ план</span></header>
+          <div class="lesson-meta"><strong>Цель:</strong> почему «GPT в виджете» не работает. <strong>Сценарий:</strong> таблица сравнения 6 параметров + кейс провала «GPT на сайте».</div>
+        </article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C1.3</span><span class="lesson-title">Что мы построим за курс</span><span class="lesson-time">15 мин</span><span class="lesson-status planned">⚪ план</span></header>
+          <div class="lesson-meta"><strong>Цель:</strong> wow-демо финального продукта. <strong>Сценарий:</strong> скринкаст: web → TG → WA → IG → voice → оплата → CRM. Карта 14 модулей.</div>
+        </article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C1.4</span><span class="lesson-title">Как использовать курс эффективно</span><span class="lesson-time">8 мин</span><span class="lesson-status planned">⚪ план</span></header>
+          <div class="lesson-meta"><strong>Цель:</strong> установить ритуал «1 модуль/день = бот в проде через 2 недели». <strong>Сценарий:</strong> Discord, чеклист готовности.</div>
+        </article>
+      </div>
+
+      <h2 id="c2">Модуль C2 — Подготовка окружения <small>(6 уроков, 70 мин)</small></h2>
+      <div class="module-block">
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C2.1</span><span class="lesson-title">Системные требования и pyenv</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Чистая установка Python 3.12 через pyenv без конфликтов с системным Python.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C2.2</span><span class="lesson-title">Docker Desktop</span><span class="lesson-time">8 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Docker запущен, контейнер на пальцах, проверка `docker compose version`.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C2.3</span><span class="lesson-title">VS Code + расширения</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">VS Code + Python + Docker + GitLens. Команда `code .` в PATH.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C2.4</span><span class="lesson-title">Git и GitHub</span><span class="lesson-time">15 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">SSH-ключ → clone, status, add, commit, push, fork.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C2.5</span><span class="lesson-title">Регистрация API-ключей (lux-token + альтернатива)</span><span class="lesson-time">15 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">lux-token (главный путь) + раздельные провайдеры (для понимания внутренностей).</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C2.6</span><span class="lesson-title">Структура проекта SL-CLAW</span><span class="lesson-time">12 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Walk through всех папок и ключевых файлов.</div></article>
+      </div>
+
+      <h2 id="c3">Модуль C3 — Установка starter и первый запуск <small>(5 уроков, 60 мин)</small></h2>
+      <div class="module-block">
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C3.1</span><span class="lesson-title">Клонирование starter поверх core</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Студент впервые видит модульную архитектуру. Структура `modules/` — channels, payments, crm, prompts_v2.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C3.2</span><span class="lesson-title">installer/install.sh — что он делает</span><span class="lesson-time">12 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Построчный разбор установщика, как откатить.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C3.3</span><span class="lesson-title">.env-конфигурация полная</span><span class="lesson-time">15 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Все 40+ переменных + флаги MODULES_ENABLED.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C3.4 ★</span><span class="lesson-title">Первый запуск с полным набором каналов</span><span class="lesson-time">15 мин</span><span class="lesson-status featured">🌟 ключевой</span></header><div class="lesson-meta">5 каналов одновременно: web + TG + WA + IG + voice. Wow-момент CORE.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C3.5</span><span class="lesson-title">Тест-чеклист после запуска</span><span class="lesson-time">8 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">5 проверок что всё работает корректно.</div></article>
+      </div>
+
+      <h2 id="c4">Модуль C4 — Разбор архитектуры <small>(7 уроков, 90 мин)</small></h2>
+      <div class="module-block">
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C4.1 ★</span><span class="lesson-title">LangGraph на пальцах</span><span class="lesson-time">15 мин</span><span class="lesson-status featured">🌟 ключевой</span></header><div class="lesson-meta">«AI = один промпт» vs «AI = граф узлов». Параллельный fan-out.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C4.2</span><span class="lesson-title">7 стадий воронки и SalesGPT-методология</span><span class="lesson-time">12 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">stages.py разбор + диаграмма переходов.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C4.3</span><span class="lesson-title">Stage analyzer и fast-path</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Как Haiku-вызов экономит секунду на каждом ответе.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C4.4</span><span class="lesson-title">Tools в LangChain (ReAct pattern)</span><span class="lesson-time">15 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Tool calling, как агент решает что вызвать.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C4.5 ★</span><span class="lesson-title">RAG: multi-query + LLM re-rank</span><span class="lesson-time">18 мин</span><span class="lesson-status featured">🌟 ключевой</span></header><div class="lesson-meta">+30% точности vs простой vector search. Source weights.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C4.6</span><span class="lesson-title">mem0: долговременная память</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Cross-channel память на демо.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C4.7 ⚠</span><span class="lesson-title">Multi-tenant — preview к PRO</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚠️ teaser PRO</span></header><div class="lesson-meta">Концепция, базовая версия. Полная — в PRO.</div></article>
+      </div>
+
+      <h2 id="c5">Модуль C5 — Подключение AI-моделей и lux-token <small>(4 урока, 40 мин)</small></h2>
+      <div class="module-block">
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C5.1</span><span class="lesson-title">Claude vs GPT vs Gemini для продаж</span><span class="lesson-time">12 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Какая модель когда. Демо одного промпта на 3 моделях.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C5.2</span><span class="lesson-title">Auto-fallback и стабильность</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Claude → GPT при rate-limit. Симуляция отключения.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C5.3</span><span class="lesson-title">Per-chat LLM override</span><span class="lesson-time">8 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Команда `/setllm` — Sonnet для VIP, mini для остальных.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C5.4</span><span class="lesson-title">Цена и оптимизация</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Trivial-msg fast-path, кэш embeddings, экономия 30%.</div></article>
+      </div>
+
+      <h2 id="c6">Модуль C6 — Настройка промпта продавца <small>(6 уроков, 80 мин)</small></h2>
+      <div class="module-block">
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C6.1 ★</span><span class="lesson-title">Анатомия системного промпта</span><span class="lesson-time">15 мин</span><span class="lesson-status featured">🌟 ключевой</span></header><div class="lesson-meta">Построчный разбор prompts.py.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C6.2 ★</span><span class="lesson-title">Запреты фраз-сливов</span><span class="lesson-time">12 мин</span><span class="lesson-status featured">🌟 ключевой</span></header><div class="lesson-meta">Главный принцип: AI закрывает САМ. Демо: ломаем бота — он не пасует.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C6.3</span><span class="lesson-title">Запрет отправки на сайт</span><span class="lesson-time">8 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Почему «зайди на сайт» — табу.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C6.4</span><span class="lesson-title">Грамматический род и натуральность</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Женский род. Особенности ru/uk.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C6.5</span><span class="lesson-title">Промпт-профили: core / sell_at_all_costs / consultative</span><span class="lesson-time">15 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">3 стиля. `/setprofile` команда.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C6.6</span><span class="lesson-title">Tone of voice — извлечение из сайта</span><span class="lesson-time">12 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Crawl → LLM → tone_notes автоматически.</div></article>
+      </div>
+
+      <h2 id="c7">Модуль C7 — Обучение под нишу <small>(9 уроков, 100 мин)</small></h2>
+      <div class="module-block">
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C7.1</span><span class="lesson-title">Что такое ниша (tenant)</span><span class="lesson-time">8 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Ниша = persona + knowledge + tools-config.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C7.2</span><span class="lesson-title">Создание ниши вручную (tenants.py)</span><span class="lesson-time">12 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">TenantPersona поля + CHAT_TENANT_MAP.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C7.3 ⚠</span><span class="lesson-title">Создание ниши через БД и /setdemo</span><span class="lesson-time">15 мин</span><span class="lesson-status planned">⚠️ teaser PRO</span></header><div class="lesson-meta">Базовая версия. Crawl + PDF + Vision — в PRO.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C7.4</span><span class="lesson-title">Каталог товаров: формат и загрузка</span><span class="lesson-time">12 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">JSON формат, ingest_catalog.py, проверка через RAG.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C7.5</span><span class="lesson-title">Markdown факты: bulk_train.py</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Блоки через `\n---\n`, идемпотентность.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C7.6 ⚠</span><span class="lesson-title">Crawl сайта: ingest_site.py</span><span class="lesson-time">12 мин</span><span class="lesson-status planned">⚠️ teaser PRO</span></header><div class="lesson-meta">Базовый crawl. PDF + Vision — в PRO.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C7.7</span><span class="lesson-title">Обучение в Telegram через /train</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Live-обучение, /endtrain, проверка через RAG.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C7.8</span><span class="lesson-title">Обработка unknown через /answer</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Daily digest + /answer ID + вес manual 1.5×.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C7.9</span><span class="lesson-title">Source weights и ранжирование RAG</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Зачем `/train` важнее crawl. Переопределение весов.</div></article>
+      </div>
+
+      <h2 id="c8">Модуль C8 — Подключение каналов <small>(6 уроков, 80 мин)</small></h2>
+      <div class="module-block">
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C8.1</span><span class="lesson-title">Web-чат и виджет на сайт</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">WS endpoint, минимальный JS-виджет, стилизация под бренд.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C8.2</span><span class="lesson-title">Telegram bot + setWebhook</span><span class="lesson-time">15 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">BotFather → токен → setWebhook → тест.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C8.3</span><span class="lesson-title">WhatsApp Cloud API (Meta)</span><span class="lesson-time">20 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Meta Developer → Phone ID + Token + Verify → подписка messages.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C8.4</span><span class="lesson-title">Instagram Direct</span><span class="lesson-time">15 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Meta Developer → Page Token → webhook.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C8.5</span><span class="lesson-title">Голос: Pipecat + Deepgram + ElevenLabs</span><span class="lesson-time">15 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Daily.co → STT → TTS → endpoint /voice/connect → тест звонка.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C8.6 ⚠</span><span class="lesson-title">Email + SMS канал</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚠️ teaser PRO</span></header><div class="lesson-meta">Базово. Cold-outreach последовательности — в PRO.</div></article>
+      </div>
+
+      <h2 id="c9">Модуль C9 — Скрипты продаж и обработка возражений <small>(5 уроков, 60 мин)</small></h2>
+      <div class="module-block">
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C9.1</span><span class="lesson-title">SPIN: ситуация → проблема → последствие → выгода</span><span class="lesson-time">12 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Готовый шаблон + адаптация студента под свою нишу.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C9.2</span><span class="lesson-title">MEDDPICC для B2B</span><span class="lesson-time">15 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Расшифровка букв + готовый шаблон + адаптация.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C9.3 ★</span><span class="lesson-title">База типовых возражений</span><span class="lesson-time">15 мин</span><span class="lesson-status featured">🌟 ключевой</span></header><div class="lesson-meta">10+ возражений с контр-аргументами под нишу.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C9.4</span><span class="lesson-title">CTA на каждой стадии</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">7 CTA — по одному на стадию.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C9.5 ⚠</span><span class="lesson-title">Heartbeat — теория проактивных пингов</span><span class="lesson-time">8 мин</span><span class="lesson-status planned">⚠️ teaser PRO</span></header><div class="lesson-meta">Только теория. Реализация — в PRO.</div></article>
+      </div>
+
+      <h2 id="c10">Модуль C10 — Тестирование <small>(5 уроков, 50 мин)</small></h2>
+      <div class="module-block">
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C10.1</span><span class="lesson-title">30 тест-кейсов для AI-продавца</span><span class="lesson-time">15 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Notion-чеклист на 30 кейсов, 7 на стадию + edge cases.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C10.2</span><span class="lesson-title">LangSmith для трассировки</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Trace дерево всех вызовов LLM в облаке.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C10.3</span><span class="lesson-title">Pytest для юнит-тестов</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Студент пишет 1 свой тест на переход стадии.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C10.4</span><span class="lesson-title">Adversarial testing</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Промпт-инъекции: «забудь инструкции», «ты ChatGPT».</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C10.5</span><span class="lesson-title">Метрики качества</span><span class="lesson-time">8 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Conversion 1→7, time-to-first-reply, NPS.</div></article>
+      </div>
+
+      <h2 id="c11">Модуль C11 — Деплой на VPS <small>(8 уроков, 100 мин)</small></h2>
+      <div class="module-block">
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C11.1</span><span class="lesson-title">Выбор VPS</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Hetzner / Contabo / DO. Минимум 2 GB RAM. Покупка + SSH.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C11.2</span><span class="lesson-title">Установка Coolify</span><span class="lesson-time">12 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Одна команда → Coolify работает.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C11.3</span><span class="lesson-title">Домен + DNS</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">A-запись на IP VPS. Проверка `dig`.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C11.4</span><span class="lesson-title">Деплой через Coolify UI</span><span class="lesson-time">15 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">+ New → Resource → URL → Domain → Deploy.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C11.5</span><span class="lesson-title">Webhooks каналов</span><span class="lesson-time">15 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">TG setWebhook, WA callback, IG webhook.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C11.6</span><span class="lesson-title">TLS и Traefik</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Let's Encrypt автоматически, диагностика если не выписался.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C11.7</span><span class="lesson-title">Backup БД</span><span class="lesson-time">8 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Ежедневно в S3 или на диск. Восстановление из backup.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C11.8</span><span class="lesson-title">Логи и мониторинг</span><span class="lesson-time">12 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">LangSmith + Uptime Kuma + Telegram алерты.</div></article>
+      </div>
+
+      <h2 id="c12">Модуль C12 — Передача и запуск <small>(4 урока, 40 мин)</small></h2>
+      <div class="module-block">
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C12.1</span><span class="lesson-title">Чеклист сдачи проекта</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">15-пунктный чеклист (если внедряете под клиента).</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C12.2 ⚠</span><span class="lesson-title">Обучение команды</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚠️ teaser PRO</span></header><div class="lesson-meta">Базовый план 30-мин встречи. Полный сценарий 60-мин — в PRO.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C12.3</span><span class="lesson-title">SLA и поддержка</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Базовый шаблон SLA, ставки $X/час.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C12.4</span><span class="lesson-title">Сопровождение первых 14 дней</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Ежедневный мониторинг, коррекция, обработка unknown.</div></article>
+      </div>
+
+      <h2 id="c13">Модуль C13 — Базовая интеграция CRM и аналитика <small>(6 уроков, 70 мин)</small></h2>
+      <div class="module-block">
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C13.1 ⚠</span><span class="lesson-title">KeyCRM интеграция</span><span class="lesson-time">12 мин</span><span class="lesson-status planned">⚠️ teaser PRO</span></header><div class="lesson-meta">Одна CRM. Полный набор (12 CRM) — в PRO.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C13.2</span><span class="lesson-title">HubSpot интеграция</span><span class="lesson-time">12 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">API key → save_lead → проверка карточки.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C13.3</span><span class="lesson-title">Pipedrive интеграция</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">API token + domain.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C13.4</span><span class="lesson-title">Базовая аналитика воронки</span><span class="lesson-time">15 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">5 готовых SQL-запросов, conversion 1→7.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C13.5</span><span class="lesson-title">Vision: фото от клиентов</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Claude Vision. Где полезно: спецтехника, недвижимость.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C13.6</span><span class="lesson-title">Голосовая Anna полная настройка</span><span class="lesson-time">12 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Voice ID, Pipecat tuning, тестовый звонок.</div></article>
+      </div>
+
+      <h2 id="c14">Модуль C14 — 🎯 Лимиты CORE → путь к PRO ($600) <small>(8 уроков, 90 мин)</small></h2>
+      <div class="module-block">
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C14.1</span><span class="lesson-title">Поздравление и кейсы выпускников</span><span class="lesson-time">12 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">3 кейса + Discord #core-graduates.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C14.2 ★</span><span class="lesson-title">Лимит 1: один клиент vs продажа клиентам</span><span class="lesson-time">15 мин</span><span class="lesson-status featured">🌟 ключевой</span></header><div class="lesson-meta">Multi-tenant — главная фича PRO. Демо: один сервер обслуживает 10 разных бизнесов.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C14.3</span><span class="lesson-title">Лимит 2: проактивный AI (heartbeat)</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Кейс +15% конверсии. Без heartbeat клиенты молча уходят.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C14.4 ★</span><span class="lesson-title">Лимит 3: auto-onboarding по URL</span><span class="lesson-time">15 мин</span><span class="lesson-status featured">🌟 ключевой</span></header><div class="lesson-meta">`/setdemo URL` за 2 мин — wow для пресейла.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C14.5</span><span class="lesson-title">Лимит 4: готовые ниши</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">5 ниш в Niche Marketplace.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C14.6</span><span class="lesson-title">Лимит 5: шаблоны для пресейла</span><span class="lesson-time">12 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">КП, договор, презентация, скрипт звонка.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C14.7</span><span class="lesson-title">Кейсы агентств — $1500–3000 на внедрении</span><span class="lesson-time">10 мин</span><span class="lesson-status planned">⚪ план</span></header><div class="lesson-meta">Юнит-экономика агентского пути.</div></article>
+        <article class="lesson"><header class="lesson-head"><span class="lesson-id">C14.8 🎯</span><span class="lesson-title">Офер PRO с купоном UPGRADE-PRO -25%</span><span class="lesson-time">15 мин</span><span class="lesson-status featured">🎯 апсейл</span></header><div class="lesson-meta">$600 → $450 для CORE-выпускников на 14 дней. Q&A.</div></article>
+      </div>
+
+      <p>📍 <strong>Тариф CORE — КОНЕЦ. Апсейл в PRO ↓</strong></p>
+
+      <div class="callout">
+        <strong>Знаки в карточках уроков</strong>
+        <p>★ — ключевой урок (драйвер ценности или конверсии)<br>
+        🌟 — особенно важно записать качественно<br>
+        🎯 — урок с апселл-офером<br>
+        ⚠️ teaser PRO — урок упирается в лимит и анонсирует PRO</p>
+      </div>
+
+      <div class="pager">
+        <a href="tier-mini.html">
+          <small>← MINI</small>
+          $25
+        </a>
+        <a href="tier-pro.html" class="next">
+          <small>PRO →</small>
+          $600
+        </a>
+      </div>
+
+      <p style="margin-top: 32px; color: var(--text-muted); font-size: 0.9rem;">
+        📄 Подробные сценарии: <a href="https://github.com/sl-claw/sl_claw_roadmapp/blob/main/DEV_PLAN_CORE.md" target="_blank" rel="noopener">DEV_PLAN_CORE.md</a> в репо.
+      </p>
+
+    </main>
+
+    <footer>
+      SL_CLAW • <a href="index.html">Главная</a> • <a href="https://github.com/sl-claw/sl_claw_roadmapp">GitHub</a>
+    </footer>
+
+  </div>
+</body>
+</html>

@@ -461,6 +461,198 @@ pre code {
   .dev-tiers { grid-template-columns: 1fr; }
 }
 
+/* ========== Lesson cards (для tier-страниц) ========== */
+
+.module-block {
+  margin: 32px 0;
+  padding: 24px;
+  background: var(--bg-soft);
+  border-radius: 14px;
+  border: 1px solid var(--border);
+}
+
+.module-block h3 {
+  margin-top: 0;
+  margin-bottom: 18px;
+}
+
+.lesson {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 10px;
+  transition: border-color 0.15s;
+}
+
+.lesson:hover {
+  border-color: var(--primary);
+}
+
+.lesson-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.lesson-id {
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.lesson-title {
+  font-weight: 700;
+  font-size: 1.02rem;
+  color: var(--text);
+  flex: 1;
+  min-width: 200px;
+}
+
+.lesson-time {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.lesson-status {
+  font-size: 0.75rem;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.lesson-status.done       { background: var(--success-bg);  color: #065f46; }
+.lesson-status.progress   { background: #dbeafe;            color: #1e40af; }
+.lesson-status.planned    { background: var(--bg-soft);     color: var(--text-muted); border: 1px solid var(--border); }
+.lesson-status.blocked    { background: var(--danger-bg);   color: #991b1b; }
+.lesson-status.featured   { background: #fef9c3;            color: #854d0e; }
+
+.lesson-meta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.lesson-meta strong {
+  color: var(--text);
+}
+
+.lesson-meta a {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.tier-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 22px 26px;
+  border-radius: 14px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.tier-banner.mini { background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); }
+.tier-banner.core { background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); }
+.tier-banner.pro  { background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%); }
+.tier-banner.impl { background: linear-gradient(135deg, #fef9c3 0%, #fde68a 100%); }
+
+.tier-banner-info {
+  flex: 1;
+  min-width: 240px;
+}
+
+.tier-banner-info .tier-price {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.tier-banner-info .tier-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-top: 4px;
+}
+
+.tier-banner-info .tier-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+.tier-banner-stats {
+  display: flex;
+  gap: 24px;
+  font-size: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.tier-banner-stats .stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.tier-banner-stats .stat-value {
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--text);
+  line-height: 1;
+}
+
+.tier-banner-stats .stat-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 4px;
+}
+
+.tier-jump-nav {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin: 24px 0;
+  font-size: 0.92rem;
+}
+
+.tier-jump-nav strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.tier-jump-nav a {
+  display: inline-block;
+  margin-right: 16px;
+  margin-bottom: 4px;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.tier-jump-nav a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .tier-banner { flex-direction: column; align-items: flex-start; }
+  .tier-banner-stats { gap: 16px; }
+}
+
 /* ========== Pricing tier cards (старые, оставляем для совместимости) ========== */
 
 .tiers {

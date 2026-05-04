@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tier MINI ($25) — Roadmap разработки SL_CLAW</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="logo"><a href="index.html">SL_<span class="accent">CLAW</span></a></div>
+      <nav>
+        <a href="index.html">Roadmap</a>
+        <a href="tier-mini.html" class="active">MINI</a>
+        <a href="tier-core.html">CORE</a>
+        <a href="tier-pro.html">PRO</a>
+        <a href="tier-impl.html">IMPL</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <div class="tier-banner mini">
+        <div class="tier-banner-info">
+          <div class="tier-price">$25</div>
+          <div class="tier-name">MINI · Распаковка / вход в воронку</div>
+          <div class="tier-desc">Превратить $0-зрителя в $300-покупателя через wow-эффект локального запуска. ETA готовности: 2026-05-18</div>
+        </div>
+        <div class="tier-banner-stats">
+          <div class="stat"><div class="stat-value">7</div><div class="stat-label">уроков</div></div>
+          <div class="stat"><div class="stat-value">~90 мин</div><div class="stat-label">хроно</div></div>
+          <div class="stat"><div class="stat-value">🟡</div><div class="stat-label">в разработке</div></div>
+        </div>
+      </div>
+
+      <div class="tier-jump-nav">
+        <strong>Перейти к уроку</strong>
+        <a href="#m1-1">M1.1 Категория</a>
+        <a href="#m1-2">M1.2 Машина</a>
+        <a href="#m1-3">M1.3 Клонирование</a>
+        <a href="#m1-4">M1.4 lux-token</a>
+        <a href="#m1-5">M1.5 Запуск</a>
+        <a href="#m1-6">M1.6 Каталог</a>
+        <a href="#m1-7">M1.7 Апселл</a>
+      </div>
+
+      <h1>📍 Тариф MINI ($25) — НАЧАЛО</h1>
+      <p class="lead">
+        Цель тарифа: студент <strong>запускает core локально</strong> → видит wow-эффект → понимает лимиты ядра →
+        получает купон UPGRADE-20 на CORE со скидкой 20% на 7 дней. Конверсия в CORE — 30%.
+      </p>
+
+      <h2>Что разрабатываем</h2>
+      <ul>
+        <li>7 видео-уроков на Vimeo private (общий хронометраж ~90 мин)</li>
+        <li>PDF-конспект к каждому уроку (7 файлов)</li>
+        <li>Лендинг на /buy/mini с чекаутом Lemon Squeezy</li>
+        <li>Discord-сервер + канал #mini-students</li>
+        <li>Welcome-email последовательность из 3 писем</li>
+        <li>Финальный апселл-баннер на $300 со скидкой -20% (купон с 7-дневным таймером)</li>
+      </ul>
+
+      <h2>Что открывается студенту при покупке</h2>
+      <ul>
+        <li>🔓 Доступ к репо <code>sl-claw/core</code> (он public — закладка в кабинете)</li>
+        <li>🔓 Vimeo playlist с 7 уроками</li>
+        <li>🔓 PDF-конспекты</li>
+        <li>🔓 Discord role <code>@mini-graduate</code> + канал <code>#mini-students</code></li>
+        <li>🔓 Купон <code>UPGRADE-20</code> на CORE (действует 7 дней)</li>
+      </ul>
+
+      <h2>Уроки</h2>
+
+      <article id="m1-1" class="lesson">
+        <header class="lesson-head">
+          <span class="lesson-id">M1.1</span>
+          <span class="lesson-title">Что такое AI-продавец и как он работает</span>
+          <span class="lesson-time">8 мин</span>
+          <span class="lesson-status progress">🟡 в разработке</span>
+        </header>
+        <div class="lesson-meta">
+          <strong>Цель:</strong> студент за 8 мин понимает категорию (sales-движок, не «GPT-обёртка») и видит wow-демо.<br>
+          <strong>Сценарий:</strong> face cam hook → слайд архитектуры → скринкаст рабочего бота через 5 каналов → таблица AI vs ChatGPT vs менеджер → кейсы +30% конверсии.<br>
+          <strong>Студент:</strong> смотрит, в конце записывает 1 свою нишу.<br>
+          <strong>Результат:</strong> wow + мотивация продолжать.<br>
+          <strong>→ M1.2:</strong> «Ставим базовые инструменты — Python, Docker, VS Code.»
+        </div>
+      </article>
+
+      <article id="m1-2" class="lesson">
+        <header class="lesson-head">
+          <span class="lesson-id">M1.2</span>
+          <span class="lesson-title">Подготовка машины (Python, Docker, VS Code)</span>
+          <span class="lesson-time">12 мин</span>
+          <span class="lesson-status progress">🟡 в разработке</span>
+        </header>
+        <div class="lesson-meta">
+          <strong>Цель:</strong> студент устанавливает 4 программы и видит зелёный «healthy» в Docker.<br>
+          <strong>Сценарий:</strong> Mac (Homebrew + python@3.12) → Windows (WSL2 + apt) → Docker Desktop → VS Code + 2 расширения → Poetry → проверка `python3 --version && docker --version && poetry --version`.<br>
+          <strong>Студент:</strong> параллельно ставит всё. Финальная проверка показывает 3.12.x.<br>
+          <strong>Результат:</strong> 4 программы установлены, терминал реагирует на команды.<br>
+          <strong>→ M1.3:</strong> клонирование репо.
+        </div>
+      </article>
+
+      <article id="m1-3" class="lesson">
+        <header class="lesson-head">
+          <span class="lesson-id">M1.3</span>
+          <span class="lesson-title">Клонирование sl-claw/core с GitHub</span>
+          <span class="lesson-time">6 мин</span>
+          <span class="lesson-status progress">🟡 в разработке</span>
+        </header>
+        <div class="lesson-meta">
+          <strong>Цель:</strong> студент клонирует репо, открывает в VS Code, понимает структуру.<br>
+          <strong>Сценарий:</strong> face cam → открываем github.com/sl-claw/core → `git clone` → `cd core` → `code .` → обзор папок (app/, scripts/, docker/) → ключевые файлы.<br>
+          <strong>Студент:</strong> папка `core/` на машине, открыта в VS Code.<br>
+          <strong>→ M1.4:</strong> получаем lux-token.
+        </div>
+      </article>
+
+      <article id="m1-4" class="lesson">
+        <header class="lesson-head">
+          <span class="lesson-id">M1.4</span>
+          <span class="lesson-title">Получение lux-token (один токен ко всем AI)</span>
+          <span class="lesson-time">7 мин</span>
+          <span class="lesson-status progress">🟡 в разработке</span>
+        </header>
+        <div class="lesson-meta">
+          <strong>Цель:</strong> студент получает lux-token с балансом $5 и сохраняет его.<br>
+          <strong>Сценарий:</strong> token.lux-promo.com → регистрация → пополнение карта/LiqPay/USDT → API Keys → Create → имя `sl-claw-dev` → копируем в заметки.<br>
+          <strong>Студент:</strong> токен `lux-…` на руках, баланс $5.<br>
+          <strong>→ M1.5:</strong> главный wow-урок — первый запуск.
+        </div>
+      </article>
+
+      <article id="m1-5" class="lesson">
+        <header class="lesson-head">
+          <span class="lesson-id">M1.5 ★</span>
+          <span class="lesson-title">.env + первый запуск (главный wow-урок)</span>
+          <span class="lesson-time">15 мин</span>
+          <span class="lesson-status featured">🌟 ключевой</span>
+        </header>
+        <div class="lesson-meta">
+          <strong>Цель:</strong> студент видит как Anna отвечает в чате на его команды. Это wow-момент тарифа.<br>
+          <strong>Сценарий:</strong> `cp .env.example .env` → вставляем lux-token и persona → `docker compose up -d postgres redis` → `poetry install` → `poetry run uvicorn …` → /health → WS-клиент → «Привет» → AI отвечает!<br>
+          <strong>Студент:</strong> бот работает локально, получил wow.<br>
+          <strong>→ M1.6:</strong> «бот отвечает обобщённо, теперь научим знать ВАШ каталог».
+        </div>
+      </article>
+
+      <article id="m1-6" class="lesson">
+        <header class="lesson-head">
+          <span class="lesson-id">M1.6</span>
+          <span class="lesson-title">Загрузка вашего каталога в RAG</span>
+          <span class="lesson-time">12 мин</span>
+          <span class="lesson-status progress">🟡 в разработке</span>
+        </header>
+        <div class="lesson-meta">
+          <strong>Цель:</strong> студент заливает 5–10 своих товаров и видит как AI их называет.<br>
+          <strong>Сценарий:</strong> формат demo_catalog.json → студент готовит 5 товаров → `python scripts/ingest_catalog.py my.json` → «Сколько стоит товар X?» → AI достаёт из каталога.<br>
+          <strong>Студент:</strong> бот знает каталог, отвечает с реальными ценами.<br>
+          <strong>→ M1.7:</strong> «Это уже круто. Но дальше — лимиты.»
+        </div>
+      </article>
+
+      <article id="m1-7" class="lesson">
+        <header class="lesson-head">
+          <span class="lesson-id">M1.7 🎯</span>
+          <span class="lesson-title">Лимиты ядра → путь к CORE ($300)</span>
+          <span class="lesson-time">18 мин</span>
+          <span class="lesson-status featured">🎯 апсейл</span>
+        </header>
+        <div class="lesson-meta">
+          <strong>Цель:</strong> студент видит что НЕ может core, и почему ровно это решает CORE-курс. Здесь конверсия в апсейл.<br>
+          <strong>Сценарий:</strong> 5 живых демонстраций ограничений (WhatsApp / RAG re-rank / возражения / оплата / голос) → таблица сравнения → офер CORE -20% на 7 дней → Q&A типичных возражений.<br>
+          <strong>Студент:</strong> на руках купон UPGRADE-20, принимает решение.<br>
+          <strong>Конверсия в CORE:</strong> 30% от прошедших MINI.
+        </div>
+      </article>
+
+      <h2>Триггеры апсейла после тарифа</h2>
+      <ul>
+        <li>В кабинете студента — баннер «Купон UPGRADE-20 истекает через 7 дней»</li>
+        <li>Welcome-email через 24 часа: кейс одного клиента</li>
+        <li>Через 5 дней: последнее напоминание «купон истекает завтра»</li>
+        <li>Discord — закреплённое сообщение в #mini-students со ссылкой</li>
+      </ul>
+
+      <h2>Зависимости разработки</h2>
+      <ul>
+        <li>✅ Готов <code>sl-claw/core</code> с README</li>
+        <li>⚠️ Нужно: Lemon Squeezy подключён к access-service</li>
+        <li>⚠️ Нужно: Discord-сервер развёрнут с каналами</li>
+        <li>⚠️ Нужно: Vimeo private playlist + защита по email</li>
+      </ul>
+
+      <p>📍 <strong>Тариф MINI — КОНЕЦ. Апсейл в CORE ↓</strong></p>
+
+      <div class="pager">
+        <a href="index.html">
+          <small>← На главную</small>
+          Roadmap
+        </a>
+        <a href="tier-core.html" class="next">
+          <small>Следующий тариф →</small>
+          CORE ($300)
+        </a>
+      </div>
+
+      <p style="margin-top: 32px; color: var(--text-muted); font-size: 0.9rem;">
+        📄 Полный документ: <a href="https://github.com/sl-claw/sl_claw_roadmapp/blob/main/DEV_PLAN.md" target="_blank" rel="noopener">DEV_PLAN.md</a> в репо.
+      </p>
+
+    </main>
+
+    <footer>
+      SL_CLAW • <a href="index.html">Главная</a> • <a href="https://github.com/sl-claw/sl_claw_roadmapp">GitHub</a>
+    </footer>
+
+  </div>
+</body>
+</html>

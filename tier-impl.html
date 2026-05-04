@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tier IMPLEMENTATION ($2 000) — Roadmap SL_CLAW</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="logo"><a href="index.html">SL_<span class="accent">CLAW</span></a></div>
+      <nav>
+        <a href="index.html">Roadmap</a>
+        <a href="tier-mini.html">MINI</a>
+        <a href="tier-core.html">CORE</a>
+        <a href="tier-pro.html">PRO</a>
+        <a href="tier-impl.html" class="active">IMPL</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <div class="tier-banner impl">
+        <div class="tier-banner-info">
+          <div class="tier-price">$2 000</div>
+          <div class="tier-name">IMPLEMENTATION · Внедрение под ключ</div>
+          <div class="tier-desc">Это не курс, а услуга. Команда SL-CLAW делает всё сама. ETA: 2026-07-13</div>
+        </div>
+        <div class="tier-banner-stats">
+          <div class="stat"><div class="stat-value">8</div><div class="stat-label">SOP</div></div>
+          <div class="stat"><div class="stat-value">1–2</div><div class="stat-label">нед. от оплаты</div></div>
+          <div class="stat"><div class="stat-value">14</div><div class="stat-label">дн. сопровождение</div></div>
+          <div class="stat"><div class="stat-value">~30 ч</div><div class="stat-label">работа команды</div></div>
+        </div>
+      </div>
+
+      <div class="tier-jump-nav">
+        <strong>Перейти к SOP</strong>
+        <a href="#i1">I1 Onboarding</a>
+        <a href="#i2">I2 Аудит</a>
+        <a href="#i3">I3 Скрипт</a>
+        <a href="#i4">I4 База знаний</a>
+        <a href="#i5">I5 Каналы</a>
+        <a href="#i6">I6 Запуск</a>
+        <a href="#i7">I7 Сопровождение</a>
+        <a href="#i8">I8 Передача</a>
+      </div>
+
+      <h1>📍 Тариф IMPLEMENTATION ($2 000) — НАЧАЛО</h1>
+      <p class="lead">
+        Цель: клиент получает <strong>готового AI-продавца под ключ</strong> без необходимости разбираться.
+        Команда SL-CLAW проводит аудит → разрабатывает скрипт → внедряет → сопровождает 14 дней.
+      </p>
+
+      <div class="callout">
+        <strong>Это не курс — это услуга</strong>
+        <p>В отличие от MINI/CORE/PRO здесь нет уроков. Студент платит — команда работает за него. Документ ниже — рабочие SOP (standard operating procedures), по которым работает команда внедрения.</p>
+      </div>
+
+      <h2>Что разрабатываем (рабочие процессы команды)</h2>
+      <ul>
+        <li>Notion-шаблон аудита бизнеса (15 вопросов, 5 блоков)</li>
+        <li>Чеклист анализа продукта и ЦА</li>
+        <li>SOP по разработке скрипта продаж под нишу</li>
+        <li>SOP по загрузке базы знаний (URL → crawl → PDF → Vision)</li>
+        <li>SOP по подключению канала клиента</li>
+        <li>Сценарий 60-минутной обучающей встречи с командой клиента</li>
+        <li>SLA-договор + чеклист передачи</li>
+        <li>14-дневный план сопровождения</li>
+        <li>Внутреннее CRM для отслеживания клиентов (Notion / KeyCRM)</li>
+        <li>Создание team <code>clients-implementation</code> в GitHub с private fork под клиента</li>
+      </ul>
+
+      <h2>Что получает клиент</h2>
+      <ul>
+        <li>🔓 Полностью настроенный AI-продавец в проде на его VPS</li>
+        <li>🔓 Подключение к 1–2 каналам коммуникации</li>
+        <li>🔓 Загруженная база знаний (каталог + сайт + PDF)</li>
+        <li>🔓 Обучение команды клиента (60-минутный созвон)</li>
+        <li>🔓 14 дней сопровождения после запуска (правки промптов, тюнинг)</li>
+        <li>🔓 Все материалы из PRO в личном кабинете</li>
+        <li>🔓 Private GitHub fork ядра под бренд клиента</li>
+        <li>🔓 Опциональный месячный support-контракт от $300/мес</li>
+      </ul>
+
+      <h2 id="i1">SOP I1 — Onboarding клиента после оплаты</h2>
+      <div class="module-block">
+        <p><strong>Длительность процесса:</strong> 1–2 рабочих дня</p>
+        <ol>
+          <li>Webhook от Lemon Squeezy / LiqPay получает payment.success</li>
+          <li>Access-service создаёт private GitHub fork ядра под брендом клиента</li>
+          <li>Аккаунт-менеджер (АМ) звонит клиенту в течение 4 часов</li>
+          <li>АМ высылает Notion-форму аудита (15 вопросов)</li>
+          <li>Клиент заполняет за 1 рабочий день</li>
+          <li>АМ + CTO разбирают ответы → составляют ТЗ</li>
+        </ol>
+        <p><strong>Артефакты:</strong> Notion-template аудита, email-шаблон welcome + Calendly, Slack-канал #client-{name}.</p>
+      </div>
+
+      <h2 id="i2">SOP I2 — Аудит бизнеса клиента</h2>
+      <div class="module-block">
+        <p><strong>Длительность:</strong> 60-минутный созвон + 1 день анализа</p>
+        <p><strong>15 вопросов по 5 блокам:</strong></p>
+        <ol>
+          <li><strong>Продукт:</strong> что продаёте, ценовая линейка, маржа, сезонность</li>
+          <li><strong>Клиент:</strong> ICP, главные боли, путь покупки, средний чек</li>
+          <li><strong>Каналы:</strong> где сейчас приходят лиды, конверсия по каналам</li>
+          <li><strong>Команда:</strong> сколько менеджеров, нагрузка, главные узкие места</li>
+          <li><strong>Цели на 3 мес:</strong> сколько лидов хотим, какая конверсия, какой ROI</li>
+        </ol>
+        <p><strong>Артефакты:</strong> заполненная Notion-форма, transcript созвона.</p>
+      </div>
+
+      <h2 id="i3">SOP I3 — Разработка скрипта продаж</h2>
+      <div class="module-block">
+        <p><strong>Длительность:</strong> 2–3 рабочих дня</p>
+        <ol>
+          <li>CTO готовит TenantPersona на основе аудита</li>
+          <li>Sales-coach пишет 5 типовых сценариев (новый лид, возражение «дорого», «подумаю», горячий, остывший)</li>
+          <li>Загружаем 50+ возражений из objections_core.md + кастомизация под клиента</li>
+          <li>Тестируем диалоги в Discord-канале, корректируем</li>
+        </ol>
+        <p><strong>Артефакты:</strong> persona.py, objections.md, spin_questions.md, test_dialogs.json.</p>
+      </div>
+
+      <h2 id="i4">SOP I4 — Загрузка базы знаний</h2>
+      <div class="module-block">
+        <p><strong>Длительность:</strong> 1–2 рабочих дня</p>
+        <ol>
+          <li>Получаем от клиента: ссылку на сайт, прайс-лист (PDF), каталог (CSV/Excel), фото товаров</li>
+          <li>Запускаем <code>/setdemo URL</code> для автоматического crawl</li>
+          <li>Дополнительно <code>bulk_train.py</code> для objections.md + cases.md</li>
+          <li>Vision-обработка фото товаров</li>
+          <li>QA: 20 тестовых вопросов клиента → проверяем точность ответов</li>
+        </ol>
+        <p><strong>Артефакты:</strong> RAG-база заполнена, лог обучения, отчёт QA.</p>
+      </div>
+
+      <h2 id="i5">SOP I5 — Подключение каналов клиента</h2>
+      <div class="module-block">
+        <p><strong>Длительность:</strong> 1 рабочий день</p>
+        <ol>
+          <li>Клиент даёт доступы (Telegram BotFather, Meta App, домен сайта)</li>
+          <li>CTO настраивает webhook'и через Coolify</li>
+          <li>Тестируем диалоги в каждом канале (минимум 3 проверки в каждом)</li>
+          <li>Включаем мониторинг через Uptime Kuma</li>
+        </ol>
+        <p><strong>Артефакты:</strong> работающие каналы, мониторинг, документация для клиента.</p>
+      </div>
+
+      <h2 id="i6">SOP I6 — Запуск и обучение команды</h2>
+      <div class="module-block">
+        <p><strong>Длительность:</strong> 60-минутный созвон с командой клиента</p>
+        <ol>
+          <li>Демо рабочего бота в каждом канале</li>
+          <li>Обучение работе с админ-командами (<code>/settings</code>, <code>/train</code>, <code>/answer</code>)</li>
+          <li>Передача доступов: Coolify, GitHub fork, Discord канал</li>
+          <li>Документация в Notion: «как тренировать вашего AI-продавца»</li>
+        </ol>
+        <p><strong>Артефакты:</strong> запись обучающего созвона, передача доступов, чеклист.</p>
+      </div>
+
+      <h2 id="i7">SOP I7 — 14 дней сопровождения</h2>
+      <div class="module-block">
+        <p><strong>Ежедневные задачи команды:</strong></p>
+        <ul>
+          <li>Утро: проверка логов LangSmith за вечер/ночь</li>
+          <li>Обработка unknown questions через <code>/answer</code></li>
+          <li>Коррекция диалогов в которых AI ошибся</li>
+          <li>Еженедельный созвон 30 мин: показываем метрики, тюним промпт</li>
+        </ul>
+        <p><strong>Метрики, которые мониторим:</strong></p>
+        <ul>
+          <li>Conversion rate по стадиям 1→7</li>
+          <li>Среднее время ответа</li>
+          <li>% unknown questions</li>
+          <li>NPS клиентов</li>
+        </ul>
+      </div>
+
+      <h2 id="i8">SOP I8 — Передача в support и upsell</h2>
+      <div class="module-block">
+        <p><strong>По истечении 14 дней:</strong></p>
+        <ol>
+          <li>Финальный отчёт: метрики, что сработало, что улучшить</li>
+          <li>Рекомендация: переход на ежемесячный support-контракт ($300/мес — лёгкий, $800/мес — полный)</li>
+          <li>Если клиент готов — подписание support-договора</li>
+          <li>Если не готов — система продолжает работать, клиент сам себе саппорт</li>
+        </ol>
+      </div>
+
+      <h2>Юнит-экономика IMPL для команды</h2>
+      <p>$2 000 цена покрывает ~30 часов работы команды:</p>
+      <ul>
+        <li>Аккаунт-менеджер: 5 часов (звонки, координация, отчёты)</li>
+        <li>CTO: 8 часов (TenantPersona, RAG, webhook setup)</li>
+        <li>Sales-coach: 6 часов (скрипт продаж, тюнинг диалогов)</li>
+        <li>QA: 4 часа (20 тестовых диалогов)</li>
+        <li>14 дней сопровождения: 1 ч/день × 7 рабочих = 7 часов</li>
+      </ul>
+      <p>Чистая маржа на одну сделку при ставке $40/час команды: $2000 - 30×$40 = <strong>$800</strong> (40%).</p>
+      <p>При расширении команды до 4 параллельных клиентов в неделю — оборот <strong>$32 000/мес</strong>, маржа $12 800.</p>
+
+      <h2>Зависимости разработки</h2>
+      <ul>
+        <li>⚠️ PRO работает и сделано минимум 5 успешных кейсов внедрения</li>
+        <li>⚠️ Аккаунт-менеджер на полставки нанят</li>
+        <li>⚠️ Юридический договор и SLA утверждены юристом</li>
+        <li>⚠️ Расчёт юнит-экономики проверен на пилоте (3 первых клиента бесплатно/со скидкой)</li>
+      </ul>
+
+      <p>📍 <strong>Тариф IMPLEMENTATION — КОНЕЦ.</strong></p>
+      <p>Клиент в проде, команда переходит к следующему. Этот клиент превращается в <strong>кейс</strong> — записываем интервью с метриками, добавляем в маркетинговые материалы для MINI/CORE/PRO.</p>
+
+      <div class="pager">
+        <a href="tier-pro.html">
+          <small>← PRO</small>
+          $600
+        </a>
+        <a href="index.html" class="next">
+          <small>На главную →</small>
+          Roadmap
+        </a>
+      </div>
+
+      <p style="margin-top: 32px; color: var(--text-muted); font-size: 0.9rem;">
+        📄 Полные SOP с шаблонами: <a href="https://github.com/sl-claw/sl_claw_roadmapp/blob/main/DEV_PLAN.md#-%D1%82%D0%B0%D1%80%D0%B8%D1%84-4-implementation-2-000--%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE" target="_blank" rel="noopener">DEV_PLAN.md</a> в репо.
+      </p>
+
+    </main>
+
+    <footer>
+      SL_CLAW • <a href="index.html">Главная</a> • <a href="https://github.com/sl-claw/sl_claw_roadmapp">GitHub</a>
+    </footer>
+
+  </div>
+</body>
+</html>
