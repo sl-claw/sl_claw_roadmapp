@@ -13,9 +13,9 @@
     <header>
       <div class="logo"><a href="index.html">SL_<span class="accent">CLAW</span></a></div>
       <nav>
-        <a href="index.html" class="active">Старт</a>
+        <a href="index.html" class="active">Roadmap</a>
+        <a href="#tarify">План разработки</a>
         <a href="#programma">Программа</a>
-        <a href="#tarify">Тарифы</a>
         <a href="step-1-clone.html">Шаги</a>
       </nav>
     </header>
@@ -23,17 +23,17 @@
     <main>
 
       <section class="hero">
-        <h1>Курс SL-CLAW — соберите AI-продавца за 7 шагов</h1>
+        <h1>SL-CLAW — Roadmap разработки курса</h1>
         <p class="lead">
-          Production-ready AI-агент, который продаёт за вас в Telegram, WhatsApp, Instagram,
-          на сайте и голосом. 7 стадий воронки, память между каналами, поиск по вашему каталогу,
-          оплата прямо в чате. От клонирования репозитория до запуска в проде — за 1 час.
+          Внутренний рабочий документ команды, которая создаёт курс по AI-продавцу.
+          Здесь: что разрабатываем, какие материалы готовим под каждый тариф ($25 / $300 / $600 / $2000),
+          какие репозитории GitHub открываем студенту, и в каком статусе каждый этап.
         </p>
 
         <div class="cta-row">
-          <a href="step-1-clone.html" class="btn">Начать за 7 шагов</a>
+          <a href="#tarify" class="btn">План разработки →</a>
           <a href="https://github.com/sl-claw/sl_claw_roadmapp" class="btn secondary" target="_blank" rel="noopener">Открыть GitHub</a>
-          <a href="#tarify" class="btn secondary">Посмотреть тарифы</a>
+          <a href="step-1-clone.html" class="btn secondary">Превью студенческого пути</a>
         </div>
       </section>
 
@@ -225,8 +225,8 @@
         <p>Начните с 1–2 каналов, где у вас уже есть аудитория. Когда заработает — добавляйте остальные. Ваш AI-продавец помнит каждого клиента <strong>между всеми каналами</strong> через mem0 — клиент написал в WhatsApp, потом в Telegram, потом позвонил голосом — она помнит весь контекст.</p>
       </div>
 
-      <h2 id="programma">Программа курса — 7 шагов</h2>
-      <p>Идите по порядку. Каждый шаг — отдельная страница, ~5–15 минут. Полное прохождение — около часа.</p>
+      <h2 id="programma">Превью студенческого пути — 7 шагов</h2>
+      <p>Это то, что увидит студент тарифа MINI после оплаты — пошаговый онбординг от клонирования репо до запуска локально. Команда разработки использует эти страницы как референс при записи видео-уроков ($25 → 7 уроков ровно по этим темам).</p>
 
       <ol class="steps-list">
         <li>
@@ -294,136 +294,323 @@
         </li>
       </ol>
 
-      <h2 id="tarify">Тарифы курса</h2>
-      <p>Выберите глубину погружения. Все тарифы — пожизненный доступ к материалам.</p>
+      <h2 id="tarify">План разработки курса по тарифам</h2>
+      <p>Этот сайт — рабочий roadmap для команды разработки. Каждый тариф = пакет материалов, который нужно создать. Под каждым: что разрабатываем (контент команды) и что открывается студенту при покупке (доступы, репо, сообщество).</p>
 
-      <div class="tiers">
-        <div class="tier">
-          <div class="price">$25</div>
-          <div class="price-note">Распаковка</div>
-          <div class="name">Мини-курс</div>
-          <ul>
-            <li>Базовое понимание продукта</li>
-            <li>Готовый скелет проекта</li>
-            <li>Инструкция по запуску</li>
-            <li>Базовый промпт продавца</li>
-            <li>Чеклист настройки</li>
-          </ul>
-          <div class="target">Быстро попробовать и понять, подходит ли подход</div>
+      <div class="dev-tiers">
+
+        <!-- ===== $25 MINI ===== -->
+        <article class="dev-tier">
+          <header class="dev-tier-head">
+            <div>
+              <div class="price">$25</div>
+              <div class="name">MINI · Распаковка / вход в воронку</div>
+            </div>
+            <span class="dev-status progress">🟡 В разработке</span>
+          </header>
+
+          <div class="dev-tier-meta">
+            <span><strong>ETA:</strong> 2026-05-18</span>
+            <span><strong>Owner:</strong> CTO + продюсер</span>
+            <span><strong>Зависимости:</strong> sl-claw/core готов</span>
+          </div>
+
+          <div class="dev-section">
+            <h4>Что разрабатываем</h4>
+            <ul>
+              <li>7 видео-уроков по 8–15 минут (общий хронометраж ~90 мин)</li>
+              <li>PDF-конспект к каждому уроку (7 файлов)</li>
+              <li>Vimeo private playlist + защита по email</li>
+              <li>Лендинг на /buy/mini с чекаутом Lemon Squeezy</li>
+              <li>Discord-сервер + канал #mini-students</li>
+              <li>Welcome-email последовательность (3 письма)</li>
+              <li>Финальный апселл на $300 со скидкой -20% (купон с 7-дневным таймером)</li>
+            </ul>
+          </div>
+
+          <div class="dev-section unlocks">
+            <h4>Что открывается студенту при покупке</h4>
+            <ul>
+              <li>Доступ к репо <code>sl-claw/core</code> (он уже public — здесь просто закладка в личном кабинете)</li>
+              <li>Vimeo playlist с 7 уроками</li>
+              <li>PDF-конспекты</li>
+              <li>Discord role <code>@mini-graduate</code> + доступ к каналу <code>#mini-students</code></li>
+              <li>Купон <code>UPGRADE-20</code> на тариф $300 (действует 7 дней)</li>
+            </ul>
+          </div>
+
+          <div class="dev-section deps">
+            <h4>Заблокировано до</h4>
+            <ul>
+              <li>Готов <code>sl-claw/core</code> с README</li>
+              <li>Lemon Squeezy подключён к access-service</li>
+              <li>Discord-сервер развёрнут</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- ===== $300 CORE ===== -->
+        <article class="dev-tier">
+          <header class="dev-tier-head">
+            <div>
+              <div class="price">$300</div>
+              <div class="name">CORE · Соберите сами (хит)</div>
+            </div>
+            <span class="dev-status planned">⚪ Запланировано</span>
+          </header>
+
+          <div class="dev-tier-meta">
+            <span><strong>ETA:</strong> 2026-06-15</span>
+            <span><strong>Owner:</strong> CTO + продюсер + методолог</span>
+            <span><strong>Зависимости:</strong> MINI запущен, sl-claw/starter готов</span>
+          </div>
+
+          <div class="dev-section">
+            <h4>Что разрабатываем</h4>
+            <ul>
+              <li>Видео-курс из 14 модулей (~50 уроков, ~12 часов хронометража)</li>
+              <li>Полные раскадровки уроков с тайм-кодами</li>
+              <li>Шаблоны промптов AI-продавца на ru/uk/en (3 файла)</li>
+              <li>База возражений и контр-аргументов (50+ типовых)</li>
+              <li>Скрипты SPIN/MEDDPICC + кейсы успешных закрытий</li>
+              <li>Подробная инструкция деплоя на VPS (Hetzner / Contabo)</li>
+              <li>Чеклист тестирования: 30 тест-кейсов на воронку</li>
+              <li>Ежемесячные апдейты курса (6 месяцев включено)</li>
+              <li>Создание <code>sl-claw/starter</code> private repo с modules/</li>
+              <li>Лендинг /buy/core + чекаут</li>
+              <li>Discord-канал #core-students</li>
+            </ul>
+          </div>
+
+          <div class="dev-section unlocks">
+            <h4>Что открывается студенту при покупке</h4>
+            <ul>
+              <li>Всё из MINI</li>
+              <li>Доступ к private-репо <code>sl-claw/starter</code> через GitHub Team</li>
+              <li>Vimeo playlist 14 модулей + раскадровки</li>
+              <li>Папка с шаблонами промптов и скриптов</li>
+              <li>Discord role <code>@core-student</code> + канал <code>#core-students</code></li>
+              <li>Купон <code>UPGRADE-PRO</code> на тариф $600 (действует 14 дней)</li>
+            </ul>
+          </div>
+
+          <div class="dev-section deps">
+            <h4>Заблокировано до</h4>
+            <ul>
+              <li>MINI работает и приносит первые продажи</li>
+              <li>sl-claw/starter код вынесен из текущего AI_sales_write</li>
+              <li>installer/install.sh для starter протестирован</li>
+              <li>GitHub App установлен в org sl-claw</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- ===== $600 PRO ===== -->
+        <article class="dev-tier">
+          <header class="dev-tier-head">
+            <div>
+              <div class="price">$600</div>
+              <div class="name">PRO · Под бизнес / для агентств</div>
+            </div>
+            <span class="dev-status planned">⚪ Запланировано</span>
+          </header>
+
+          <div class="dev-tier-meta">
+            <span><strong>ETA:</strong> 2026-07-06</span>
+            <span><strong>Owner:</strong> CTO + sales-coach</span>
+            <span><strong>Зависимости:</strong> CORE запущен, sl-claw/pro готов</span>
+          </div>
+
+          <div class="dev-section">
+            <h4>Что разрабатываем</h4>
+            <ul>
+              <li>Расширенные шаблоны под 5 ниш (realestate, construction, ecommerce, services, edu)</li>
+              <li>Создание private-репозитория <code>sl-claw/pro</code> с multi-tenant + heartbeat + analytics</li>
+              <li>Шаблон упаковки AI-продавца для клиента (Notion-template)</li>
+              <li>CRM-логика для KeyCRM, NetHunt, Creatio, HubSpot, Pipedrive (5 интеграций)</li>
+              <li>Дашборд аналитики диалогов (Streamlit) + SQL-запросы</li>
+              <li>Шаблоны коммерческих предложений (DOCX + Notion)</li>
+              <li>Видео-курс «Как продавать AI-продавцов» (10 уроков по 15 мин)</li>
+              <li>Сценарии звонков с клиентами + презентация для пресейла (PPTX)</li>
+              <li>Шаблон договора на внедрение AI-продавца (DOCX)</li>
+              <li>2 живых группых разбора в месяц (Zoom, 60 мин каждый)</li>
+              <li>Discord-канал #pro-students + закрытый чат</li>
+            </ul>
+          </div>
+
+          <div class="dev-section unlocks">
+            <h4>Что открывается студенту при покупке</h4>
+            <ul>
+              <li>Всё из CORE</li>
+              <li>Доступ к <code>sl-claw/pro</code> + всем <code>sl-claw/niche-*</code></li>
+              <li>Vimeo playlist «Как продавать» (10 видео)</li>
+              <li>Папка с шаблонами договоров, КП, презентаций</li>
+              <li>Discord role <code>@pro-student</code> + канал <code>#pro-students</code></li>
+              <li>Приглашение на 2 групповых разбора в месяц</li>
+              <li>Купон <code>UPGRADE-IMPL</code> на $2000 внедрение (действует 30 дней)</li>
+            </ul>
+          </div>
+
+          <div class="dev-section deps">
+            <h4>Заблокировано до</h4>
+            <ul>
+              <li>CORE приносит >$5к/мес стабильно</li>
+              <li>sl-claw/pro и 5 ниш-репо вынесены из основного кода</li>
+              <li>access-service умеет давать доступ к нескольким репо разом</li>
+              <li>Sales-coach законтрактован под 2 разбора/мес</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- ===== $2000 IMPLEMENTATION ===== -->
+        <article class="dev-tier">
+          <header class="dev-tier-head">
+            <div>
+              <div class="price">$2 000</div>
+              <div class="name">IMPLEMENTATION · Внедрение под ключ</div>
+            </div>
+            <span class="dev-status planned">⚪ Запланировано</span>
+          </header>
+
+          <div class="dev-tier-meta">
+            <span><strong>ETA:</strong> 2026-07-13</span>
+            <span><strong>Owner:</strong> CTO + аккаунт-менеджер</span>
+            <span><strong>Зависимости:</strong> PRO готов, операционные процессы прописаны</span>
+          </div>
+
+          <div class="dev-section">
+            <h4>Что разрабатываем</h4>
+            <ul>
+              <li>Шаблон аудита бизнеса клиента (15-вопросная анкета + Notion-форма)</li>
+              <li>Чеклист анализа продукта и целевой аудитории</li>
+              <li>Процесс разработки скрипта продаж под нишу клиента</li>
+              <li>SOP по загрузке базы знаний (URL → crawl → PDF → Vision)</li>
+              <li>SOP по подключению канала клиента (Telegram/WA/IG/Web)</li>
+              <li>Сценарий 60-минутной обучающей встречи с командой клиента</li>
+              <li>SLA-договор + чеклист передачи</li>
+              <li>14-дневный план сопровождения после запуска</li>
+              <li>CRM для отслеживания клиентов (Notion / KeyCRM)</li>
+              <li>Внутренние процессы: онбординг, биллинг, эскалации</li>
+              <li>Создание team <code>clients-implementation</code> в GitHub с private fork под клиента</li>
+            </ul>
+          </div>
+
+          <div class="dev-section unlocks">
+            <h4>Что получает клиент</h4>
+            <ul>
+              <li>Полностью настроенный AI-продавец в проде на его VPS</li>
+              <li>Подключение к 1–2 каналам коммуникации</li>
+              <li>Загруженная база знаний (каталог + сайт + PDF)</li>
+              <li>Обучение команды клиента (60-минутный созвон)</li>
+              <li>14 дней сопровождения после запуска (правки промптов, тюнинг)</li>
+              <li>Все материалы из PRO в личном кабинете клиента</li>
+              <li>Private GitHub fork ядра под бренд клиента</li>
+              <li>Опциональный месячный support-контракт от $300/мес</li>
+            </ul>
+          </div>
+
+          <div class="dev-section deps">
+            <h4>Заблокировано до</h4>
+            <ul>
+              <li>PRO работает и сделано минимум 5 успешных кейсов внедрения</li>
+              <li>Аккаунт-менеджер на полставки нанят</li>
+              <li>Юридический договор и SLA утверждены юристом</li>
+              <li>Расчёт юнит-экономики: $2000 цена покрывает ~30 часов работы команды</li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+
+      <h2>Архитектура связки тариф → доступ</h2>
+      <p>При оплате любого тарифа на платёжке (Lemon Squeezy / LiqPay) срабатывает webhook → access-service → выдача в трёх системах одновременно:</p>
+
+      <div class="grid-3">
+        <div class="feature">
+          <strong>1. GitHub</strong>
+          <span>Invite в нужную team организации <code>sl-claw</code> → доступ к репозиториям тарифа</span>
         </div>
-
-        <div class="tier featured">
-          <div class="price">$200–300</div>
-          <div class="price-note">Хит</div>
-          <div class="name">Соберите сами</div>
-          <ul>
-            <li>Полный видеокурс — 14 модулей</li>
-            <li>Пошаговая установка</li>
-            <li>Настройка под нишу</li>
-            <li>Готовые промпты ru/uk/en</li>
-            <li>Шаблоны скриптов и возражений</li>
-            <li>Подключение Telegram + сайта</li>
-            <li>Деплой на VPS</li>
-            <li>Доступ к обновлениям 6 месяцев</li>
-          </ul>
-          <div class="target">Сами собираете рабочего AI-продавца под свой бизнес</div>
+        <div class="feature">
+          <strong>2. Discord</strong>
+          <span>Auto-присвоение роли (@mini/@core/@pro) → закрытые каналы и чаты</span>
         </div>
-
-        <div class="tier">
-          <div class="price">$600</div>
-          <div class="price-note">PRO</div>
-          <div class="name">Под бизнес</div>
-          <ul>
-            <li>Всё из тарифа $200</li>
-            <li>Шаблоны под 5 ниш</li>
-            <li>Шаблон упаковки для клиента</li>
-            <li>CRM-логика (HubSpot/Pipedrive/KeyCRM)</li>
-            <li>Аналитика диалогов</li>
-            <li>Шаблоны коммерческих предложений</li>
-            <li>Видео «как продавать AI-продавцов»</li>
-            <li>Групповая поддержка и разборы</li>
-          </ul>
-          <div class="target">Продаёте AI-продавцов другим бизнесам как услугу</div>
-        </div>
-
-        <div class="tier">
-          <div class="price">$2 000</div>
-          <div class="price-note">Под ключ</div>
-          <div class="name">Внедрение</div>
-          <ul>
-            <li>Всё из тарифа $600</li>
-            <li>Аудит вашего бизнеса</li>
-            <li>Анализ продукта и ЦА</li>
-            <li>Разработка скрипта продаж</li>
-            <li>Загрузка базы знаний</li>
-            <li>Подключение к нужному каналу</li>
-            <li>Тестирование и корректировка</li>
-            <li>Обучение команды</li>
-            <li>7–14 дней сопровождения</li>
-          </ul>
-          <div class="target">Получаете готового AI-продавца под ключ</div>
+        <div class="feature">
+          <strong>3. Vimeo + Email</strong>
+          <span>Уникальный private playlist link + welcome-email + последовательность писем</span>
         </div>
       </div>
 
-      <h2>Кому подходит</h2>
-      <div class="grid-2">
+      <p>Все апгрейды каскадные: купил CORE — получил всё из MINI. Купил PRO — получил всё из CORE и MINI. И так далее. Это упрощает access-логику — каждая team в GitHub нанизывается поверх предыдущей.</p>
+
+      <h2>ЦА каждого тарифа (для маркетинга и оффера)</h2>
+      <div class="grid-4">
         <div class="feature">
-          <strong>Бизнесу с потоком заявок</strong>
-          <span>Лиды теряются ночью, менеджер не успевает, конверсия 5–10%</span>
+          <strong>$25 MINI</strong>
+          <span>Любопытные новички, владельцы малого бизнеса, маркетологи. Главная цель — вход в воронку.</span>
         </div>
         <div class="feature">
-          <strong>Маркетологам и продюсерам</strong>
-          <span>Поток заявок &gt; пропускной способности отдела продаж</span>
+          <strong>$300 CORE</strong>
+          <span>Бизнесы с потоком заявок (теряют лиды ночью), продюсеры курсов, средний бизнес.</span>
         </div>
         <div class="feature">
-          <strong>Агентствам и фрилансерам</strong>
-          <span>Хотят зарабатывать $1500–3000 на одном внедрении AI-продавца</span>
+          <strong>$600 PRO</strong>
+          <span>Агентства, фрилансеры, продающие AI-внедрения клиентам по $1500–3000.</span>
         </div>
         <div class="feature">
-          <strong>Vibe-кодерам</strong>
-          <span>Хотят запустить SaaS на готовом production-ready ядре</span>
+          <strong>$2 000 IMPL</strong>
+          <span>Конкретные бизнесы с готовым продуктом и желанием получить «под ключ» без возни.</span>
         </div>
       </div>
 
-      <h2>Что нужно перед стартом</h2>
-      <p>Программистом быть не нужно. Все программы — бесплатные. Установка под новичка расписана пошагово.</p>
-      <ul class="checklist">
-        <li>Компьютер с macOS, Windows 10/11 или Linux</li>
-        <li>1 час свободного времени для установки</li>
-        <li>Карта для оплаты ключей AI ($5–10 на первый месяц тестов)</li>
-        <li>Готовность копировать команды в терминал — мы расписываем каждую</li>
-      </ul>
+      <h2>Текущий roadmap команды</h2>
+      <ol>
+        <li><strong>Этап 1 (сейчас):</strong> декомпозиция текущего <code>AI_sales_write</code> → <code>sl-claw/core</code> + модули</li>
+        <li><strong>Этап 2 (≤ 2026-05-18):</strong> запуск MINI ($25) — лендинг, чекаут, 7 уроков</li>
+        <li><strong>Этап 3 (≤ 2026-06-15):</strong> запуск CORE ($300) — 14 модулей + private repo starter</li>
+        <li><strong>Этап 4 (≤ 2026-07-06):</strong> запуск PRO ($600) — 5 ниш-репо + sales-coach + аналитика</li>
+        <li><strong>Этап 5 (≤ 2026-07-13):</strong> запуск IMPL ($2000) — SOP внедрения, договор, account-manager</li>
+        <li><strong>Этап 6 (Q3 2026):</strong> публичный релиз — Hacker News, Reddit, Product Hunt, реклама MINI</li>
+      </ol>
 
-      <h2>Сколько это стоит</h2>
-      <div class="grid-2">
+      <p>Полная архитектура и риски разнесены в файле <a href="https://github.com/sl-claw/sl_claw_roadmapp" target="_blank" rel="noopener">ARCHITECTURE.md</a> в репо.</p>
+
+      <h2>Юнит-экономика курса (для команды)</h2>
+      <p>Гипотеза по конверсиям с одного потока в 1000 посетителей лендинга. Цифры ориентировочные — корректируем после первой когорты.</p>
+
+      <div class="grid-4">
         <div class="feature">
-          <strong>Программы — $0</strong>
-          <span>Python, Docker Desktop, VS Code, Poetry — всё бесплатно навсегда</span>
+          <strong>1000 → 200 email</strong>
+          <span>Лид-магнит «10 промптов AI-продавца» — 20% от трафика</span>
         </div>
         <div class="feature">
-          <strong>lux-token — $5 на старт</strong>
-          <span>Один токен ко всем AI (Claude, OpenAI, Gemini, Kimi, DeepSeek, Groq, Mistral, ElevenLabs, Deepgram). $5 = ~2000 диалогов</span>
+          <strong>200 → 30 MINI</strong>
+          <span>15% конверсия в $25 = <strong>$750</strong></span>
         </div>
         <div class="feature">
-          <strong>Telegram-бот — $0</strong>
-          <span>BotFather создаёт бота бесплатно за 30 секунд</span>
+          <strong>30 → 9 CORE</strong>
+          <span>30% от MINI в $300 = <strong>$2 700</strong></span>
         </div>
         <div class="feature">
-          <strong>VPS для прода — $5/мес</strong>
-          <span>Hetzner / Contabo — самый дешёвый вариант для запуска в проде (опционально)</span>
+          <strong>9 → 2 PRO + 1 IMPL</strong>
+          <span>22% в $600 + 50% от PRO в $2000 = <strong>$3 200</strong></span>
         </div>
       </div>
 
-      <div class="callout">
-        <strong>🔑 Главная фишка lux-token</strong>
-        <p>Не надо регистрироваться в OpenAI, Anthropic, Google, Moonshot, ElevenLabs и других <strong>по отдельности</strong>. Один аккаунт на <a href="https://token.lux-promo.com" target="_blank" rel="noopener">token.lux-promo.com</a> — один баланс — доступ ко всем 9 провайдерам сразу. Это сокращает стартовый онбординг с 2 часов до 5 минут.</p>
+      <div class="callout success">
+        <strong>Итого с 1000 трафика: ~$6 650 · LTV на лид: $6.65</strong>
+        <p>Безубыточная стоимость лида = $6 → можно платить рекламу до $5/click и быть в плюсе. Цифры взяты из расчётов в <a href="https://github.com/sl-claw/sl_claw_roadmapp" target="_blank" rel="noopener">ARCHITECTURE.md §12</a>.</p>
       </div>
 
-      <div class="callout">
-        <strong>Готовы стартовать?</strong>
-        <p>Жмите кнопку ниже — начнём с клонирования репозитория. Это 30 секунд.</p>
-        <a href="step-1-clone.html" class="btn">Шаг 1 — клонировать репозиторий →</a>
-      </div>
+      <h2>Что делать команде на этой неделе</h2>
+      <ol>
+        <li><strong>Сегодня:</strong> создать пустой репо <code>sl-claw/core</code> (public)</li>
+        <li><strong>Завтра:</strong> вынести core-код из <code>AI_sales_write</code>, написать README по шаблону из ARCHITECTURE.md §2.5</li>
+        <li><strong>День 3:</strong> добавить <code>module_loader.py</code> + LICENSE MIT + первый CI</li>
+        <li><strong>День 4:</strong> создать private <code>sl-claw/starter</code>, перенести WhatsApp/Voice/RAG-pro/Payments</li>
+        <li><strong>День 5:</strong> написать <code>installer/install.sh</code> и протестировать установку поверх core</li>
+        <li><strong>День 6–7:</strong> записать первые 3 урока MINI (по 12–15 мин)</li>
+        <li><strong>На следующей неделе:</strong> access-service, лендинг, первые продажи MINI</li>
+      </ol>
 
     </main>
 
