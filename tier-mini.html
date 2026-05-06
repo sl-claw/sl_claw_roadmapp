@@ -27,11 +27,11 @@
         <div class="tier-banner-info">
           <div class="tier-price">$25</div>
           <div class="tier-name">MINI · Распаковка / вход в воронку</div>
-          <div class="tier-desc">Превратить $0-зрителя в $300-покупателя через wow-эффект локального запуска. ETA готовности: 2026-05-18</div>
+          <div class="tier-desc">Студент строит работающего AI-продавца на VPS 24/7 (с собственными данными в Postgres). ETA готовности: 2026-05-18</div>
         </div>
         <div class="tier-banner-stats">
-          <div class="stat"><div class="stat-value">7</div><div class="stat-label">уроков</div></div>
-          <div class="stat"><div class="stat-value">~90 мин</div><div class="stat-label">хроно</div></div>
+          <div class="stat"><div class="stat-value">9</div><div class="stat-label">уроков</div></div>
+          <div class="stat"><div class="stat-value">~110 мин</div><div class="stat-label">хроно</div></div>
           <div class="stat"><div class="stat-value">🟡</div><div class="stat-label">в разработке</div></div>
         </div>
       </div>
@@ -42,14 +42,16 @@
         <a href="#m1-2">M1.2 Машина</a>
         <a href="#m1-3">M1.3 Клонирование</a>
         <a href="#m1-4">M1.4 lux-token</a>
-        <a href="#m1-5">M1.5 Запуск</a>
-        <a href="#m1-6">M1.6 Каталог</a>
-        <a href="#m1-7">M1.7 Апселл</a>
+        <a href="#m1-5">5. Запуск локально</a>
+        <a href="#m1-6">6. ★ Покупаем VPS</a>
+        <a href="#m1-7">7. ★ Бот на VPS 24/7</a>
+        <a href="#m1-8">8. Каталог</a>
+        <a href="#m1-9">9. 🎯 Апселл</a>
       </div>
 
       <h1>📍 Тариф MINI ($25) — НАЧАЛО</h1>
       <p class="lead">
-        Цель тарифа: студент <strong>запускает core локально</strong> → видит wow-эффект → понимает лимиты ядра →
+        Цель тарифа: студент <strong>выводит бота в прод на VPS 24/7</strong> с собственным каталогом и собственными данными →
         получает купон UPGRADE-20 на CORE со скидкой 20% на 7 дней. Конверсия в CORE — 30%.
       </p>
 
@@ -152,6 +154,38 @@
       </article>
 
       <article id="m1-6" class="lesson">
+        <header class="lesson-head">
+          <span class="lesson-id">★ 6</span>
+          <span class="lesson-title">Покупаем VPS + передаём Claude управление</span>
+          <span class="lesson-time">10 мин</span>
+          <span class="lesson-status featured">🌟 ключевой</span>
+        </header>
+        <div class="lesson-meta">
+          <strong>Цель:</strong> у Claude SSH-доступ к VPS. Дальше всё через диалог. Все будущие данные клиентов будут жить на этом VPS.<br>
+          <strong>Сценарий:</strong> покупка Contabo Cloud VPS NVMe (€5/мес) или Hetzner CPX21 (€7/мес) → передача IP+пароль Claude → Claude настраивает SSH-ключи и отключает password auth.<br>
+          <strong>Студент:</strong> покупает VPS (5 минут руками — единственный шаг). Передаёт credentials Claude.<br>
+          <strong>Результат:</strong> Claude управляет VPS. SSH-ключи безопасные.<br>
+          <strong>→ Урок 7:</strong> Claude разворачивает бота.
+        </div>
+      </article>
+
+      <article id="m1-9" class="lesson">
+        <header class="lesson-head">
+          <span class="lesson-id">★ 7</span>
+          <span class="lesson-title">Claude разворачивает бота на VPS 24/7</span>
+          <span class="lesson-time">12 мин</span>
+          <span class="lesson-status featured">🌟 ключевой wow MINI</span>
+        </header>
+        <div class="lesson-meta">
+          <strong>Цель:</strong> бот работает 24/7. Postgres + Redis + mem0 на VPS — все данные у студента.<br>
+          <strong>Сценарий:</strong> один промпт «разверни моего бота на VPS». Claude по SSH: Docker → git clone → docker compose up → ждёт healthcheck. Backup БД настроен на Backblaze B2.<br>
+          <strong>Студент:</strong> один промпт. Закрывает ноут. Пишет в TG → бот отвечает.<br>
+          <strong>Результат:</strong> 🎯 бот в проде 24/7. Все данные на VPS студента. Backup ежедневный.<br>
+          <strong>→ Урок 8:</strong> загружаем каталог в работающий прод-бот.
+        </div>
+      </article>
+
+      <article id="m1-8" class="lesson">
         <header class="lesson-head">
           <span class="lesson-id">M1.6</span>
           <span class="lesson-title">Загрузка вашего каталога в RAG</span>
