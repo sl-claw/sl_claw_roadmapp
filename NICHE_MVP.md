@@ -6,6 +6,41 @@
 
 ---
 
+## 0. Бизнес-модель (важно для архитектуры)
+
+**Niche Marketplace — это магазин ПЕРЕД оплатой PRO**, а не «после-оплатное приложение».
+
+### Flow покупки (новая модель 2026-05-06)
+
+```
+Студент закончил CORE (универсальный бот в проде)
+    ↓
+Идёт на token.lux-promo.com/niches — каталог 10+ ниш с описаниями + sample-диалогами
+    ↓
+ВЫБИРАЕТ 1 нишу (например, Real Estate)
+    ↓
+Платит $600 доплаты (всего станет $875: $25 + $250 + $600)
+    ↓
+Backend (marketplace-service):
+    - GitHub team invite в sl-claw/niche-realestate (private)
+    - Discord role @pro-realestate
+    - Email с инструкциями
+    ↓
+В терминале студента (на VPS из MINI):
+    sl-claw niche install niche-realestate
+    ↓
+Niche-репо клонирован, бот переразвёрнут под недвижимость
+```
+
+### Модель доступа
+
+- **PRO ($600)** = 1 ниша на выбор из 5 базовых (realestate / construction / ecommerce / services / edu)
+- **Доп. ниши $79-129** = a-la-carte, разово (clinics / restaurants / saas / b2b / beauty)
+- **Доступ пожизненный** + все апдейты ниши
+- **UGC-ниши (Phase 3)** — PRO-юзер может опубликовать свою нишу, заработать 70% от продаж
+
+---
+
 ## 1. Формат файла `.niche`
 
 ### 1.1. Что это
