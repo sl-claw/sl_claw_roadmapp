@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Рабочее место · VS Code + Claude Code + GitHub — SL_CLAW</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container narrow">
+
+    <header>
+      <div class="logo"><a href="index.html">SL_<span class="accent">CLAW</span></a></div>
+      <nav>
+        <a href="index.html">Старт</a>
+        <a href="step-1-clone.html" class="active">Шаги</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <div class="progress">
+        <span>Подготовка · перед Шагом 1</span>
+        <div class="progress-bar"><div class="progress-bar-fill" style="width: 8%"></div></div>
+      </div>
+
+      <h1>Рабочее место за 10 минут: VS Code + Claude Code + GitHub</h1>
+      <p class="lead">
+        Это самый первый урок. Здесь мы соберём рабочее место и подключим помощника Claude Code.
+        Ничего технического знать не нужно — просто повторяй за инструкцией. В конце ты сможешь
+        давать задачи обычными словами, а Claude будет всё делать сам.
+      </p>
+
+      <div class="callout">
+        <strong>Что понадобится (приготовь заранее)</strong>
+        <p>1. Аккаунт <strong>Claude</strong> — подписка Pro или Max.<br>
+        2. Аккаунт <strong>GitHub</strong> — бесплатный.<br>
+        3. <strong>Ссылка на твой проект</strong> — мы её тебе дали.</p>
+      </div>
+
+      <h2>🎬 Видео урока</h2>
+      <p>Ниже — пошаговая шпаргалка. Та же инструкция текстом, чтобы повторять на паузе.</p>
+
+      <h2>Шаг 1. Установить VS Code</h2>
+      <p><strong>VS Code</strong> — бесплатный редактор от Microsoft, навсегда без подписки.</p>
+      <ol>
+        <li>Открой <a href="https://code.visualstudio.com" target="_blank" rel="noopener">code.visualstudio.com</a></li>
+        <li>Нажми большую кнопку <strong>Download</strong> (сайт сам определит твой компьютер)</li>
+        <li><strong>Mac:</strong> открой скачанный файл → перетащи иконку VS Code в папку Applications.<br>
+            <strong>Windows:</strong> запусти установщик → жми «Далее» (всё по умолчанию)</li>
+        <li>Запусти VS Code</li>
+      </ol>
+      <div class="callout">
+        <strong>Проверь версию</strong>
+        <p>Меню <strong>Help → About</strong> — нужна версия <code>1.98.0</code> или выше. Если ниже — обнови с того же сайта.</p>
+      </div>
+
+      <h2>Шаг 2. Установить Claude Code</h2>
+      <p>Claude Code — это помощник прямо внутри VS Code. Ставим как расширение.</p>
+      <ol>
+        <li>Открой <strong>Расширения</strong>: <span class="kbd">Cmd</span>/<span class="kbd">Ctrl</span>+<span class="kbd">Shift</span>+<span class="kbd">X</span></li>
+        <li>В поиске набери <code>Claude Code</code></li>
+        <li>Выбери официальное расширение от <strong>Anthropic</strong> → <strong>Install</strong></li>
+        <li>Подожди 10–15 секунд. Не появилось — перезапусти VS Code</li>
+      </ol>
+      <div class="callout success">
+        <strong>Почему расширение, а не терминал</strong>
+        <p>Расширение приносит всё с собой — <strong>Node.js ставить не нужно</strong>, а изменения видно наглядно (слева как было, справа как стало).</p>
+      </div>
+
+      <h2>Шаг 3. Войти в аккаунт</h2>
+      <ol>
+        <li>В правом верхнем углу нажми <strong>иконку-искру</strong> (⚡). Не видишь — сначала открой любой файл. Можно ещё нажать <strong>✱ Claude Code</strong> в правом нижнем углу</li>
+        <li>Нажми <strong>Sign In</strong> → откроется браузер</li>
+        <li>Войди по подписке <strong>Claude Pro / Max</strong></li>
+        <li>Вернись в VS Code — он сам поймёт, что ты вошёл</li>
+      </ol>
+      <div class="callout">
+        <strong>Без API-ключей</strong>
+        <p>Никакие ключи вводить не нужно — достаточно обычного входа по подписке.</p>
+      </div>
+
+      <h2>Шаг 4. Подключить GitHub и открыть проект</h2>
+      <ol>
+        <li>Напиши Claude в окошко: <strong>«Склонируй мой проект»</strong> и вставь ссылку, которую мы дали</li>
+        <li>VS Code спросит, куда сохранить — выбери папку</li>
+        <li>Один раз представься системе. Открой терминал внутри VS Code (<span class="kbd">Cmd</span>/<span class="kbd">Ctrl</span>+<span class="kbd">&#96;</span>) и вставь две строки (подставь свои данные):</li>
+      </ol>
+<pre><code>git config user.email "твоя-почта@example.com"
+git config user.name "Твоё Имя"</code></pre>
+      <p>Теперь, когда Claude что-то меняет, он показывает изменения и спрашивает «Применить?». Смотришь → жмёшь галочку. Он сам сохранит и отправит на GitHub.</p>
+
+      <h2>Режимы работы Claude</h2>
+      <p>Внизу окошка ввода есть переключатель режима:</p>
+      <table>
+        <thead>
+          <tr><th>Режим</th><th>Что делает</th><th>Кому</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Plan (План)</strong></td><td>Сначала расскажет, что собирается сделать, ждёт твоё «ок»</td><td>👍 новичку</td></tr>
+          <tr><td><strong>Normal (Обычный)</strong></td><td>Спрашивает разрешение на каждое действие</td><td>стандарт</td></tr>
+          <tr><td><strong>Accept Edits</strong></td><td>Сам применяет правки, но спрашивает на опасные команды</td><td>когда освоился</td></tr>
+          <tr><td><strong>Bypass permissions</strong></td><td>Делает всё без вопросов</td><td>осознанно (см. ниже)</td></tr>
+        </tbody>
+      </table>
+      <p>Совет: начни в режиме <strong>План</strong>. Когда привыкнешь — переключайся.</p>
+
+      <h2>Режим «Bypass permissions» (без постоянных вопросов)</h2>
+      <p>Если надоедает подтверждать каждый шаг — можно включить режим, где Claude не спрашивает.</p>
+      <ol>
+        <li>Настройки: <span class="kbd">Cmd</span>/<span class="kbd">Ctrl</span>+<span class="kbd">,</span> → раздел <strong>Extensions → Claude Code</strong> (или в поиске набери <code>claudeCode</code>)</li>
+        <li>Поставь галочку <strong>«Allow Dangerously Skip Permissions»</strong> — она добавит режим в переключатель</li>
+        <li>Внизу окошка ввода выбери режим <strong>«Bypass permissions»</strong></li>
+        <li>(По желанию) чтобы он был по умолчанию — настройка <strong>Initial Permission Mode → <code>bypassPermissions</code></strong></li>
+      </ol>
+      <div class="callout warning">
+        <strong>Осторожно</strong>
+        <p>В этом режиме Claude выполняет <strong>любую</strong> команду без подтверждения. Включай его только в <strong>своём проекте на своём сервере</strong> — изолированно. Не включай на компьютере с чужими/непроверенными проектами. Для обычной работы безопаснее <strong>Accept Edits</strong> или <strong>План</strong>.</p>
+      </div>
+
+      <h2>Как разговаривать с Claude</h2>
+      <p>Главное правило: говори простыми словами, как подрядчику.</p>
+      <table>
+        <thead>
+          <tr><th>❌ Плохо</th><th>✅ Хорошо</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>«Исправь код»</td><td>«Сделай кнопку «Получить смету» рядом с ценой»</td></tr>
+          <tr><td>«Добавь фичу»</td><td>«Добавь форму: имя и телефон, после отправки — сообщение «Спасибо»»</td></tr>
+        </tbody>
+      </table>
+      <p>Описал словами → посмотрел, что показал → нажал галочку ✓ или ✗ → не так, скажи «сделай крупнее». Можно сказать <strong>«отмени»</strong> — вернёт как было. Ошибиться почти невозможно.</p>
+
+      <h2>Если что-то не так</h2>
+      <ul>
+        <li><strong>Не видно иконку-искру</strong> — открой любой файл, она появится</li>
+        <li><strong>«Not logged in»</strong> — нажми ✱ Claude Code внизу справа → Sign In</li>
+        <li><strong>Долгая пауза после сообщения</strong> — это нормально, он думает, подожди 5–10 сек, не отправляй заново</li>
+        <li><strong>«permission denied» при отправке на GitHub</strong> — вернись к двум строкам с почтой и именем (Шаг 4)</li>
+        <li><strong><code>Cmd+Esc</code> не работает (Mac)</strong> — Системные настройки → Клавиатура → Game Controllers → снять «Game Overlay»</li>
+      </ul>
+
+      <div class="callout success">
+        <strong>Чек-пойнт — что должно быть готово</strong>
+        <ul class="checklist" style="margin-top: 12px;">
+          <li>VS Code установлен (версия 1.98.0+)</li>
+          <li>Claude Code установлен</li>
+          <li>Выполнен вход (Pro/Max)</li>
+          <li>GitHub подключён (почта + имя заданы)</li>
+          <li>Проект открыт в VS Code</li>
+          <li>Понял режимы (План / Accept Edits / Bypass)</li>
+        </ul>
+      </div>
+
+      <div class="pager">
+        <a href="index.html">
+          <small>← Назад</small>
+          Главная
+        </a>
+        <a href="step-1-clone.html" class="next">
+          <small>Дальше →</small>
+          Получить ядро репозитория
+        </a>
+      </div>
+
+    </main>
+
+    <footer>
+      SL_CLAW • <a href="index.html">Главная</a> • <a href="https://github.com/sl-claw/sl_claw_roadmapp">GitHub</a>
+    </footer>
+
+  </div>
+</body>
+</html>
